@@ -9,7 +9,7 @@ const ContentLayout: FC<LayoutProps> = ({ children }) => {
     <div
       className={`flex h-screen flex-col ${
         isOpen ? 'pl-60' : 'pl-28'
-      } transition-all duration-300 ease-out`}
+      } transition-all duration-500 ease-out`}
     >
       {children}
     </div>
