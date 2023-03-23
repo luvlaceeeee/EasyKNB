@@ -1,10 +1,15 @@
+import { useAtom } from 'jotai';
 import { FC } from 'react';
+import { isSidebarOpen } from '../../modules/Sidebar/components/Sidebar';
 import { LayoutProps } from './layoutTypes';
 
 const ContentLayout: FC<LayoutProps> = ({ children }) => {
+  const [isOpen] = useAtom(isSidebarOpen);
   return (
     <div
-      className={`flex h-screen flex-col ${'pl-60'} transition-all duration-300 ease-out`}
+      className={`flex h-screen flex-col ${
+        isOpen ? 'pl-60' : 'pl-28'
+      } transition-all duration-300 ease-out`}
     >
       {children}
     </div>
