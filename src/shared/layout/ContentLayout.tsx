@@ -5,7 +5,13 @@ interface ContentProps {
 }
 
 const ContentLayout: FC<ContentProps> = ({ children }) => {
-  return <div className={`flex h-screen flex-col ${'pl-28'}`}>{children}</div>;
+  return (
+    <div
+      className={`flex h-screen flex-col ${'pl-60'} transition-all duration-300 ease-out`}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default ContentLayout;
