@@ -1,5 +1,5 @@
 export interface IconButtonProps {
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   handlerFn: () => void;
   className?: string;
 }
