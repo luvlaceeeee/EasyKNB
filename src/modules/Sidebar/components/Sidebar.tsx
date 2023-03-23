@@ -1,4 +1,5 @@
 import { atom, useAtom } from 'jotai';
+import SidebarHeader from './SidebarHeader';
 
 export const isSidebarOpen = atom(true);
 
@@ -8,9 +9,9 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? 'w-60' : 'w-28'
-      } absolute top-0 left-0 bottom-0 bg-zinc-500 p-4 transition-all duration-300 ease-out`}
+      } absolute top-0 left-0 bottom-0 border-r-2 border-zinc-400 border-opacity-20 bg-white p-6 transition-all duration-300 ease-out`}
     >
-      Sidebar
+      <SidebarHeader />
     </div>
   );
 };
