@@ -4,11 +4,17 @@ import { FiAlignJustify, FiAlignLeft } from 'react-icons/fi';
 import IconButton from '../../../shared/UI/Buttons/IconButton';
 import { isSidebarOpen } from './Sidebar';
 
-const SidebarHeader: FC = () => {
+interface SidebarHeaderProps {
+  className: string;
+}
+
+const SidebarHeader: FC<SidebarHeaderProps> = ({ className }) => {
   const [isOpen, setOpen] = useAtom(isSidebarOpen);
   return (
-    <div className="flex w-full items-center justify-between text-lg">
-      <div className="pl-2">
+    <div
+      className={`flex w-full items-center justify-between text-lg ${className}`}
+    >
+      <div>
         <IconButton
           icon={
             isOpen ? <FiAlignJustify size={20} /> : <FiAlignLeft size={20} />
