@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import React, { FC } from 'react';
 import { IconBaseProps } from 'react-icons/lib';
 import { Link } from 'react-router-dom';
-import { isSidebarOpen } from './Sidebar';
+import { isSidebarOpen } from '../store/sidebarStore';
 
 export interface SidebarButtonProps {
   title: string;

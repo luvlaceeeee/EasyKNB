@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { FC } from 'react';
 import { FiAlignJustify, FiAlignLeft } from 'react-icons/fi';
 import IconButton from '../../../shared/UI/Buttons/IconButton';
-import { isSidebarOpen } from './Sidebar';
+import { isSidebarOpen } from '../store/sidebarStore';
 
 interface SidebarHeaderProps {
   className: string;

@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { FC } from 'react';
-import { isSidebarOpen } from '../../modules/Sidebar/components/Sidebar';
+import { isSidebarOpen } from '../../modules/Sidebar/store/sidebarStore';
 import { LayoutProps } from './layoutTypes';
 
 const ContentLayout: FC<LayoutProps> = ({ children }) => {
