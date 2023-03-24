@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
 import { GrLogout } from 'react-icons/gr';
-import { sidebarButtons } from '../constans/sidebarButtons';
+import { sidebarButtons } from '../helpers/sidebarButtons';
 import SidebarButton from './SidebarButton';
 import SidebarHeader from './SidebarHeader';
 
