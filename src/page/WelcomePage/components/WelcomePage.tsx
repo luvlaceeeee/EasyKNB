@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 const WelcomePage: FC = () => {
   const handlerClick = () => {
@@ -7,9 +8,11 @@ const WelcomePage: FC = () => {
 
   return (
     <div>
-      <button onClick={handlerClick} className="m-10 bg-slate-400 p-5">
-        State user id to local storage
-      </button>
+      <Link to={'/space'}>
+        <button onClick={handlerClick} className="m-10 bg-slate-400 p-5">
+          log in with user id=1
+        </button>
+      </Link>
     </div>
   );
 };
