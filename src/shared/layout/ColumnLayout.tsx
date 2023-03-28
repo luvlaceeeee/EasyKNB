@@ -1,8 +1,7 @@
-import { FC } from 'react';
-import { LayoutProps } from './layoutTypes';
+import { FC, PropsWithChildren } from 'react';
 
-const ColumnLayout: FC<LayoutProps> = ({ children }) => {
-  return <div className="flex flex-1">{children}</div>;
+const ColumnLayout: FC<PropsWithChildren> = ({ children }) => {
+  return <div className="flex flex-1 flex-col">{children}</div>;
 };
 
 export default ColumnLayout;

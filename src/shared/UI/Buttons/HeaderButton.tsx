@@ -1,5 +1,10 @@
 import { FC } from 'react';
-import { HeaderButtonProps } from './buttonTypes';
+
+export interface HeaderButtonProps {
+  handlerFn: () => void;
+  text: string;
+  className?: string;
+}
 
 const HeaderButton: FC<HeaderButtonProps> = ({
   text,

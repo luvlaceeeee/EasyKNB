@@ -1,5 +1,10 @@
 import { FC } from 'react';
-import { IconButtonProps } from './buttonTypes';
+
+export interface IconButtonProps {
+  icon: React.ReactNode;
+  handlerFn: () => void;
+  className?: string;
+}
 
 const IconButton: FC<IconButtonProps> = ({ icon, handlerFn, className }) => {
   return (

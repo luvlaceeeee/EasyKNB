@@ -1,9 +1,8 @@
 import { useAtom } from 'jotai';
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { isSidebarOpen } from '../../modules/Sidebar/store/sidebarStore';
-import { LayoutProps } from './layoutTypes';
 
-const ContentLayout: FC<LayoutProps> = ({ children }) => {
+const ContentLayout: FC<PropsWithChildren> = ({ children }) => {
   const [isOpen] = useAtom(isSidebarOpen);
   return (
     <div
