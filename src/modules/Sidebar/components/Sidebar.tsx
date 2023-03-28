@@ -37,7 +37,7 @@ const Sidebar = () => {
               link="/"
               className="w-full justify-center border border-gray-200 bg-gray-100 hover:border-red-300 hover:bg-red-200"
             >
-              <GrLogout />
+              <GrLogout size={20} className={`${isOpen ? 'mr-4' : ''}`} />
             </SidebarButton>
           </div>
         </div>

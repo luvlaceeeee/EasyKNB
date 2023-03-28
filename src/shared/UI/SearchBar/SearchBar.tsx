@@ -3,17 +3,17 @@ import { SearchBarProps } from './searchBarTypes';
 
 const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
   return (
-    <div className="relative w-72">
+    <div className="relative">
       <input
         type="search"
-        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-sm text-gray-900"
+        className="block w-full rounded-xl border-2 border-gray-200 p-3 text-sm text-gray-900 hover:bg-gray-50 focus:bg-gray-50"
         placeholder={placeholder}
         required
       />
       <button
         type="submit"
         onClick={handlerFn}
-        className="absolute right-2.5 bottom-2.5 rounded-lg bg-gray-700 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800"
+        className="absolute right-2.5 bottom-2.5 rounded-lg bg-gray-700 px-2 py-1 text-sm font-medium text-white hover:bg-gray-800"
       >
         <svg
           aria-hidden="true"

@@ -15,7 +15,7 @@ const HeaderButton: FC<HeaderButtonProps> = ({
     <button
       type="button"
       onClick={handlerFn}
-      className={`rounded-lg border border-gray-200 bg-white py-4 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-700 ${className}`}
+      className={`rounded-xl border-2 border-gray-200 bg-white py-3 px-4 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-700 ${className}`}
     >
       {text}
     </button>
