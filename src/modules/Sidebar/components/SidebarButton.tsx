@@ -1,19 +1,17 @@
 import { useAtom } from 'jotai';
-import React, { FC } from 'react';
-import { IconBaseProps } from 'react-icons/lib';
+import { FC, PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { isSidebarOpen } from '../store/sidebarStore';
 
 export interface SidebarButtonProps {
   title: string;
-  icon: React.FunctionComponent<IconBaseProps>;
   link: string;
   className?: string;
 }
 
-const SidebarButton: FC<SidebarButtonProps> = ({
+const SidebarButton: FC<PropsWithChildren<SidebarButtonProps>> = ({
   title,
-  icon,
+  children,
   link,
   className,
 }) => {
@@ -25,10 +23,13 @@ const SidebarButton: FC<SidebarButtonProps> = ({
           isOpen ? 'px-5 py-3 pl-2.5' : 'px-2.5 py-3'
         } text-center text-sm font-medium transition-all duration-300 ease-out hover:bg-gray-200 ${className} `}
       >
-        {React.createElement(icon, {
+        {
+          /* {React.createElement(icon, {
           size: '20',
           className: `${isOpen ? 'mr-4' : ''}`,
-        })}
+        })} */
+          children
+        }
         <span
           className={`whitespace-pre font-bold duration-500 ${
             !isOpen &&

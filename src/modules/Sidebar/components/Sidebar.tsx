@@ -1,7 +1,6 @@
 import { useAtom } from 'jotai';
-import { GrLogout } from 'react-icons/gr';
+import { GrHomeRounded, GrInbox, GrLogout } from 'react-icons/gr';
 import { Outlet } from 'react-router-dom';
-import { sidebarButtons } from '../helpers/sidebarButtons';
 import { isSidebarOpen } from '../store/sidebarStore';
 import SidebarButton from './SidebarButton';
 import SidebarHeader from './SidebarHeader';
@@ -18,25 +17,28 @@ const Sidebar = () => {
         <div className="flex h-full flex-col justify-between">
           <div>
             <SidebarHeader className={'pb-5'} />
-            {sidebarButtons.map((button, i) => (
+            {[
+              { title: 'Home', icon: GrHomeRounded, link: '/' },
+              { title: 'Inbox', icon: GrInbox, link: '/' },
+            ].map((button, i) => (
               <div className="pb-4">
-                <SidebarButton
-                  key={i}
-                  title={button.title}
-                  icon={button.icon}
-                  link={button.link}
-                  className={button.className}
-                />
+                <SidebarButton key={i} title={button.title} link={button.link}>
+                  <button.icon
+                    size={20}
+                    className={`${isOpen ? 'mr-4' : ''}`}
+                  />
+                </SidebarButton>
               </div>
             ))}
           </div>
           <div>
             <SidebarButton
               title="Log out"
-              icon={GrLogout}
               link="/"
               className="w-full justify-center border border-gray-200 bg-gray-100 hover:border-red-300 hover:bg-red-200"
-            />
+            >
+              <GrLogout />
+            </SidebarButton>
           </div>
         </div>
       </div>
