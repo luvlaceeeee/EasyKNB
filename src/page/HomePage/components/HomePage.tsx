@@ -7,11 +7,9 @@ const HomePage = () => {
   return (
     <ContentLayout>
       <HeaderLayout>
-        <HomeHeader />
+        <HomeHeader totalBoard={3} />
       </HeaderLayout>
-      {/* <ColumnLayout> */}
       <HomeContent />
-      {/* </ColumnLayout> */}
     </ContentLayout>
   );
 };
