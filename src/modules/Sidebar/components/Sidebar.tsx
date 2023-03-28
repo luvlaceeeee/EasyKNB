@@ -18,7 +18,7 @@ const Sidebar = () => {
           <div>
             <SidebarHeader className={'pb-5'} />
             {[
-              { title: 'Home', icon: GrHomeRounded, link: '/' },
+              { title: 'Home', icon: GrHomeRounded, link: '/home' },
               { title: 'Inbox', icon: GrInbox, link: '/' },
             ].map((button, i) => (
               <div className="pb-4">
