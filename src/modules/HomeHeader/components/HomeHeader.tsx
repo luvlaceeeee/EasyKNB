@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { allBoards } from '../../../page/HomePage/components/HomePage';
 import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
 import Modal from '../../../shared/UI/Modal/Modal';
@@ -7,6 +7,7 @@ import SearchBar from '../../../shared/UI/SearchBar/SearchBar';
 
 const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
     <div className="flex h-full items-center justify-between">
       {/* Left part of header */}
@@ -18,8 +19,8 @@ const HomeHeader: FC = () => {
       <div className="flex items-center space-x-3">
         <HeaderButton
           text="Create board"
-          handlerFn={() => {
-            console.log('test');
+          onClick={() => {
+            setModalOpen(true);
           }}
         />
         <SearchBar
@@ -29,7 +30,9 @@ const HomeHeader: FC = () => {
           }}
         />
       </div>
-      <Modal />
+      <Modal isOpen={isModalOpen} setOpen={setModalOpen}>
+        Create board
+      </Modal>
     </div>
   );
 };

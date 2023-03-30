@@ -6,9 +6,16 @@ const Modal: FC<
   return (
     <div
       onClick={() => setOpen(false)}
-      className="fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40"
+      className={`${
+        !isOpen && 'pointer-events-none opacity-0'
+      } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm	transition-opacity`}
     >
-      <div className="rounded-lg bg-white p-6">{children}</div>
+      <div
+        className="rounded-lg bg-white p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
     </div>
   );
 };
