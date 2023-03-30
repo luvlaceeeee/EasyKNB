@@ -20,4 +20,6 @@ export const userAtom = atom<IUser>({
   fullName: 'Никита Литвинков',
 });
 
+export const userIdAtom = atom<number>((get) => get(userAtom).id);
+
 export const isAuthAtom = atom(true);
