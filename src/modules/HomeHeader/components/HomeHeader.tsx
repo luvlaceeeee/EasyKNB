@@ -2,6 +2,7 @@ import { useAtom } from 'jotai';
 import { FC } from 'react';
 import { allBoards } from '../../../page/HomePage/components/HomePage';
 import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
+import Modal from '../../../shared/UI/Modal/Modal';
 import SearchBar from '../../../shared/UI/SearchBar/SearchBar';
 
 const HomeHeader: FC = () => {
@@ -28,6 +29,7 @@ const HomeHeader: FC = () => {
           }}
         />
       </div>
+      <Modal />
     </div>
   );
 };
