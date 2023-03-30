@@ -1,9 +1,15 @@
+import { useAtom } from 'jotai';
+import { allBoards } from '../../../page/HomePage/components/HomePage';
 import BoardCard from './BoardCard';
 
 const HomeContent = () => {
+  const [data] = useAtom(allBoards);
+
   return (
     <div className="scrollbar flex flex-1 space-x-5 overflow-auto p-7 pt-0">
-      <BoardCard id={3} title="Agile board" />
+      {data.map((board) => {
+        return <BoardCard key={board.id} id={board.id} title={board.title} />;
+      })}
     </div>
   );
 };
