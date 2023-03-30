@@ -21,8 +21,8 @@ const Sidebar = () => {
               { title: 'Home', icon: GrHomeRounded, link: '/home' },
               { title: 'Inbox', icon: GrInbox, link: '/' },
             ].map((button, i) => (
-              <div className="pb-4">
-                <SidebarButton key={i} title={button.title} link={button.link}>
+              <div className="pb-4" key={i}>
+                <SidebarButton title={button.title} link={button.link}>
                   <button.icon
                     size={20}
                     className={`${isOpen ? 'mr-4' : ''}`}
