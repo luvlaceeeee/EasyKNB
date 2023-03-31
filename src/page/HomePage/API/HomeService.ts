@@ -10,7 +10,7 @@ const findBoardByUserId = async (userId: number) => {
   return data;
 };
 
-const createBoardByUserID = async (userId: number, title: IHomeBoard) => {
+const createBoardByUserID = async (userId: number, title: string) => {
   const { data } = await $api.post<IHomeBoard>(
     '/boards',
     {
