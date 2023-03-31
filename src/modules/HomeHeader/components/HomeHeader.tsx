@@ -4,6 +4,7 @@ import { allBoards } from '../../../page/HomePage/components/HomePage';
 import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
 import Modal from '../../../shared/UI/Modal/Modal';
 import SearchBar from '../../../shared/UI/SearchBar/SearchBar';
+import CreateBoardModal from './CreateBoardModal';
 
 const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);
@@ -31,7 +32,7 @@ const HomeHeader: FC = () => {
         />
       </div>
       <Modal isOpen={isModalOpen} setOpen={setModalOpen}>
-        Create board
+        <CreateBoardModal />
       </Modal>
     </div>
   );
