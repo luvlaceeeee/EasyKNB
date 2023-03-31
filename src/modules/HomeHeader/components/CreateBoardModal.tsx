@@ -1,12 +1,41 @@
-import { useState } from 'react';
+import { useAtom } from 'jotai';
+import { atomsWithMutation } from 'jotai-tanstack-query';
+import { FC, useEffect, useState } from 'react';
+import { GrClose } from 'react-icons/gr';
+import { useQueryClient } from 'react-query';
+import BoardService from '../../../page/HomePage/API/HomeService';
 import DefaultButton from '../../../shared/UI/Buttons/DefaultButton';
+import IconButton from '../../../shared/UI/Buttons/IconButton';
 import Input from '../../../shared/UI/Input/Input';
+import { userIdAtom } from '../../../shared/store/AuthStore';
 
-const CreateBoardModal = () => {
-  const [title, setTitle] = useState('');
+const [, boardAtom] = atomsWithMutation((get) => ({
+  mutationKey: ['board'],
+  mutationFn: (title: string) =>
+    BoardService.createBoardByUserID(get(userIdAtom), title),
+}));
+
+const CreateBoardModal: FC<{ setOpen: (arg0: boolean) => void }> = ({
+  setOpen,
+}) => {
+  const queryClient = useQueryClient();
+  const [boardState, mutate] = useAtom(boardAtom);
+  const [title, setTitle] = useState<string>('');
+
+  useEffect(() => {
+    if (boardState.isSuccess) {
+      setTitle('');
+      setOpen(false);
+      queryClient.invalidateQueries(['query-boards']);
+    }
+  }, [boardState]);
+
   return (
     <div className="flex w-72 flex-col space-y-5">
-      <span className="text-xl font-bold">Create board</span>
+      <div className="flex items-center justify-between">
+        <span className="text-xl font-bold">Create board</span>
+        <IconButton icon={<GrClose />} handlerFn={() => setOpen(false)} />
+      </div>
       <Input
         label="Board title"
         placeHolder="Board title"
@@ -18,8 +47,9 @@ const CreateBoardModal = () => {
       <DefaultButton
         text="Create"
         onClick={() => {
-          console.log('first');
+          mutate([title]);
         }}
+        isLoading={boardState.isLoading}
       />
     </div>
   );
