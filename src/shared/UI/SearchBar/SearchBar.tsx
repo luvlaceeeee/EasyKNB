@@ -1,5 +1,9 @@
 import { FC } from 'react';
-import { SearchBarProps } from './searchBarTypes';
+
+interface SearchBarProps {
+  placeholder: string;
+  handlerFn: () => void;
+}
 
 const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
   return (
