@@ -9,12 +9,13 @@ import CreateBoardModal from './CreateBoardModal';
 const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);
   const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="flex h-full items-center justify-between">
       {/* Left part of header */}
       <div className="inline-flex flex-col">
-        <span className="text-2xl font-black">All your project</span>
-        <span className=" text-gray-400">Total project: {data.length}</span>
+        <span className="text-2xl font-black">All your board's</span>
+        <span className=" text-gray-400">Total boards: {data.length}</span>
       </div>
       {/* Right part of header */}
       <div className="flex items-center space-x-3">
@@ -25,14 +26,14 @@ const HomeHeader: FC = () => {
           }}
         />
         <SearchBar
-          placeholder="Search project"
+          placeholder="Search board"
           handlerFn={() => {
             console.log('test');
           }}
         />
       </div>
       <Modal isOpen={isModalOpen} setOpen={setModalOpen}>
-        <CreateBoardModal />
+        <CreateBoardModal setOpen={setModalOpen} />
       </Modal>
     </div>
   );
