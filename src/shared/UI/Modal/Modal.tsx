@@ -8,10 +8,10 @@ const Modal: FC<
       onClick={() => setOpen(false)}
       className={`${
         !isOpen && 'pointer-events-none opacity-0'
-      } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm	transition-opacity`}
+      } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm transition-opacity`}
     >
       <div
-        className="rounded-lg bg-white p-6"
+        className="rounded-lg bg-white p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
