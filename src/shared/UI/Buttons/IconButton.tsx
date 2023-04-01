@@ -10,7 +10,7 @@ const IconButton: FC<IconButtonProps> = ({ icon, handlerFn, className }) => {
   return (
     <button
       onClick={handlerFn}
-      className={`${className} inline-flex items-center rounded-lg p-2.5 text-center text-sm font-medium transition-all duration-300 ease-out hover:bg-gray-200`}
+      className={`rounded-lg p-2.5 transition-all duration-300 ease-out hover:bg-gray-200 dark:text-white ${className}`}
     >
       {icon}
     </button>
