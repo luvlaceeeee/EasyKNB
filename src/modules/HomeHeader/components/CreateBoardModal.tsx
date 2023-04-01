@@ -24,9 +24,9 @@ const CreateBoardModal: FC<{ setOpen: (arg0: boolean) => void }> = ({
 
   useEffect(() => {
     if (boardState.isSuccess) {
-      setTitle('');
-      setOpen(false);
       queryClient.invalidateQueries(['query-boards']);
+      setOpen(false);
+      setTitle('');
     }
   }, [boardState]);
 
