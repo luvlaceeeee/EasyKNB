@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Spinner from '../Spinner/Spinner';
 
 export interface DefaultButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -16,9 +17,9 @@ const DefaultButton: FC<DefaultButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-sm font-medium text-white transition-all hover:bg-gray-800 ${className}`}
+      className={`w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-lg font-medium text-white transition-all hover:bg-gray-800 ${className}`}
     >
-      {isLoading ? '...Loading' : text}
+      {isLoading ? <Spinner /> : text}
     </button>
   );
 };
