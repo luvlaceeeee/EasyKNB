@@ -21,12 +21,12 @@ const Input: FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-gray-900">
+      <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-zinc-300">
         {label}
       </label>
       <input
         type={type || 'text'}
-        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 ${className}`}
+        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-zinc-700 dark:bg-zinc-800 ${className}`}
         placeholder={placeHolder}
         autoFocus={autoFocus}
         onChange={onChange}

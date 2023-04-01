@@ -17,7 +17,7 @@ const DefaultButton: FC<DefaultButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-lg font-medium text-white transition-all hover:bg-gray-800 ${className}`}
+      className={`w-full rounded-lg bg-gray-700 px-5 py-2.5 text-center text-lg font-medium text-white transition-all hover:bg-gray-800 dark:bg-zinc-600 dark:hover:bg-zinc-700 ${className}`}
     >
       {isLoading ? <Spinner /> : text}
     </button>

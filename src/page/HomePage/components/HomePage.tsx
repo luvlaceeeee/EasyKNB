@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import HomeContent from '../../../modules/HomeContent/components/HomeContent';
 import HomeHeader from '../../../modules/HomeHeader/components/HomeHeader';
 import ContentLayout from '../../../shared/layout/ContentLayout';
-import HeaderLayout1 from '../../../shared/layout/HeaderLayout';
+import HeaderLayout from '../../../shared/layout/HeaderLayout';
 import { userIdAtom } from '../../../shared/store/AuthStore';
 import BoardService from '../API/HomeService';
 import { IHomeBoard } from '../types/IHomeBoard';
@@ -22,9 +22,9 @@ const HomePage = () => {
   return (
     <ContentLayout>
       <Suspense fallback={<HomePageLoader />}>
-        <HeaderLayout1>
+        <HeaderLayout>
           <HomeHeader />
-        </HeaderLayout1>
+        </HeaderLayout>
         <HomeContent />
       </Suspense>
     </ContentLayout>

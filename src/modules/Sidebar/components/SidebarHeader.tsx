@@ -25,7 +25,7 @@ const SidebarHeader: FC<SidebarHeaderProps> = ({ className }) => {
       <span
         className={`${
           isOpen ? 'opacity-100' : 'opacity-0'
-        } font-bold transition-opacity duration-300 ease-out`}
+        } font-bold transition-opacity duration-300 ease-out dark:text-zinc-200`}
       >
         Jirello
       </span>

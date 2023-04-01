@@ -14,7 +14,9 @@ const HomeHeader: FC = () => {
     <div className="flex h-full items-center justify-between">
       {/* Left part of header */}
       <div className="inline-flex flex-col">
-        <span className="text-2xl font-black">All your board's</span>
+        <span className="text-2xl font-black dark:text-zinc-200">
+          All your board's
+        </span>
         <span className=" text-gray-400">Total boards: {data.length}</span>
       </div>
       {/* Right part of header */}

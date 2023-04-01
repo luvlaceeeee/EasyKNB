@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
-import { GrClose } from 'react-icons/gr';
+import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import BoardService from '../../../page/HomePage/API/HomeService';
 import DefaultButton from '../../../shared/UI/Buttons/DefaultButton';
@@ -33,8 +33,10 @@ const CreateBoardModal: FC<{ setOpen: (arg0: boolean) => void }> = ({
   return (
     <div className="flex w-72 flex-col space-y-5">
       <div className="flex items-center justify-between">
-        <span className="text-xl font-bold">Create board</span>
-        <IconButton icon={<GrClose />} handlerFn={() => setOpen(false)} />
+        <span className="text-xl font-bold dark:text-zinc-200">
+          Create board
+        </span>
+        <IconButton icon={<FiX />} handlerFn={() => setOpen(false)} />
       </div>
       <Input
         label="Board title"
