@@ -5,7 +5,7 @@ import HomeHeader from '../../../modules/HomeHeader/components/HomeHeader';
 import ContentLayout from '../../../shared/layout/ContentLayout';
 import HeaderLayout from '../../../shared/layout/HeaderLayout';
 import { userIdAtom } from '../../../shared/store/AuthStore';
-import BoardService from '../API/HomeService';
+import HomeService from '../API/HomeService';
 import { IHomeBoard } from '../types/IHomeBoard';
 import HomePageLoader from './HomePageLoader';
 
@@ -14,7 +14,7 @@ export const [allBoards] = atomsWithQuery<IHomeBoard[]>((get) => {
 
   return {
     queryKey: ['query-boards', userId],
-    queryFn: async () => BoardService.findBoardByUserId(userId),
+    queryFn: async () => HomeService.findBoardsByUserId(userId),
   };
 });
 

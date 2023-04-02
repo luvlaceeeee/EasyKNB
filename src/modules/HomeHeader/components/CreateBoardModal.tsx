@@ -3,7 +3,7 @@ import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
-import BoardService from '../../../page/HomePage/API/HomeService';
+import HomeService from '../../../page/HomePage/API/HomeService';
 import DefaultButton from '../../../shared/UI/Buttons/DefaultButton';
 import IconButton from '../../../shared/UI/Buttons/IconButton';
 import Input from '../../../shared/UI/Input/Input';
@@ -12,7 +12,7 @@ import { userIdAtom } from '../../../shared/store/AuthStore';
 const [, boardAtom] = atomsWithMutation((get) => ({
   mutationKey: ['board'],
   mutationFn: (title: string) =>
-    BoardService.createBoardByUserID(get(userIdAtom), title),
+    HomeService.createBoardByUserID(get(userIdAtom), title),
 }));
 
 const CreateBoardModal: FC<{ setOpen: (arg0: boolean) => void }> = ({
