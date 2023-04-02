@@ -1,14 +1,5 @@
 import { atom } from 'jotai';
-
-export interface IUser {
-  id: number;
-  email: string;
-  name: string;
-  surname: string;
-  avatar: string;
-  yandexID: string;
-  fullName: string;
-}
+import { IUser } from '../types/IUser';
 
 export const userAtom = atom<IUser>({
   id: 1,
