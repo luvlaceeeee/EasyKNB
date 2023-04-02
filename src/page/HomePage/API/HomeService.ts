@@ -1,7 +1,7 @@
 import $api from '../../../shared/API/axiosConfig';
 import { IHomeBoard } from '../types/IHomeBoard';
 
-const findBoardByUserId = async (userId: number) => {
+const findBoardsByUserId = async (userId: number) => {
   const { data } = await $api.get<IHomeBoard[]>('/boards', {
     params: {
       userId: userId,
@@ -24,9 +24,9 @@ const createBoardByUserID = async (userId: number, title: string) => {
   );
 };
 
-const BoardService = {
-  findBoardByUserId,
+const HomeService = {
+  findBoardsByUserId,
   createBoardByUserID,
 };
 
-export default BoardService;
+export default HomeService;
