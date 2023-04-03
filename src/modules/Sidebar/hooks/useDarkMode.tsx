@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 //TODO: Saved theme to localStorage
 
-const useDarkMode = () => {
+export const useDarkMode = () => {
   const [theme, setTheme] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,5 +23,3 @@ const useDarkMode = () => {
 
   return [theme, setTheme] as const;
 };
-
-export default useDarkMode;

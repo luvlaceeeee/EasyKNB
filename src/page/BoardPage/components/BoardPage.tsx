@@ -1,4 +1,4 @@
-import BoardHeader from '@modules/BoardHeader/components/BoardHeader';
+import { BoardHeader } from '@modules/BoardHeader/components/BoardHeader';
 import { ContentLayout, HeaderLayout } from '@shared/layout';
 import { userIdAtom } from '@shared/store';
 import { IBoard } from '@shared/types';

@@ -1,14 +1,14 @@
+import { IconButton } from '@shared/UI/Buttons/IconButton';
 import { useAtom } from 'jotai';
 import { FC } from 'react';
 import { FiAlignJustify, FiAlignLeft } from 'react-icons/fi';
-import IconButton from '../../../shared/UI/Buttons/IconButton';
 import { isSidebarOpen } from '../store/sidebarStore';
 
 interface SidebarHeaderProps {
   className: string;
 }
 
-const SidebarHeader: FC<SidebarHeaderProps> = ({ className }) => {
+export const SidebarHeader: FC<SidebarHeaderProps> = ({ className }) => {
   const [isOpen, setOpen] = useAtom(isSidebarOpen);
   return (
     <div
@@ -32,5 +32,3 @@ const SidebarHeader: FC<SidebarHeaderProps> = ({ className }) => {
     </div>
   );
 };
-
-export default SidebarHeader;

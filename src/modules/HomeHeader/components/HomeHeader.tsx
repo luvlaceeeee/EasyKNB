@@ -2,9 +2,9 @@ import { allBoards } from '@page/HomePage/components/HomePage';
 import { HeaderButton, SearchBar } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
-import CreateBoardModal from './CreateBoardModal';
+import { CreateBoardModal } from './CreateBoardModal';
 
-const HomeHeader: FC = () => {
+export const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -36,5 +36,3 @@ const HomeHeader: FC = () => {
     </div>
   );
 };
-
-export default HomeHeader;

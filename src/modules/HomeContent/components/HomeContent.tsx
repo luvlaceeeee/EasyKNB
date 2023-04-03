@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai';
 import { allBoards } from '../../../page/HomePage/components/HomePage';
-import BoardCard from './BoardCard';
+import { BoardCard } from './BoardCard';
 
-const HomeContent = () => {
+export const HomeContent = () => {
   const [data] = useAtom(allBoards);
 
   return (
@@ -13,5 +13,3 @@ const HomeContent = () => {
     </div>
   );
 };
-
-export default HomeContent;

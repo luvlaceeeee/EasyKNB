@@ -1,14 +1,14 @@
+import { BoardService } from '@page/BoardPage/API/BoardService';
+import { DefaultButton } from '@shared/UI/Buttons/DefaultButton';
+import { IconButton } from '@shared/UI/Buttons/IconButton';
+import { Input } from '@shared/UI/Input/Input';
+import { Modal } from '@shared/UI/Modal/Modal';
+import { userIdAtom } from '@shared/store/AuthStore';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
-import BoardService from '../../../page/BoardPage/API/BoardService';
-import DefaultButton from '../../../shared/UI/Buttons/DefaultButton';
-import IconButton from '../../../shared/UI/Buttons/IconButton';
-import Input from '../../../shared/UI/Input/Input';
-import Modal from '../../../shared/UI/Modal/Modal';
-import { userIdAtom } from '../../../shared/store/AuthStore';
 
 // const { boardId } = useParams();
 const [, renameBoardAtom] = atomsWithMutation((get) => ({
@@ -17,7 +17,7 @@ const [, renameBoardAtom] = atomsWithMutation((get) => ({
     BoardService.renameBoardById(get(userIdAtom), boardId, title),
 }));
 
-const RenameBoardModal: FC<{
+export const RenameBoardModal: FC<{
   setOpen: (arg0: boolean) => void;
   isOpen: boolean;
 }> = ({ isOpen, setOpen }) => {
@@ -61,5 +61,3 @@ const RenameBoardModal: FC<{
     </Modal>
   );
 };
-
-export default RenameBoardModal;

@@ -14,7 +14,7 @@ const useBoardData = () => {
   return useAtom(boardAtom);
 };
 
-const BoardHeader = () => {
+export const BoardHeader = () => {
   const [isRenameModalOpen, setRenameModalOpen] = useState(false);
   const [data] = useBoardData();
 
@@ -57,5 +57,3 @@ const BoardHeader = () => {
     </div>
   );
 };
-
-export default BoardHeader;

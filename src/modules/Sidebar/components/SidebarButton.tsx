@@ -9,7 +9,7 @@ export interface SidebarButtonProps {
   className?: string;
 }
 
-const SidebarButton: FC<PropsWithChildren<SidebarButtonProps>> = ({
+export const SidebarButton: FC<PropsWithChildren<SidebarButtonProps>> = ({
   title,
   children,
   link,
@@ -36,5 +36,3 @@ const SidebarButton: FC<PropsWithChildren<SidebarButtonProps>> = ({
     </Link>
   );
 };
-
-export default SidebarButton;

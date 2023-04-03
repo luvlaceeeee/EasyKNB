@@ -1,11 +1,11 @@
+import { Sidebar } from '@modules/Sidebar/components/Sidebar';
+import { BoardPage } from '@page/BoardPage/components/BoardPage';
+import { HomePage } from '@page/HomePage/components/HomePage';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Sidebar from '../../../modules/Sidebar/components/Sidebar';
-import BoardPage from '../../BoardPage/components/BoardPage';
-import HomePage from '../../HomePage/components/HomePage';
-import PrivateRoutes from './PrivateRoutes';
+import { PrivateRoutes } from './PrivateRoutes';
 
-const RouterPage: FC = () => {
+export const RouterPage: FC = () => {
   return (
     <Routes>
       {/* <Route path="" element={<Navigate to="/welcome" />} /> */}
@@ -19,5 +19,3 @@ const RouterPage: FC = () => {
     </Routes>
   );
 };
-
-export default RouterPage;

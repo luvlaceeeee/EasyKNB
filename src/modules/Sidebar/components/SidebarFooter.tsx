@@ -1,11 +1,11 @@
+import { IconButton } from '@shared/UI/Buttons/IconButton';
 import { useAtom } from 'jotai';
 import { FiLogOut, FiMoon } from 'react-icons/fi';
-import IconButton from '../../../shared/UI/Buttons/IconButton';
-import useDarkMode from '../hooks/useDarkMode';
+import { useDarkMode } from '../hooks/useDarkMode';
 import { isSidebarOpen } from '../store/sidebarStore';
-import SidebarButton from './SidebarButton';
+import { SidebarButton } from './SidebarButton';
 
-const SidebarFooter = () => {
+export const SidebarFooter = () => {
   const [theme, setTheme] = useDarkMode();
   const [isOpen] = useAtom(isSidebarOpen);
 
@@ -32,5 +32,3 @@ const SidebarFooter = () => {
     </div>
   );
 };
-
-export default SidebarFooter;

@@ -2,11 +2,12 @@ import { useAtom } from 'jotai';
 import { FiHome, FiInbox } from 'react-icons/fi';
 import { Outlet } from 'react-router-dom';
 import { isSidebarOpen } from '../store/sidebarStore';
-import SidebarButton from './SidebarButton';
-import SidebarFooter from './SidebarFooter';
-import SidebarHeader from './SidebarHeader';
+// import { SidebarButton } from './SidebarButton';
+// import { SidebarFooter } from './SidebarFooter';
+// import { SidebarHeader } from './SidebarHeader';
+import { SidebarButton, SidebarFooter, SidebarHeader } from '../components';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const [isOpen] = useAtom(isSidebarOpen);
 
   return (
@@ -40,5 +41,3 @@ const Sidebar = () => {
     </>
   );
 };
-
-export default Sidebar;

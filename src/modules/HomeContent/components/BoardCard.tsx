@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const BoardCard: FC<{ id: number; title: string }> = ({ id, title }) => {
+export const BoardCard: FC<{ id: number; title: string }> = ({ id, title }) => {
   return (
     <Link
       to={`/board/${id}`}
@@ -13,5 +13,3 @@ const BoardCard: FC<{ id: number; title: string }> = ({ id, title }) => {
     </Link>
   );
 };
-
-export default BoardCard;
