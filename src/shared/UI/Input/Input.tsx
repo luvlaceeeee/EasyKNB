@@ -26,7 +26,7 @@ export const Input: FC<InputProps> = ({
       </label>
       <input
         type={type || 'text'}
-        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 ${className}`}
+        className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 ${className}`}
         placeholder={placeHolder}
         autoFocus={autoFocus}
         onChange={onChange}
