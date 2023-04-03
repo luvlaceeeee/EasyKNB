@@ -1,4 +1,5 @@
 import { atomsWithQuery } from 'jotai-tanstack-query';
+import { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import BoardHeader from '../../../modules/BoardHeader/components/BoardHeader';
 import ContentLayout from '../../../shared/layout/ContentLayout';
@@ -20,9 +21,11 @@ export const [board] = atomsWithQuery<IBoard>((get) => {
 const BoardPage = () => {
   return (
     <ContentLayout>
-      <HeaderLayout>
-        <BoardHeader />
-      </HeaderLayout>
+      <Suspense fallback={<h1>Loading</h1>}>
+        <HeaderLayout>
+          <BoardHeader />
+        </HeaderLayout>
+      </Suspense>
     </ContentLayout>
   );
 };
