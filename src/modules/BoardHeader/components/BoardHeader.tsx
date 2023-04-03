@@ -1,9 +1,12 @@
 import { useAtom } from 'jotai';
+import { useState } from 'react';
 import { board } from '../../../page/BoardPage/components/BoardPage';
 import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
 
 const BoardHeader = () => {
   const [data] = useAtom(board);
+  const [isRenameModalOpen, setRenameModalOpen] = useState(false);
+
   return (
     <div className="flex h-full items-center justify-between">
       {/* Left part of header */}
@@ -26,7 +29,7 @@ const BoardHeader = () => {
         <HeaderButton
           text="Rename board"
           onClick={() => {
-            console.log('first');
+            setRenameModalOpen(true);
           }}
         />
         <HeaderButton
@@ -36,6 +39,10 @@ const BoardHeader = () => {
           }}
         />
       </div>
+      {/* <RenameBoardModal
+        isOpen={isRenameModalOpen}
+        setOpen={setRenameModalOpen}
+      /> */}
     </div>
   );
 };
