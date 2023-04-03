@@ -1,9 +1,10 @@
 import { boardAtom, boardIdAtom } from '@page/BoardPage/components/BoardPage';
-import { HeaderButton } from '@shared/UI';
+import { HeaderButton, Modal } from '@shared/UI';
 import { stringToNumber } from '@shared/helpers';
 import { useAtom, useSetAtom } from 'jotai';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { RenameBoardModal } from './RenameBoardModal';
 
 const useBoardData = () => {
   const setBoardId = useSetAtom(boardIdAtom);
@@ -50,10 +51,9 @@ export const BoardHeader = () => {
           }}
         />
       </div>
-      {/* <RenameBoardModal
-        isOpen={isRenameModalOpen}
-        setOpen={setRenameModalOpen}
-      /> */}
+      <Modal isOpen={isRenameModalOpen} setOpen={setRenameModalOpen}>
+        {isRenameModalOpen && <RenameBoardModal setOpen={setRenameModalOpen} />}
+      </Modal>
     </div>
   );
 };

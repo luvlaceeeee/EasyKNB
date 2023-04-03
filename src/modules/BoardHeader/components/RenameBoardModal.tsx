@@ -1,8 +1,8 @@
 import { BoardService } from '@page/BoardPage/API/BoardService';
+import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
 import { DefaultButton } from '@shared/UI/Buttons/DefaultButton';
 import { IconButton } from '@shared/UI/Buttons/IconButton';
 import { Input } from '@shared/UI/Input/Input';
-import { Modal } from '@shared/UI/Modal/Modal';
 import { userIdAtom } from '@shared/store/AuthStore';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
@@ -14,13 +14,12 @@ import { useQueryClient } from 'react-query';
 const [, renameBoardAtom] = atomsWithMutation((get) => ({
   mutationKey: ['rename-board'],
   mutationFn: (title: string) =>
-    BoardService.renameBoardById(get(userIdAtom), boardId, title),
+    BoardService.renameBoardById(get(userIdAtom), get(boardIdAtom), title),
 }));
 
 export const RenameBoardModal: FC<{
   setOpen: (arg0: boolean) => void;
-  isOpen: boolean;
-}> = ({ isOpen, setOpen }) => {
+}> = ({ setOpen }) => {
   const [title, setTitle] = useState<string>('');
   const [renameBoardState, mutate] = useAtom(renameBoardAtom);
   const queryClient = useQueryClient();
@@ -30,34 +29,34 @@ export const RenameBoardModal: FC<{
       queryClient.invalidateQueries(['query-board']);
       setOpen(false);
       setTitle('');
+      queryClient.invalidateQueries(['query-boards']);
     }
   }, [renameBoardState]);
 
   return (
-    <Modal isOpen={isOpen} setOpen={setOpen}>
-      <div className="flex w-72 flex-col space-y-5">
-        <div className="flex items-center justify-between">
-          <span className="text-xl font-bold dark:text-zinc-200">
-            Rename board
-          </span>
-          <IconButton icon={<FiX />} handlerFn={() => setOpen(false)} />
-        </div>
-        <Input
-          label="New board title"
-          placeHolder="New board title"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-          value={title}
-        />
-        <DefaultButton
-          text="Rename"
-          onClick={() => {
-            mutate([title]);
-          }}
-          isLoading={renameBoardState.isLoading}
-        />
-      </div>{' '}
-    </Modal>
+    <div className="flex w-72 flex-col space-y-5">
+      <div className="flex items-center justify-between">
+        <span className="text-xl font-bold dark:text-zinc-200">
+          Rename board
+        </span>
+        <IconButton icon={<FiX />} handlerFn={() => setOpen(false)} />
+      </div>
+      <Input
+        label="New board title"
+        placeHolder="New board title"
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+        value={title}
+        autoFocus={true}
+      />
+      <DefaultButton
+        text="Rename"
+        onClick={() => {
+          mutate([title]);
+        }}
+        isLoading={renameBoardState.isLoading}
+      />
+    </div>
   );
 };

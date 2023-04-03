@@ -27,7 +27,7 @@ const deleteBoardById = async (
 
 const renameBoardById = async (
   userId: number,
-  boardId: number | string | undefined,
+  boardId: number | null,
   title: string
 ) => {
   const { data } = await $api.put(
