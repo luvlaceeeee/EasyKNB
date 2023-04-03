@@ -1,4 +1,4 @@
-import { RouterPage } from '@page/Router/components/RouterPage';
+import { RouterPage } from '@page/Router';
 import { Provider } from 'jotai';
 import { queryClientAtom } from 'jotai-tanstack-query';
 import { useHydrateAtoms } from 'jotai/react/utils';
