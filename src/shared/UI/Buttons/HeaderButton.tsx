@@ -6,7 +6,11 @@ export interface HeaderButtonProps {
   className?: string;
 }
 
-const HeaderButton: FC<HeaderButtonProps> = ({ text, onClick, className }) => {
+export const HeaderButton: FC<HeaderButtonProps> = ({
+  text,
+  onClick,
+  className,
+}) => {
   return (
     <button
       type="button"
@@ -17,5 +21,3 @@ const HeaderButton: FC<HeaderButtonProps> = ({ text, onClick, className }) => {
     </button>
   );
 };
-
-export default HeaderButton;

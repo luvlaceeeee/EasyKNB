@@ -6,7 +6,11 @@ export interface IconButtonProps {
   className?: string;
 }
 
-const IconButton: FC<IconButtonProps> = ({ icon, handlerFn, className }) => {
+export const IconButton: FC<IconButtonProps> = ({
+  icon,
+  handlerFn,
+  className,
+}) => {
   return (
     <button
       onClick={handlerFn}
@@ -16,5 +20,3 @@ const IconButton: FC<IconButtonProps> = ({ icon, handlerFn, className }) => {
     </button>
   );
 };
-
-export default IconButton;

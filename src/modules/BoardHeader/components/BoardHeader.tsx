@@ -1,11 +1,22 @@
-import { useAtom } from 'jotai';
+import { boardAtom, boardIdAtom } from '@page/BoardPage/components/BoardPage';
+import { HeaderButton } from '@shared/UI';
+import { stringToNumber } from '@shared/helpers';
+import { useAtom, useSetAtom } from 'jotai';
 import { useState } from 'react';
-import { board } from '../../../page/BoardPage/components/BoardPage';
-import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
+import { useParams } from 'react-router-dom';
+
+const useBoardData = () => {
+  const setBoardId = useSetAtom(boardIdAtom);
+  const { boardId } = useParams();
+
+  setBoardId(stringToNumber(boardId));
+
+  return useAtom(boardAtom);
+};
 
 const BoardHeader = () => {
-  const [data] = useAtom(board);
   const [isRenameModalOpen, setRenameModalOpen] = useState(false);
+  const [data] = useBoardData();
 
   return (
     <div className="flex h-full items-center justify-between">

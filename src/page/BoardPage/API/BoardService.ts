@@ -1,5 +1,5 @@
-import $api from '../../../shared/API/axiosConfig';
-import { IBoard } from '../../../shared/types/IBoard';
+import { $api } from '@shared/API';
+import { IBoard } from '@shared/types';
 
 const findBoardByUserId = async (
   userId: number,
@@ -44,10 +44,8 @@ const renameBoardById = async (
   return data;
 };
 
-const BoardService = {
+export const BoardService = {
   findBoardByUserId,
   renameBoardById,
   deleteBoardById,
 };
-
-export default BoardService;

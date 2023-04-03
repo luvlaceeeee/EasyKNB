@@ -5,7 +5,7 @@ interface SearchBarProps {
   handlerFn: () => void;
 }
 
-const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
+export const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
   return (
     <div className="relative">
       <input
@@ -39,5 +39,3 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
     </div>
   );
 };
-
-export default SearchBar;

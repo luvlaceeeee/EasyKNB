@@ -1,24 +1,27 @@
+import BoardHeader from '@modules/BoardHeader/components/BoardHeader';
+import { ContentLayout, HeaderLayout } from '@shared/layout';
+import { userIdAtom } from '@shared/store';
+import { IBoard } from '@shared/types';
+import { atom } from 'jotai';
 import { atomsWithQuery } from 'jotai-tanstack-query';
 import { Suspense } from 'react';
-import { useParams } from 'react-router-dom';
-import BoardHeader from '../../../modules/BoardHeader/components/BoardHeader';
-import ContentLayout from '../../../shared/layout/ContentLayout';
-import HeaderLayout from '../../../shared/layout/HeaderLayout';
-import { userIdAtom } from '../../../shared/store/AuthStore';
-import { IBoard } from '../../../shared/types/IBoard';
-import BoardService from '../API/BoardService';
+import { BoardService } from '../API';
 
-export const [board] = atomsWithQuery<IBoard>((get) => {
+export const boardIdAtom = atom<number | null>(null);
+export const [boardAtom] = atomsWithQuery<IBoard>((get) => {
   const userId = get(userIdAtom);
-  const { boardId } = useParams();
+  const boardId = get(boardIdAtom);
 
   return {
     queryKey: ['query-board', userId, boardId],
-    queryFn: async () => BoardService.findBoardByUserId(userId, boardId),
+    queryFn: () =>
+      boardId
+        ? BoardService.findBoardByUserId(userId, boardId)
+        : Promise.reject('Board id is null'),
   };
 });
 
-const BoardPage = () => {
+export const BoardPage = () => {
   return (
     <ContentLayout>
       <Suspense fallback={<h1>Loading</h1>}>
@@ -29,5 +32,3 @@ const BoardPage = () => {
     </ContentLayout>
   );
 };
-
-export default BoardPage;

@@ -8,7 +8,7 @@ export interface DefaultButtonProps {
   isLoading?: boolean;
 }
 
-const DefaultButton: FC<DefaultButtonProps> = ({
+export const DefaultButton: FC<DefaultButtonProps> = ({
   onClick,
   text,
   className,
@@ -23,5 +23,3 @@ const DefaultButton: FC<DefaultButtonProps> = ({
     </button>
   );
 };
-
-export default DefaultButton;

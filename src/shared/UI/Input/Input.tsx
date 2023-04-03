@@ -10,7 +10,7 @@ interface InputProps {
   autoFocus?: boolean;
 }
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   label,
   type,
   className,
@@ -35,5 +35,3 @@ const Input: FC<InputProps> = ({
     </div>
   );
 };
-
-export default Input;

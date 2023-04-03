@@ -1,6 +1,6 @@
-import HeaderLayout from '../../../shared/layout/HeaderLayout';
+import { HeaderLayout } from '@shared/layout';
 
-const HomePageLoader = () => {
+export const HomePageLoader = () => {
   return (
     <>
       <HeaderLayout>
@@ -24,5 +24,3 @@ const HomePageLoader = () => {
     </>
   );
 };
-
-export default HomePageLoader;

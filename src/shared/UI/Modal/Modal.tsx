@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 
-const Modal: FC<
+export const Modal: FC<
   PropsWithChildren<{ isOpen: boolean; setOpen: (arg0: boolean) => void }>
 > = ({ children, isOpen, setOpen }) => {
   return (
@@ -19,5 +19,3 @@ const Modal: FC<
     </div>
   );
 };
-
-export default Modal;

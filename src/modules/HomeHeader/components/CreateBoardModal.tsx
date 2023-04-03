@@ -1,14 +1,11 @@
+import { HomeService } from '@page/HomePage';
+import { DefaultButton, IconButton, Input, Modal } from '@shared/UI';
+import { userIdAtom } from '@shared/store';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
-import HomeService from '../../../page/HomePage/API/HomeService';
-import DefaultButton from '../../../shared/UI/Buttons/DefaultButton';
-import IconButton from '../../../shared/UI/Buttons/IconButton';
-import Input from '../../../shared/UI/Input/Input';
-import Modal from '../../../shared/UI/Modal/Modal';
-import { userIdAtom } from '../../../shared/store/AuthStore';
 
 const [, boardAtom] = atomsWithMutation((get) => ({
   mutationKey: ['create-board'],
@@ -16,7 +13,7 @@ const [, boardAtom] = atomsWithMutation((get) => ({
     HomeService.createBoardByUserID(get(userIdAtom), title),
 }));
 
-const CreateBoardModal: FC<{
+export const CreateBoardModal: FC<{
   setOpen: (arg0: boolean) => void;
   isOpen: boolean;
 }> = ({ setOpen, isOpen }) => {
@@ -60,5 +57,3 @@ const CreateBoardModal: FC<{
     </Modal>
   );
 };
-
-export default CreateBoardModal;

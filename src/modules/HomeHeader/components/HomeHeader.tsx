@@ -1,8 +1,7 @@
+import { allBoards } from '@page/HomePage/components/HomePage';
+import { HeaderButton, SearchBar } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
-import { allBoards } from '../../../page/HomePage/components/HomePage';
-import HeaderButton from '../../../shared/UI/Buttons/HeaderButton';
-import SearchBar from '../../../shared/UI/SearchBar/SearchBar';
 import CreateBoardModal from './CreateBoardModal';
 
 const HomeHeader: FC = () => {
