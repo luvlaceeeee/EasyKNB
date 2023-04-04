@@ -1,10 +1,9 @@
 import { HomeService } from '@page/HomePage';
-import { DefaultButton, IconButton, Input } from '@shared/UI';
+import { DefaultButton, Input, ModalHeader } from '@shared/UI';
 import { userIdAtom } from '@shared/store';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
-import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 
 const [, boardAtom] = atomsWithMutation((get) => ({
@@ -32,12 +31,7 @@ export const CreateBoardModal: FC<{
 
   return (
     <div className="flex w-72 flex-col space-y-5">
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold dark:text-zinc-200">
-          Create board
-        </span>
-        <IconButton icon={<FiX />} handlerFn={() => setOpen(false)} />
-      </div>
+      <ModalHeader setOpen={setOpen} title="Create board" />
       <Input
         label="Board title"
         placeHolder="Board title"

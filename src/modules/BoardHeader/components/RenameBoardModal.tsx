@@ -1,13 +1,12 @@
 import { BoardService } from '@page/BoardPage/API/BoardService';
 import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
+import { ModalHeader } from '@shared/UI';
 import { DefaultButton } from '@shared/UI/Buttons/DefaultButton';
-import { IconButton } from '@shared/UI/Buttons/IconButton';
 import { Input } from '@shared/UI/Input/Input';
 import { userIdAtom } from '@shared/store/AuthStore';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
-import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 
 const [, renameBoardAtom] = atomsWithMutation((get) => ({
@@ -36,12 +35,7 @@ export const RenameBoardModal: FC<{
 
   return (
     <div className="flex w-72 flex-col space-y-5">
-      <div className="flex items-center justify-between">
-        <span className="text-xl font-bold dark:text-zinc-200">
-          Rename board
-        </span>
-        <IconButton icon={<FiX />} handlerFn={() => setOpen(false)} />
-      </div>
+      <ModalHeader setOpen={setOpen} title="Rename board" />
       <Input
         label="New board title"
         placeHolder="New board title"
