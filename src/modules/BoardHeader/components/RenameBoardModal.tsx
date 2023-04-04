@@ -10,7 +10,6 @@ import { FC, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 
-// const { boardId } = useParams();
 const [, renameBoardAtom] = atomsWithMutation((get) => ({
   mutationKey: ['rename-board'],
   mutationFn: (title: string) =>
@@ -30,6 +29,8 @@ export const RenameBoardModal: FC<{
       setOpen(false);
       setTitle('');
       queryClient.invalidateQueries(['query-boards']);
+      //TODO fix this
+      renameBoardState.reset();
     }
   }, [renameBoardState]);
 

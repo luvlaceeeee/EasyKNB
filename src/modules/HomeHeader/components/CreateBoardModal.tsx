@@ -19,12 +19,14 @@ export const CreateBoardModal: FC<{
   const queryClient = useQueryClient();
   const [boardState, mutate] = useAtom(boardAtom);
   const [title, setTitle] = useState<string>('');
+  console.log(boardState);
 
   useEffect(() => {
     if (boardState.isSuccess) {
       queryClient.invalidateQueries(['query-boards']);
       setOpen(false);
       setTitle('');
+      boardState.reset();
     }
   }, [boardState]);
 
