@@ -10,7 +10,7 @@ export const SearchBar: FC<SearchBarProps> = ({ placeholder, handlerFn }) => {
     <div className="relative">
       <input
         type="search"
-        className="block w-full rounded-xl border-2 border-gray-200 p-3 text-sm text-zinc-900 transition-all hover:bg-gray-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+        className="block w-full rounded-xl border-2 border-gray-200 p-3 text-sm text-zinc-900 outline-none transition-all hover:bg-gray-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
         placeholder={placeholder}
         required
       />
