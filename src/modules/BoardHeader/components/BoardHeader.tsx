@@ -1,3 +1,4 @@
+import { DeleteBoardModal } from '@modules/HomeHeader';
 import { boardAtom, boardIdAtom } from '@page/BoardPage/components/BoardPage';
 import { HeaderButton, Modal } from '@shared/UI';
 import { stringToNumber } from '@shared/helpers';
@@ -17,6 +18,7 @@ const useBoardData = () => {
 
 export const BoardHeader = () => {
   const [isRenameModalOpen, setRenameModalOpen] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [data] = useBoardData();
 
   return (
@@ -35,7 +37,7 @@ export const BoardHeader = () => {
         <HeaderButton
           text="Delete board"
           onClick={() => {
-            console.log('first');
+            setDeleteModalOpen(true);
           }}
         />
         <HeaderButton
@@ -53,6 +55,11 @@ export const BoardHeader = () => {
       </div>
       <Modal isOpen={isRenameModalOpen} setOpen={setRenameModalOpen}>
         {isRenameModalOpen && <RenameBoardModal setOpen={setRenameModalOpen} />}
+      </Modal>
+      <Modal isOpen={isDeleteModalOpen} setOpen={setDeleteModalOpen}>
+        {isDeleteModalOpen && (
+          <DeleteBoardModal setOpen={setDeleteModalOpen} title={data.title} />
+        )}
       </Modal>
     </div>
   );
