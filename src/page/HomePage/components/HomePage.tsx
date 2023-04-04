@@ -13,7 +13,7 @@ export const [allBoards] = atomsWithQuery<IHomeBoard[]>((get) => {
 
   return {
     queryKey: ['query-boards', userId],
-    queryFn: async () => HomeService.findBoardsByUserId(userId),
+    queryFn: () => HomeService.findBoardsByUserId(userId),
   };
 });
 
