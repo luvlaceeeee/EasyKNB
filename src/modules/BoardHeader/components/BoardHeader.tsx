@@ -39,12 +39,14 @@ export const BoardHeader = () => {
           onClick={() => {
             setDeleteModalOpen(true);
           }}
+          // className="border-red-400 dark:border-red-900"
         />
         <HeaderButton
           text="Rename board"
           onClick={() => {
             setRenameModalOpen(true);
           }}
+          // className="border-blue-400 dark:border-blue-900"
         />
         <HeaderButton
           text="Create column"

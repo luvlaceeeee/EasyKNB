@@ -2,7 +2,7 @@ import { BoardService } from '@page/BoardPage/API/BoardService';
 import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
 import { DefaultButton, ModalHeader } from '@shared/UI';
 import { userIdAtom } from '@shared/store/AuthStore';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect } from 'react';
 import { useQueryClient } from 'react-query';
@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 const [, deleteBoardAtom] = atomsWithMutation((get) => ({
   mutationKey: ['delete-board'],
-  mutationFn: () =>
-    BoardService.deleteBoardById(get(userIdAtom), get(boardIdAtom)),
+  mutationFn: (boardId: number | null) =>
+    BoardService.deleteBoardById(get(userIdAtom), boardId),
 }));
 
 export const DeleteBoardModal: FC<{
@@ -21,10 +21,11 @@ export const DeleteBoardModal: FC<{
   const [deleteBoardState, mutate] = useAtom(deleteBoardAtom);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const boardId = useAtomValue(boardIdAtom);
 
   useEffect(() => {
     if (deleteBoardState.isSuccess) {
-      queryClient.invalidateQueries(['query-board']);
+      queryClient.invalidateQueries(['query-boards']);
       setOpen(false);
       //TODO fix this
       deleteBoardState.reset();
@@ -43,7 +44,8 @@ export const DeleteBoardModal: FC<{
         <DefaultButton
           text={'Yes'}
           onClick={() => {
-            mutate();
+            //TODO fix mutate, create without params(boardId)
+            mutate([boardId]);
           }}
           className="bg-green-500 hover:bg-green-400 dark:bg-green-800 dark:hover:bg-green-900"
         />
