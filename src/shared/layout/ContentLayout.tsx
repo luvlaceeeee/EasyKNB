@@ -1,6 +1,6 @@
-import { useAtom } from 'jotai'
-import { FC, PropsWithChildren } from 'react'
-import { isSidebarOpen } from '../../modules/Sidebar/store/sidebarStore'
+import { isSidebarOpen } from '@modules/Sidebar/store/sidebarStore';
+import { useAtom } from 'jotai';
+import { FC, PropsWithChildren } from 'react';
 
 export const ContentLayout: FC<PropsWithChildren> = ({ children }) => {
   const [isOpen] = useAtom(isSidebarOpen);

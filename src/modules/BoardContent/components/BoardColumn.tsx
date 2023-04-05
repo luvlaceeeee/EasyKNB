@@ -1,11 +1,17 @@
+import { Task } from '@modules/Task';
 import { DefaultButton } from '@shared/UI';
 import { FiPlusCircle } from 'react-icons/fi';
 import { BoardColumnHeader } from './BoardColumnHeader';
 
 export const BoardColumn = () => {
   return (
-    <div className="flex w-72 shrink-0 flex-col space-y-3">
+    <div className="flex w-72 shrink-0 flex-col space-y-4">
       <BoardColumnHeader title="To do" />
+      {/* Tasks */}
+      <div className="scrollbar max-h-[500px] space-y-4 overflow-auto pr-2">
+        <Task />
+      </div>
+      {/* Add tasks button */}
       <DefaultButton
         text="Add Task"
         onClick={() => {

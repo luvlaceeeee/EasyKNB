@@ -5,14 +5,6 @@ export const BoardContent = () => {
   return (
     <BoardColumnLayout>
       <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
-      <BoardColumn />
     </BoardColumnLayout>
   );
 };
