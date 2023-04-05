@@ -14,6 +14,7 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
         <Task />
       </div>
       {/* Add tasks button */}
+      {/* TODO fix dark mode text color on button */}
       <DefaultButton
         text="Add Task"
         onClick={() => {

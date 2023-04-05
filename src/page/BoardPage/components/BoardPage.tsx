@@ -7,6 +7,7 @@ import { atom } from 'jotai';
 import { atomsWithQuery } from 'jotai-tanstack-query';
 import { Suspense } from 'react';
 import { BoardService } from '../API';
+import { BoardPageLoader } from './BoardPageLoader';
 
 export const boardIdAtom = atom<number | null>(null);
 export const [boardAtom] = atomsWithQuery<IBoard>((get) => {
@@ -25,7 +26,7 @@ export const [boardAtom] = atomsWithQuery<IBoard>((get) => {
 export const BoardPage = () => {
   return (
     <ContentLayout>
-      <Suspense fallback={<h1>Loading</h1>}>
+      <Suspense fallback={<BoardPageLoader />}>
         <HeaderLayout>
           <BoardHeader />
         </HeaderLayout>
