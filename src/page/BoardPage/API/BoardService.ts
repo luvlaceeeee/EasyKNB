@@ -28,8 +28,8 @@ const renameBoardById = async (
   userId: number,
   boardId: number | null,
   title: string
-): Promise<IBoard> => {
-  const { data } = await $api.put(
+): Promise<void> => {
+  await $api.put(
     `/boards/${boardId}`,
     {
       title: title,
@@ -40,11 +40,30 @@ const renameBoardById = async (
       },
     }
   );
-  return data;
+};
+
+const createColumnByBoardId = async (
+  userId: number,
+  boardId: number | null,
+  title: string
+): Promise<void> => {
+  await $api.post(
+    `/columns`,
+    {
+      title: title,
+    },
+    {
+      params: {
+        userId: userId,
+        boardId: boardId,
+      },
+    }
+  );
 };
 
 export const BoardService = {
   findBoardByUserId,
   renameBoardById,
   deleteBoardById,
+  createColumnByBoardId,
 };
