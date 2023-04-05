@@ -4,6 +4,7 @@ import { FiLogOut, FiMoon } from 'react-icons/fi';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { isSidebarOpen } from '../store/sidebarStore';
 import { SidebarButton } from './SidebarButton';
+import { SidebarProfile } from './SidebarProfile';
 
 export const SidebarFooter = () => {
   const [theme, setTheme] = useDarkMode();
@@ -22,6 +23,7 @@ export const SidebarFooter = () => {
           className="mb-2"
         />
       </div>
+      <SidebarProfile />
       <SidebarButton
         title="Log out"
         link="/"
