@@ -1,3 +1,18 @@
+import { BoardColumn } from './BoardColumn';
+import { BoardColumnLayout } from './BoardColumnLayout';
+
 export const BoardContent = () => {
-  return <div className="p-7 pt-0">BoardContent</div>;
+  return (
+    <BoardColumnLayout>
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+      <BoardColumn />
+    </BoardColumnLayout>
+  );
 };
