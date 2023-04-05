@@ -1,3 +1,4 @@
+import { BoardContent } from '@modules/BoardContent';
 import { BoardHeader } from '@modules/BoardHeader/components/BoardHeader';
 import { ContentLayout, HeaderLayout } from '@shared/layout';
 import { userIdAtom } from '@shared/store';
@@ -28,6 +29,7 @@ export const BoardPage = () => {
         <HeaderLayout>
           <BoardHeader />
         </HeaderLayout>
+        <BoardContent />
       </Suspense>
     </ContentLayout>
   );
