@@ -7,10 +7,14 @@ import { BoardColumnHeader } from './BoardColumnHeader';
 
 export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   return (
-    <div className="flex w-72 shrink-0 flex-col space-y-4">
+    <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
       <BoardColumnHeader title={column.title} />
       {/* Tasks */}
-      <div className="scrollbar max-h-[500px] space-y-4 overflow-auto pr-2 xl:max-h-[600px] 2xl:max-h-[650px]">
+      <div
+        className={`scrollbar space-y-4 overflow-auto ${
+          column.tasks.length > 3 && 'pr-2'
+        }`}
+      >
         <Task />
       </div>
       {/* Add tasks button */}

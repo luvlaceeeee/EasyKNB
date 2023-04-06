@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { FiHome, FiInbox } from 'react-icons/fi';
+import { FiHome } from 'react-icons/fi';
 import { Outlet } from 'react-router-dom';
 import { isSidebarOpen } from '../store/sidebarStore';
 // import { SidebarButton } from './SidebarButton';
@@ -22,7 +22,7 @@ export const Sidebar = () => {
             <SidebarHeader className={'pb-5'} />
             {[
               { title: 'Home', icon: FiHome, link: '/home' },
-              { title: 'Inbox', icon: FiInbox, link: '/' },
+              // { title: 'Inbox', icon: FiInbox, link: '/' },
             ].map((button, i) => (
               <div className="pb-4" key={i}>
                 <SidebarButton title={button.title} link={button.link}>
