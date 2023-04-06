@@ -27,7 +27,7 @@ export const SidebarFooter = () => {
       <SidebarButton
         title="Log out"
         link="/"
-        className="dark:hoover:bg-red-800 w-full justify-center border border-gray-200 bg-gray-100 hover:border-red-300 hover:bg-red-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-red-900 dark:hover:bg-red-800"
+        className="w-full justify-center border border-gray-200 bg-gray-100 hover:border-red-300 hover:bg-red-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-red-900 dark:hover:bg-red-800"
       >
         <FiLogOut size={20} className={`${isOpen ? 'mr-4' : ''}`} />
       </SidebarButton>

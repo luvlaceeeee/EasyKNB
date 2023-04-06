@@ -46,6 +46,7 @@ export const CreateBoardModal: FC<{
         onClick={() => {
           mutate([title]);
         }}
+        disabled={title ? false : true}
         isLoading={boardState.isLoading}
       />
     </div>

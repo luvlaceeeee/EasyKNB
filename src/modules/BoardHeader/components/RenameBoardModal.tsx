@@ -15,10 +15,13 @@ const [, renameBoardAtom] = atomsWithMutation((get) => ({
     BoardService.renameBoardById(get(userIdAtom), get(boardIdAtom), title),
 }));
 
+//TODO add before board title to input value
+
 export const RenameBoardModal: FC<{
   setOpen: (arg0: boolean) => void;
-}> = ({ setOpen }) => {
-  const [title, setTitle] = useState<string>('');
+  boardTitle: string;
+}> = ({ setOpen, boardTitle }) => {
+  const [title, setTitle] = useState<string>(boardTitle);
   const [renameBoardState, mutate] = useAtom(renameBoardAtom);
   const queryClient = useQueryClient();
 
@@ -50,6 +53,7 @@ export const RenameBoardModal: FC<{
         onClick={() => {
           mutate([title]);
         }}
+        disabled={title ? false : true}
         isLoading={renameBoardState.isLoading}
       />
     </div>

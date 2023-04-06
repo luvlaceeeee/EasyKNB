@@ -46,7 +46,12 @@ export const BoardHeader = () => {
         />
       </div>
       <Modal isOpen={isRenameModalOpen} setOpen={setRenameModalOpen}>
-        {isRenameModalOpen && <RenameBoardModal setOpen={setRenameModalOpen} />}
+        {isRenameModalOpen && (
+          <RenameBoardModal
+            setOpen={setRenameModalOpen}
+            boardTitle={data.title}
+          />
+        )}
       </Modal>
       <Modal
         isOpen={isCreateColumnModalOpen}

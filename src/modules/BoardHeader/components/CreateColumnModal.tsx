@@ -51,6 +51,7 @@ export const CreateColumnModal: FC<{
         onClick={() => {
           mutate([title]);
         }}
+        disabled={title ? false : true}
         isLoading={createColumnState.isLoading}
       />
     </div>
