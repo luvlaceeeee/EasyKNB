@@ -6,7 +6,7 @@ import { CreateBoardModal } from './CreateBoardModal';
 
 export const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState({ target: '', state: false });
 
   return (
     <div className="flex h-full items-center justify-between">
@@ -22,7 +22,7 @@ export const HomeHeader: FC = () => {
         <HeaderButton
           text="Create board"
           onClick={() => {
-            setModalOpen(true);
+            setModalOpen({ target: 'create-board', state: true });
           }}
         />
         {/* <SearchBar
@@ -32,8 +32,10 @@ export const HomeHeader: FC = () => {
           }}
         /> */}
       </div>
-      <Modal setOpen={setModalOpen} isOpen={isModalOpen}>
-        {isModalOpen && <CreateBoardModal setOpen={setModalOpen} />}
+      <Modal setOpen={setModalOpen} isOpen={isModalOpen.state}>
+        {isModalOpen.target === 'create-board' && (
+          <CreateBoardModal setOpen={setModalOpen} />
+        )}
       </Modal>
     </div>
   );

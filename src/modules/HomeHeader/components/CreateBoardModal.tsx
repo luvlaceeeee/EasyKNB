@@ -13,7 +13,12 @@ const [, boardAtom] = atomsWithMutation((get) => ({
 }));
 
 export const CreateBoardModal: FC<{
-  setOpen: (arg0: boolean) => void;
+  setOpen: React.Dispatch<
+    React.SetStateAction<{
+      target: string;
+      state: boolean;
+    }>
+  >;
 }> = ({ setOpen }) => {
   const queryClient = useQueryClient();
   const [boardState, mutate] = useAtom(boardAtom);
@@ -23,7 +28,7 @@ export const CreateBoardModal: FC<{
   useEffect(() => {
     if (boardState.isSuccess) {
       queryClient.invalidateQueries(['query-boards']);
-      setOpen(false);
+      setOpen({ target: '', state: false });
       setTitle('');
       boardState.reset();
     }
