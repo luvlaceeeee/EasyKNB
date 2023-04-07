@@ -18,7 +18,12 @@ const [, createColumnAtom] = atomsWithMutation((get) => ({
 }));
 
 export const CreateColumnModal: FC<{
-  setOpen: (arg0: boolean) => void;
+  setOpen: React.Dispatch<
+    React.SetStateAction<{
+      target: string;
+      state: boolean;
+    }>
+  >;
 }> = ({ setOpen }) => {
   const [title, setTitle] = useState<string>('');
   const [createColumnState, mutate] = useAtom(createColumnAtom);
@@ -27,7 +32,7 @@ export const CreateColumnModal: FC<{
   useEffect(() => {
     if (createColumnState.isSuccess) {
       queryClient.invalidateQueries(['query-board']);
-      setOpen(false);
+      setOpen({ target: '', state: false });
       setTitle('');
       //TODO fix this
       createColumnState.reset();
@@ -45,6 +50,7 @@ export const CreateColumnModal: FC<{
         }}
         value={title}
         autoFocus={true}
+        maxLength={40}
       />
       <DefaultButton
         text="Create"

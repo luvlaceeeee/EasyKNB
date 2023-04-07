@@ -5,12 +5,10 @@ import { CreateColumnModal } from './CreateColumnModal';
 import { DeleteBoardModal } from './DeleteBoardModal';
 import { RenameBoardModal } from './RenameBoardModal';
 
+//TODO create enum for modal target
 export const BoardHeader = () => {
-  const [isRenameModalOpen, setRenameModalOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [isCreateColumnModalOpen, setCreateColumnModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState({ target: '', state: false });
   const [data] = useBoardData();
-  //TODO general state for modal component
   return (
     <div className="flex h-full items-center justify-between">
       {/* Left part of header */}
@@ -27,43 +25,33 @@ export const BoardHeader = () => {
         <HeaderButton
           text="Delete board"
           onClick={() => {
-            setDeleteModalOpen(true);
+            setModalOpen({ target: 'delete', state: true });
           }}
           // className="border-red-400 dark:border-red-900"
         />
         <HeaderButton
           text="Rename board"
           onClick={() => {
-            setRenameModalOpen(true);
+            setModalOpen({ target: 'rename', state: true });
           }}
           // className="border-blue-400 dark:border-blue-900"
         />
         <HeaderButton
           text="Create column"
           onClick={() => {
-            setCreateColumnModalOpen(true);
+            setModalOpen({ target: 'create', state: true });
           }}
         />
       </div>
-      <Modal isOpen={isRenameModalOpen} setOpen={setRenameModalOpen}>
-        {isRenameModalOpen && (
-          <RenameBoardModal
-            setOpen={setRenameModalOpen}
-            boardTitle={data.title}
-          />
+      <Modal isOpen={isModalOpen.state} setOpen={setModalOpen}>
+        {isModalOpen.target === 'rename' && (
+          <RenameBoardModal setOpen={setModalOpen} boardTitle={data.title} />
         )}
-      </Modal>
-      <Modal
-        isOpen={isCreateColumnModalOpen}
-        setOpen={setCreateColumnModalOpen}
-      >
-        {isCreateColumnModalOpen && (
-          <CreateColumnModal setOpen={setCreateColumnModalOpen} />
+        {isModalOpen.target === 'create' && (
+          <CreateColumnModal setOpen={setModalOpen} />
         )}
-      </Modal>
-      <Modal isOpen={isDeleteModalOpen} setOpen={setDeleteModalOpen}>
-        {isDeleteModalOpen && (
-          <DeleteBoardModal setOpen={setDeleteModalOpen} title={data.title} />
+        {isModalOpen.target === 'delete' && (
+          <DeleteBoardModal setOpen={setModalOpen} title={data.title} />
         )}
       </Modal>
     </div>

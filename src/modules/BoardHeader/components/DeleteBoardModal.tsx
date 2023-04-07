@@ -15,7 +15,12 @@ const [, deleteBoardAtom] = atomsWithMutation((get) => ({
 }));
 
 export const DeleteBoardModal: FC<{
-  setOpen: (arg0: boolean) => void;
+  setOpen: React.Dispatch<
+    React.SetStateAction<{
+      target: string;
+      state: boolean;
+    }>
+  >;
   title: string;
 }> = ({ setOpen, title }) => {
   const [deleteBoardState, mutate] = useAtom(deleteBoardAtom);
@@ -26,7 +31,7 @@ export const DeleteBoardModal: FC<{
   useEffect(() => {
     if (deleteBoardState.isSuccess) {
       queryClient.invalidateQueries(['query-boards']);
-      setOpen(false);
+      setOpen({ target: '', state: false });
       //TODO fix this
       deleteBoardState.reset();
       navigate('/home');
@@ -52,7 +57,7 @@ export const DeleteBoardModal: FC<{
         <DefaultButton
           text={'No'}
           onClick={() => {
-            setOpen(false);
+            setOpen({ target: '', state: false });
           }}
           className="bg-red-500 hover:bg-red-400 dark:bg-red-800 dark:hover:bg-red-900"
         />

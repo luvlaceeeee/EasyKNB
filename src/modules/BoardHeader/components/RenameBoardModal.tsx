@@ -18,7 +18,12 @@ const [, renameBoardAtom] = atomsWithMutation((get) => ({
 //TODO add before board title to input value
 
 export const RenameBoardModal: FC<{
-  setOpen: (arg0: boolean) => void;
+  setOpen: React.Dispatch<
+    React.SetStateAction<{
+      target: string;
+      state: boolean;
+    }>
+  >;
   boardTitle: string;
 }> = ({ setOpen, boardTitle }) => {
   const [title, setTitle] = useState<string>(boardTitle);
@@ -28,7 +33,7 @@ export const RenameBoardModal: FC<{
   useEffect(() => {
     if (renameBoardState.isSuccess) {
       queryClient.invalidateQueries(['query-board']);
-      setOpen(false);
+      setOpen({ target: '', state: false });
       setTitle('');
       queryClient.invalidateQueries(['query-boards']);
       //TODO fix this
@@ -47,6 +52,7 @@ export const RenameBoardModal: FC<{
         }}
         value={title}
         autoFocus={true}
+        maxLength={40}
       />
       <DefaultButton
         text="Rename"

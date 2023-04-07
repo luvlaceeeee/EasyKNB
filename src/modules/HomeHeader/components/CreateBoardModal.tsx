@@ -40,6 +40,7 @@ export const CreateBoardModal: FC<{
         }}
         value={title}
         autoFocus={true}
+        maxLength={40}
       />
       <DefaultButton
         text="Create"

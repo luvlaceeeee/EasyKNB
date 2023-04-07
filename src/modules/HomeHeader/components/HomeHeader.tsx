@@ -1,5 +1,5 @@
 import { allBoards } from '@page/HomePage/components/HomePage';
-import { HeaderButton, Modal, SearchBar } from '@shared/UI';
+import { HeaderButton, Modal } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
 import { CreateBoardModal } from './CreateBoardModal';
@@ -25,12 +25,12 @@ export const HomeHeader: FC = () => {
             setModalOpen(true);
           }}
         />
-        <SearchBar
+        {/* <SearchBar
           placeholder="Search board"
           handlerFn={() => {
             console.log('test');
           }}
-        />
+        /> */}
       </div>
       <Modal setOpen={setModalOpen} isOpen={isModalOpen}>
         {isModalOpen && <CreateBoardModal setOpen={setModalOpen} />}

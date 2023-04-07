@@ -8,6 +8,7 @@ interface InputProps {
   className?: string;
   placeHolder?: string;
   autoFocus?: boolean;
+  maxLength?: number;
 }
 
 export const Input: FC<InputProps> = ({
@@ -18,6 +19,7 @@ export const Input: FC<InputProps> = ({
   onChange,
   value,
   autoFocus,
+  maxLength,
 }) => {
   return (
     <div>
@@ -31,6 +33,7 @@ export const Input: FC<InputProps> = ({
         autoFocus={autoFocus}
         onChange={onChange}
         value={value}
+        maxLength={maxLength}
       />
     </div>
   );
