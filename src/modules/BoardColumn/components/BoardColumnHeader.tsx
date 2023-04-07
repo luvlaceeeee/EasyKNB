@@ -15,12 +15,21 @@ export const BoardColumnHeader: FC<{ title: string }> = ({ title }) => {
             console.log('object');
           }}
         /> */}
-        <IconButton
-          icon={<FiMoreHorizontal size={20} />}
-          handlerFn={() => {
-            setOpen(!isOpen);
+        <span
+          onMouseEnter={() => {
+            setOpen(true);
           }}
-        />
+          onMouseLeave={() => {
+            setOpen(false);
+          }}
+        >
+          <IconButton
+            icon={<FiMoreHorizontal size={20} />}
+            handlerFn={() => {
+              setOpen(!isOpen);
+            }}
+          />
+        </span>
         {isOpen && <BoardColumnDropDown setOpen={setOpen} />}
       </div>
     </div>
