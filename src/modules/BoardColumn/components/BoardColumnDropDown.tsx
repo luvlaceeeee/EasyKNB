@@ -1,9 +1,16 @@
 import { FC } from 'react';
 import { FiEdit3, FiShuffle, FiTrash2 } from 'react-icons/fi';
 
-export const BoardColumnDropDown: FC<{ setOpen: (arg0: boolean) => void }> = ({
-  setOpen,
-}) => {
+export const BoardColumnDropDown: FC<{
+  setOpen: (arg0: boolean) => void;
+  setModalOpen: React.Dispatch<
+    React.SetStateAction<{
+      target: string;
+      state: boolean;
+    }>
+  >;
+  renameBoard: React.RefObject<HTMLInputElement>;
+}> = ({ setOpen, renameBoard, setModalOpen }) => {
   return (
     <div
       onMouseEnter={() => {
@@ -18,6 +25,7 @@ export const BoardColumnDropDown: FC<{ setOpen: (arg0: boolean) => void }> = ({
         <li>
           <button
             onClick={() => {
+              renameBoard.current.focus();
               setOpen(false);
             }}
             className="flex w-full items-center rounded-t-lg border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
@@ -29,6 +37,7 @@ export const BoardColumnDropDown: FC<{ setOpen: (arg0: boolean) => void }> = ({
         <li>
           <button
             onClick={() => {
+              setModalOpen({ target: 'delete', state: true });
               setOpen(false);
             }}
             className="flex w-full items-center border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"

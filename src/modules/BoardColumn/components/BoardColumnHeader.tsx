@@ -1,13 +1,52 @@
-import { IconButton } from '@shared/UI';
-import { FC, useState } from 'react';
+import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
+import { IconButton, Modal } from '@shared/UI';
+import { userIdAtom } from '@shared/store/AuthStore';
+import { atom, useAtom, useSetAtom } from 'jotai';
+import { atomsWithMutation } from 'jotai-tanstack-query';
+import { FC, useRef, useState } from 'react';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { ColumnService } from '../API';
 import { BoardColumnDropDown } from './BoardColumnDropDown';
+import { DeleteColumnModal } from './DeleteColumnModal';
 
-export const BoardColumnHeader: FC<{ title: string }> = ({ title }) => {
-  const [isOpen, setOpen] = useState(false);
+export const columnIdAtom = atom<number | null>(null);
+const [, renameColumnAtom] = atomsWithMutation((get) => ({
+  mutationKey: ['rename-board'],
+  mutationFn: (title: string) =>
+    ColumnService.renameColumnById(
+      get(userIdAtom),
+      get(boardIdAtom),
+      get(columnIdAtom),
+      title
+    ),
+}));
+
+export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
+  title,
+  id,
+}) => {
+  const [isModalOpen, setModalOpen] = useState({ target: '', state: false });
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [titleColumn, setTitleColumn] = useState(title);
+
+  const setColumnId = useSetAtom(columnIdAtom);
+  const [renameColumnState, mutate] = useAtom(renameColumnAtom);
+
+  const titleInput = useRef<HTMLInputElement>(null);
+
   return (
     <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
-      <span className="break-all text-xl font-bold">{title}</span>
+      {/* <span className="break-all text-xl font-bold">{title}</span> */}
+      <input
+        type="text"
+        onFocus={() => setColumnId(id)}
+        value={titleColumn}
+        onChange={(e) => setTitleColumn(e.target.value)}
+        maxLength={40}
+        className="cursor-default bg-transparent p-1 text-xl font-bold focus:bg-zinc-50 focus:dark:bg-zinc-800"
+        onBlur={() => !(titleColumn === title) && mutate([titleColumn])}
+        ref={titleInput}
+      />
       <div className="flex">
         {/* <IconButton
           icon={<FiPlusCircle size={20} />}
@@ -17,21 +56,30 @@ export const BoardColumnHeader: FC<{ title: string }> = ({ title }) => {
         /> */}
         <span
           onMouseEnter={() => {
-            setOpen(true);
+            setDropdownOpen(true);
           }}
           onMouseLeave={() => {
-            setOpen(false);
+            setDropdownOpen(false);
           }}
         >
           <IconButton
             icon={<FiMoreHorizontal size={20} />}
             handlerFn={() => {
-              setOpen(!isOpen);
+              setDropdownOpen(!isDropdownOpen);
             }}
           />
         </span>
-        {isOpen && <BoardColumnDropDown setOpen={setOpen} />}
+        {isDropdownOpen && (
+          <BoardColumnDropDown
+            setOpen={setDropdownOpen}
+            setModalOpen={setModalOpen}
+            renameBoard={titleInput}
+          />
+        )}
       </div>
+      <Modal isOpen={isModalOpen.state} setOpen={setModalOpen}>
+        <DeleteColumnModal setOpen={setModalOpen} title={title} id={id} />
+      </Modal>
     </div>
   );
 };

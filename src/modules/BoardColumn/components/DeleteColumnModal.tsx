@@ -1,20 +1,19 @@
-import { BoardService } from '@page/BoardPage/API/BoardService';
-import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
+import { boardIdAtom } from '@page/BoardPage';
 import { DefaultButton, ModalHeader } from '@shared/UI';
-import { userIdAtom } from '@shared/store/AuthStore';
-import { useAtom, useAtomValue } from 'jotai';
+import { userIdAtom } from '@shared/store';
+import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect } from 'react';
 import { useQueryClient } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { ColumnService } from '../API';
 
-const [, deleteBoardAtom] = atomsWithMutation((get) => ({
+const [, deleteColumnAtom] = atomsWithMutation((get) => ({
   mutationKey: ['delete-board'],
-  mutationFn: (boardId: number | null) =>
-    BoardService.deleteBoardById(get(userIdAtom), boardId),
+  mutationFn: (columnId: number | null) =>
+    ColumnService.deleteColumnById(get(userIdAtom), get(boardIdAtom), columnId),
 }));
 
-export const DeleteBoardModal: FC<{
+export const DeleteColumnModal: FC<{
   setOpen: React.Dispatch<
     React.SetStateAction<{
       target: string;
@@ -22,27 +21,33 @@ export const DeleteBoardModal: FC<{
     }>
   >;
   title: string;
-}> = ({ setOpen, title }) => {
-  const [deleteBoardState, mutate] = useAtom(deleteBoardAtom);
+  id: number;
+}> = ({ setOpen, title, id }) => {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const boardId = useAtomValue(boardIdAtom);
+  const [deleteColumnState, mutate] = useAtom(deleteColumnAtom);
+  // const setColumnId = useSetAtom(columnIdAtom);
+
+  // useEffect(() => {
+  //   setColumnId(id);
+  //   return () => {
+  //     setColumnId(null);
+  //   };
+  // });
 
   useEffect(() => {
-    if (deleteBoardState.isSuccess) {
-      queryClient.invalidateQueries(['query-boards']);
+    if (deleteColumnState.isSuccess) {
+      queryClient.invalidateQueries(['query-board']);
       setOpen({ target: '', state: false });
       //TODO fix this
-      deleteBoardState.reset();
-      navigate('/home');
+      deleteColumnState.reset();
     }
-  }, [deleteBoardState]);
+  }, [deleteColumnState]);
 
   return (
     <div className="flex w-72 flex-col space-y-5">
-      <ModalHeader title="Delete board" setOpen={setOpen} />
+      <ModalHeader title="Delete column" setOpen={setOpen} />
       <span className="dark:text-zinc-200">
-        Are you sure you want to remove the board{' '}
+        Are you sure you want to remove the column{' '}
         <span className="font-bold">{title}</span>?
       </span>
       <div className="flex space-x-3">
@@ -50,10 +55,10 @@ export const DeleteBoardModal: FC<{
           text={'Yes'}
           onClick={() => {
             //TODO fix mutate, create without params(boardId)
-            mutate([boardId]);
+            mutate([id]);
           }}
           className="bg-green-500 hover:bg-green-400 dark:bg-green-800 dark:hover:bg-green-900"
-          isLoading={deleteBoardState.isLoading}
+          isLoading={deleteColumnState.isLoading}
         />
         <DefaultButton
           text={'No'}

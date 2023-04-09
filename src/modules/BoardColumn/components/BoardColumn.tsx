@@ -22,7 +22,7 @@ import { BoardColumnHeader } from './BoardColumnHeader';
 export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   return (
     <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
-      <BoardColumnHeader title={column.title} />
+      <BoardColumnHeader title={column.title} id={column.id} />
       <BoardColumnContent tasks={column.tasks} />
       <BoardColumnFooter />
     </div>

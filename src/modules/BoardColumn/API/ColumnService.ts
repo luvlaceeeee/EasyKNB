@@ -15,6 +15,41 @@ const findColumnById = async (
   return data;
 };
 
+const renameColumnById = async (
+  userId: number,
+  boardId: number | null,
+  columnId: number | null,
+  title: string
+) => {
+  await $api.put<IColumn>(
+    `/columns/${columnId}`,
+    {
+      title: title,
+    },
+    {
+      params: {
+        userId: userId,
+        boardId: boardId,
+      },
+    }
+  );
+};
+
+const deleteColumnById = async (
+  userId: number,
+  boardId: number | null,
+  columnId: number | null
+) => {
+  await $api.delete<IColumn>(`/columns/${columnId}`, {
+    params: {
+      userId: userId,
+      boardId: boardId,
+    },
+  });
+};
+
 export const ColumnService = {
   findColumnById,
+  renameColumnById,
+  deleteColumnById,
 };
