@@ -44,7 +44,7 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
         onChange={(e) => setTitleColumn(e.target.value)}
         maxLength={40}
         className="cursor-default bg-transparent p-1 text-xl font-bold focus:bg-zinc-50 focus:dark:bg-zinc-800"
-        onBlur={() => !(titleColumn === title) && mutate([titleColumn])}
+        onBlur={() => !(titleColumn === title) && mutate([titleColumn.trim()])}
         ref={titleInput}
       />
       <div className="flex">

@@ -57,9 +57,9 @@ export const RenameBoardModal: FC<{
       <DefaultButton
         text="Rename"
         onClick={() => {
-          mutate([title]);
+          mutate([title.trim()]);
         }}
-        disabled={title ? false : true}
+        disabled={title.trim() && title.trim() !== boardTitle ? false : true}
         isLoading={renameBoardState.isLoading}
       />
     </div>

@@ -7,6 +7,8 @@ import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
 import { useQueryClient } from 'react-query';
 
+//TODO fix create with whitespace in input
+
 const [, createColumnAtom] = atomsWithMutation((get) => ({
   mutationKey: ['create-column'],
   mutationFn: (title: string) =>
@@ -55,9 +57,9 @@ export const CreateColumnModal: FC<{
       <DefaultButton
         text="Create"
         onClick={() => {
-          mutate([title]);
+          mutate([title.trim()]);
         }}
-        disabled={title ? false : true}
+        disabled={title.trim() ? false : true}
         isLoading={createColumnState.isLoading}
       />
     </div>
