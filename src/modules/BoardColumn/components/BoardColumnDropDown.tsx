@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { FiEdit3, FiShuffle, FiTrash2 } from 'react-icons/fi';
+import { FC } from 'react'
+import { FiEdit3, FiShuffle, FiTrash2 } from 'react-icons/fi'
 
 export const BoardColumnDropDown: FC<{
   setOpen: (arg0: boolean) => void;
@@ -25,7 +25,7 @@ export const BoardColumnDropDown: FC<{
         <li>
           <button
             onClick={() => {
-              renameBoard.current.focus();
+              renameBoard.current?.focus();
               setOpen(false);
             }}
             className="flex w-full items-center rounded-t-lg border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"

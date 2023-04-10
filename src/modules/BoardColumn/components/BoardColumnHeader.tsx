@@ -27,7 +27,8 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
 }) => {
   const [isModalOpen, setModalOpen] = useState({ target: '', state: false });
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [titleColumn, setTitleColumn] = useState(title);
+  const [columnTitle, setColumnTitle] = useState(title);
+  const [columnTitleAfter, setColumnTitleAfter] = useState(title);
 
   const setColumnId = useSetAtom(columnIdAtom);
   const [renameColumnState, mutate] = useAtom(renameColumnAtom);
@@ -36,15 +37,19 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
 
   return (
     <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
-      {/* <span className="break-all text-xl font-bold">{title}</span> */}
       <input
         type="text"
         onFocus={() => setColumnId(id)}
-        value={titleColumn}
-        onChange={(e) => setTitleColumn(e.target.value)}
+        value={columnTitle}
+        onChange={(e) => setColumnTitle(e.target.value)}
         maxLength={40}
         className="cursor-default bg-transparent p-1 text-xl font-bold focus:bg-zinc-50 focus:dark:bg-zinc-800"
-        onBlur={() => !(titleColumn === title) && mutate([titleColumn.trim()])}
+        onBlur={() => {
+          if (!(columnTitle === columnTitleAfter)) {
+            mutate([columnTitle.trim()]);
+            setColumnTitleAfter(columnTitle);
+          }
+        }}
         ref={titleInput}
       />
       <div className="flex">
@@ -78,7 +83,9 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
         )}
       </div>
       <Modal isOpen={isModalOpen.state} setOpen={setModalOpen}>
-        <DeleteColumnModal setOpen={setModalOpen} title={title} id={id} />
+        {isModalOpen.target === 'delete' && (
+          <DeleteColumnModal setOpen={setModalOpen} title={title} id={id} />
+        )}
       </Modal>
     </div>
   );
