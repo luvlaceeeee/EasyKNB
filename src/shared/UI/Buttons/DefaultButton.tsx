@@ -7,6 +7,7 @@ export interface DefaultButtonProps {
   className?: string;
   isLoading?: boolean;
   disabled?: boolean;
+  ref?: React.MutableRefObject<HTMLButtonElement>;
 }
 
 export const DefaultButton: FC<PropsWithChildren<DefaultButtonProps>> = ({
