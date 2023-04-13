@@ -1,10 +1,10 @@
-// import { useAtom, useSetAtom } from 'jotai';
-// import { columnAtom, columnIdAtom } from '../components';
+import { useAtom, useSetAtom } from 'jotai';
+import { columnAtom, columnIdAtomFetch } from '../components';
 
-// export const useColumnData = (columnId: number) => {
-//   const setColumnId = useSetAtom(columnIdAtom);
+export const useColumnData = (columnId: number) => {
+  const setColumnId = useSetAtom(columnIdAtomFetch);
 
-//   setColumnId(columnId);
+  setColumnId(columnId);
 
-//   return useAtom(columnAtom);
-// };
+  return useAtom(columnAtom);
+};

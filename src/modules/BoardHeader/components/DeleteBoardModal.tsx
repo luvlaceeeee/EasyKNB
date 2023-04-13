@@ -42,7 +42,7 @@ export const DeleteBoardModal: FC<{
     <div className="flex w-72 flex-col space-y-5">
       <ModalHeader title="Delete board" setOpen={setOpen} />
       <span className="dark:text-zinc-200">
-        Are you sure you want to remove the board{' '}
+        Are you sure you want to remove the{' '}
         <span className="font-bold">{title}</span>?
       </span>
       <div className="flex space-x-3">
@@ -54,6 +54,7 @@ export const DeleteBoardModal: FC<{
           }}
           className="bg-green-500 hover:bg-green-400 dark:bg-green-800 dark:hover:bg-green-900"
           isLoading={deleteBoardState.isLoading}
+          autoFocus={true}
         />
         <DefaultButton
           text={'No'}

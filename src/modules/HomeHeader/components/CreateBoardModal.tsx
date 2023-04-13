@@ -25,7 +25,6 @@ export const CreateBoardModal: FC<{
   const queryClient = useQueryClient();
   const [boardState, mutate] = useAtom(boardAtom);
   const [title, setTitle] = useState<string>('');
-  console.log(boardState);
 
   useEffect(() => {
     if (boardState.isSuccess) {
@@ -35,6 +34,19 @@ export const CreateBoardModal: FC<{
       boardState.reset();
     }
   }, [boardState]);
+
+  useEffect(() => {
+    const keyDownHandler = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && title.trim() && !boardState.isLoading) {
+        mutate([title.trim()]);
+      }
+    };
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, [title, boardState]);
 
   return (
     <div className="flex w-72 flex-col space-y-5">
@@ -54,7 +66,7 @@ export const CreateBoardModal: FC<{
         onClick={() => {
           mutate([title.trim()]);
         }}
-        disabled={title.trim() ? false : true}
+        disabled={boardState.isLoading ? true : title.trim() ? false : true}
         isLoading={boardState.isLoading}
       />
     </div>

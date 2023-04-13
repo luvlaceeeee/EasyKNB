@@ -41,6 +41,24 @@ export const RenameBoardModal: FC<{
     }
   }, [renameBoardState]);
 
+  useEffect(() => {
+    const keyDownHandler = (e: KeyboardEvent) => {
+      if (
+        e.key === 'Enter' &&
+        title.trim() &&
+        title.trim() !== boardTitle &&
+        !renameBoardState.isLoading
+      ) {
+        mutate([title.trim()]);
+      }
+    };
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, [title, renameBoardState]);
+
   return (
     <div className="flex w-72 flex-col space-y-5">
       <ModalHeader setOpen={setOpen} title="Rename board" />
@@ -59,7 +77,13 @@ export const RenameBoardModal: FC<{
         onClick={() => {
           mutate([title.trim()]);
         }}
-        disabled={title.trim() && title.trim() !== boardTitle ? false : true}
+        disabled={
+          renameBoardState.isLoading
+            ? true
+            : title.trim() && title.trim() !== boardTitle
+            ? false
+            : true
+        }
         isLoading={renameBoardState.isLoading}
       />
     </div>

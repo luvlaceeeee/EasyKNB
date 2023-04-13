@@ -2,7 +2,7 @@ import { HeaderLayout } from '@shared/layout';
 
 export const HomePageLoader = () => {
   return (
-    <>
+    <div className="overflow-hidden">
       <HeaderLayout>
         <div className="flex shrink-0 animate-pulse items-center justify-between">
           <div className="max-w-sm">
@@ -21,6 +21,6 @@ export const HomePageLoader = () => {
         <div className="h-32 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
         <div className="h-32 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
       </div>
-    </>
+    </div>
   );
 };

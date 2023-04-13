@@ -41,6 +41,19 @@ export const CreateColumnModal: FC<{
     }
   }, [createColumnState]);
 
+  useEffect(() => {
+    const keyDownHandler = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && title.trim() && !createColumnState.isLoading) {
+        mutate([title.trim()]);
+      }
+    };
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, [title, createColumnState]);
+
   return (
     <div className="flex w-72 flex-col space-y-5">
       <ModalHeader title="Create Column" setOpen={setOpen} />
@@ -59,7 +72,9 @@ export const CreateColumnModal: FC<{
         onClick={() => {
           mutate([title.trim()]);
         }}
-        disabled={title.trim() ? false : true}
+        disabled={
+          createColumnState.isLoading ? true : title.trim() ? false : true
+        }
         isLoading={createColumnState.isLoading}
       />
     </div>

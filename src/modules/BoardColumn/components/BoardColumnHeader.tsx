@@ -9,6 +9,8 @@ import { ColumnService } from '../API';
 import { BoardColumnDropDown } from './BoardColumnDropDown';
 import { DeleteColumnModal } from './DeleteColumnModal';
 
+//TODO add check to empty column title
+
 export const columnIdAtom = atom<number | null>(null);
 const [, renameColumnAtom] = atomsWithMutation((get) => ({
   mutationKey: ['rename-board'],
@@ -33,7 +35,7 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
   const setColumnId = useSetAtom(columnIdAtom);
   const [renameColumnState, mutate] = useAtom(renameColumnAtom);
 
-  const titleInput = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
@@ -50,7 +52,12 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
             setColumnTitleAfter(columnTitle);
           }
         }}
-        ref={titleInput}
+        ref={inputRef}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            inputRef.current?.blur();
+          }
+        }}
       />
       <div className="flex">
         {/* <IconButton
@@ -78,7 +85,7 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
           <BoardColumnDropDown
             setOpen={setDropdownOpen}
             setModalOpen={setModalOpen}
-            renameBoard={titleInput}
+            renameBoard={inputRef}
           />
         )}
       </div>

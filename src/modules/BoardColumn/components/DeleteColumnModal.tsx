@@ -59,6 +59,7 @@ export const DeleteColumnModal: FC<{
           }}
           className="bg-green-500 hover:bg-green-400 dark:bg-green-800 dark:hover:bg-green-900"
           isLoading={deleteColumnState.isLoading}
+          autoFocus={true}
         />
         <DefaultButton
           text={'No'}
