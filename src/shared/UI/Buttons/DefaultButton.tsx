@@ -7,7 +7,6 @@ export interface DefaultButtonProps {
   className?: string;
   isLoading?: boolean;
   disabled?: boolean;
-  // ref?: React.LegacyRef<HTMLButtonElement> | undefined;
   autoFocus?: boolean;
   children?: ReactNode;
 }

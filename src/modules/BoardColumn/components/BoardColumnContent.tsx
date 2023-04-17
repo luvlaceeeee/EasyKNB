@@ -1,14 +1,23 @@
 import { CreateTaskMenu, Task } from '@modules/Task';
 import { ITask } from '@shared/types';
-import { FC } from 'react';
+import React from 'react';
 
-export const BoardColumnContent: FC<{
+interface BoardColumnContentProps {
   tasks: ITask[];
   isCreateMenuOpen: boolean;
   setCreateMenuOpen: (arg0: boolean) => void;
-}> = ({ tasks, isCreateMenuOpen, setCreateMenuOpen }) => {
+}
+
+export const BoardColumnContent = React.forwardRef<
+  HTMLDivElement,
+  BoardColumnContentProps
+>((props, ref) => {
+  const { tasks, isCreateMenuOpen, setCreateMenuOpen } = props;
   return (
-    <div className={`scrollbar space-y-4 overflow-auto pr-1`}>
+    <div
+      className={`scrollbar space-y-4 overflow-auto scroll-smooth pr-1`}
+      ref={ref}
+    >
       {tasks.length == 0 && (
         <div className="flex justify-center">
           <span className="font-bold text-zinc-600 dark:text-zinc-700">
@@ -26,9 +35,11 @@ export const BoardColumnContent: FC<{
         />
       ))}
 
+      {/* <span ref={ref} className="block"> */}
       {isCreateMenuOpen && (
         <CreateTaskMenu setCreateMenuOpen={setCreateMenuOpen} />
       )}
+      {/* </span> */}
     </div>
   );
-};
+});

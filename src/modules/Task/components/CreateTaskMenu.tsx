@@ -56,7 +56,7 @@ export const CreateTaskMenu: FC<{
           }
         }}
       />
-      <div className="flex items-center space-x-7">
+      <div className="flex items-center space-x-7" id="create-task">
         <DefaultButton
           text="Create task"
           onClick={() => {

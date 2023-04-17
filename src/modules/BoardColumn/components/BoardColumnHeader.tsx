@@ -36,7 +36,6 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
   const [renameColumnState, mutate] = useAtom(renameColumnAtom);
 
   const inputRef = useRef<HTMLInputElement>(null);
-
   return (
     <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
       <input
