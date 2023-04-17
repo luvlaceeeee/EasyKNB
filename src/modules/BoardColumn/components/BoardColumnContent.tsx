@@ -1,8 +1,12 @@
-import { Task } from '@modules/Task';
+import { CreateTaskMenu, Task } from '@modules/Task';
 import { ITask } from '@shared/types';
 import { FC } from 'react';
 
-export const BoardColumnContent: FC<{ tasks: ITask[] }> = ({ tasks }) => {
+export const BoardColumnContent: FC<{
+  tasks: ITask[];
+  isCreateMenuOpen: boolean;
+  setCreateMenuOpen: (arg0: boolean) => void;
+}> = ({ tasks, isCreateMenuOpen, setCreateMenuOpen }) => {
   return (
     <div className={`scrollbar space-y-4 overflow-auto pr-1`}>
       {tasks.length == 0 && (
@@ -21,6 +25,10 @@ export const BoardColumnContent: FC<{ tasks: ITask[] }> = ({ tasks }) => {
           makers={task.makers}
         />
       ))}
+
+      {isCreateMenuOpen && (
+        <CreateTaskMenu setCreateMenuOpen={setCreateMenuOpen} />
+      )}
     </div>
   );
 };

@@ -23,7 +23,10 @@ const [, createTaskAtom] = atomsWithMutation((get) => ({
     ),
 }));
 
-export const BoardColumnFooter: FC<{ id: number }> = ({ id }) => {
+export const BoardColumnFooter: FC<{
+  id: number;
+  setCreateMenuOpen: (arg0: boolean) => void;
+}> = ({ id, setCreateMenuOpen }) => {
   const [isCreateInputOpen, setCreateInputOpen] = useState(false);
   const [title, setTitle] = useState('');
 
@@ -50,7 +53,7 @@ export const BoardColumnFooter: FC<{ id: number }> = ({ id }) => {
             value={title}
             placeholder="Write task title"
             onChange={(e) => setTitle(e.target.value)}
-            className="scrollbar mb-4 w-full rounded-lg border-2 border-zinc-200 bg-transparent p-4 pt-3 text-lg font-black outline-none dark:border-zinc-600 dark:text-white"
+            className="scrollbar mb-4 w-full rounded-lg border-2 border-zinc-200 bg-transparent p-4 pt-3 text-lg font-black outline-none placeholder:font-medium placeholder:opacity-40 dark:border-zinc-600 dark:text-white"
             autoFocus={true}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && title) {
@@ -87,7 +90,7 @@ export const BoardColumnFooter: FC<{ id: number }> = ({ id }) => {
           text="Add Task"
           onClick={() => {
             setColumnId(id);
-            setCreateInputOpen(true);
+            setCreateMenuOpen(true);
           }}
           className=" bg-zinc-200 text-zinc-700 outline-dashed outline-2 outline-offset-1 outline-zinc-300 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:outline-zinc-600 dark:hover:bg-zinc-700"
         >
