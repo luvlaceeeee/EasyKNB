@@ -9,6 +9,7 @@ import { ColumnService } from '../API';
 import { BoardColumnContent } from './BoardColumnContent';
 import { BoardColumnFooter } from './BoardColumnFooter';
 import { BoardColumnHeader } from './BoardColumnHeader';
+import { BoardColumnLoader } from './BoardColumnLoader';
 
 export const columnIdAtomFetch = atom<number | null>(null);
 export const [columnAtom] = atomsWithQuery<IColumn>((get) => {
@@ -30,27 +31,21 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   const [isCreateMenuOpen, setCreateMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const setCreateMenuOpenWithScroll = () => {
-    // const element = document.getElementById('create-input');
-    // menuRef.current?.scrollIntoView({ behavior: 'smooth' });
-    menuRef.current?.scrollTo({
-      top: menuRef.current?.scrollHeight,
-      behavior: 'smooth',
-    });
+    menuRef.current?.scrollIntoView({ behavior: 'smooth' });
     setCreateMenuOpen(true);
   };
+
   const userId = useAtomValue(userIdAtom);
   const boardId = useAtomValue(boardIdAtom);
-  const { isLoading, data, refetch } = useQuery<IColumn>(['query-column'], () =>
-    ColumnService.findColumnById(userId, boardId, column.id)
+  const { isLoading, data } = useQuery<IColumn>(
+    ['query-column', column.id],
+    () => ColumnService.findColumnById(userId, boardId, column.id)
   );
 
-  if (isLoading)
-    return (
-      <div className="flex w-72 flex-none animate-pulse flex-col items-center justify-between space-y-4 rounded-lg bg-zinc-200 p-4 pb-4 shadow-lg"></div>
-    );
+  if (isLoading) return <BoardColumnLoader />;
 
   return (
-    // <Suspense fallback={<h1>Loading profile...</h1>}>
+    // <Suspense fallback={<h1 className="text-white">Loading profile...</h1>}>
     <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
       <BoardColumnHeader title={data?.title} id={data?.id} />
       <BoardColumnContent

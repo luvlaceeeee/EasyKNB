@@ -3,7 +3,7 @@ import { ITask } from '@shared/types';
 import React from 'react';
 
 interface BoardColumnContentProps {
-  tasks: ITask[];
+  tasks?: ITask[];
   isCreateMenuOpen: boolean;
   setCreateMenuOpen: (arg0: boolean) => void;
 }
@@ -18,7 +18,7 @@ export const BoardColumnContent = React.forwardRef<
       className={`scrollbar space-y-4 overflow-auto scroll-smooth pr-1`}
       ref={ref}
     >
-      {tasks.length == 0 && (
+      {tasks?.length == 0 && (
         <div className="flex justify-center">
           <span className="font-bold text-zinc-600 dark:text-zinc-700">
             The column is empty
@@ -26,7 +26,7 @@ export const BoardColumnContent = React.forwardRef<
         </div>
       )}
 
-      {tasks.map((task) => (
+      {tasks?.map((task) => (
         <Task
           key={task.id}
           title={task.text}
@@ -35,11 +35,9 @@ export const BoardColumnContent = React.forwardRef<
         />
       ))}
 
-      {/* <span ref={ref} className="block"> */}
       {isCreateMenuOpen && (
         <CreateTaskMenu setCreateMenuOpen={setCreateMenuOpen} />
       )}
-      {/* </span> */}
     </div>
   );
 });

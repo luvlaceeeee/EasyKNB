@@ -20,8 +20,8 @@ export const DeleteColumnModal: FC<{
       state: boolean;
     }>
   >;
-  title: string;
-  id: number;
+  title?: string;
+  id?: number;
 }> = ({ setOpen, title, id }) => {
   const queryClient = useQueryClient();
   const [deleteColumnState, mutate] = useAtom(deleteColumnAtom);
@@ -55,7 +55,7 @@ export const DeleteColumnModal: FC<{
           text={'Yes'}
           onClick={() => {
             //TODO fix mutate, create without params(boardId)
-            mutate([id]);
+            mutate([id!]);
           }}
           className="bg-green-500 hover:bg-green-400 dark:bg-green-800 dark:hover:bg-green-900"
           isLoading={deleteColumnState.isLoading}

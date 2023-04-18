@@ -1,5 +1,10 @@
-import { BoardColumn, BoardColumnLayout } from '@modules/BoardColumn';
+import {
+  BoardColumn,
+  BoardColumnLayout,
+  BoardColumnLoader,
+} from '@modules/BoardColumn';
 import { useBoardData } from '@page/BoardPage/hooks';
+import { Suspense } from 'react';
 
 export const BoardContent = () => {
   const [data] = useBoardData();
@@ -7,7 +12,9 @@ export const BoardContent = () => {
   return (
     <BoardColumnLayout>
       {data.columns.map((column) => (
-        <BoardColumn key={column.id} column={column} />
+        <Suspense fallback={<BoardColumnLoader />}>
+          <BoardColumn key={column.id} column={column} />
+        </Suspense>
       ))}
     </BoardColumnLayout>
   );

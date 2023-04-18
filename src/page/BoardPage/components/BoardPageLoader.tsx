@@ -16,7 +16,7 @@ export const BoardPageLoader = () => {
           </div>
         </div>
       </HeaderLayout>
-      <div className="flex animate-pulse space-x-5 p-7 pt-0">
+      {/* <div className="flex animate-pulse space-x-5 p-7 pt-0">
         <div>
           <div className="mb-3 h-10 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
           <div className="mb-4 h-44 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
@@ -42,7 +42,7 @@ export const BoardPageLoader = () => {
           <div className="mb-4 h-44 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
           <div className="h-14 w-72 shrink-0 rounded-lg bg-gray-200 dark:bg-zinc-700"></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

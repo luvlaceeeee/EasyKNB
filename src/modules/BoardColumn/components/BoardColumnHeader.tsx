@@ -23,7 +23,7 @@ const [, renameColumnAtom] = atomsWithMutation((get) => ({
     ),
 }));
 
-export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
+export const BoardColumnHeader: FC<{ title?: string; id?: number }> = ({
   title,
   id,
 }) => {
@@ -40,14 +40,14 @@ export const BoardColumnHeader: FC<{ title: string; id: number }> = ({
     <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
       <input
         type="text"
-        onFocus={() => setColumnId(id)}
+        onFocus={() => setColumnId(id!)} //TODO Check this type questionX
         value={columnTitle}
         onChange={(e) => setColumnTitle(e.target.value)}
         maxLength={40}
         className="cursor-default bg-transparent p-1 text-xl font-bold focus:bg-zinc-50 focus:dark:bg-zinc-800"
         onBlur={() => {
           if (!(columnTitle === columnTitleAfter)) {
-            mutate([columnTitle.trim()]);
+            mutate([columnTitle!.trim()]);
             setColumnTitleAfter(columnTitle);
           }
         }}
