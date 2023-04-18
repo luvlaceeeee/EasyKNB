@@ -52,15 +52,15 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   return (
     // <Suspense fallback={<h1>Loading profile...</h1>}>
     <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
-      <BoardColumnHeader title={data.title} id={data.id} />
+      <BoardColumnHeader title={data?.title} id={data?.id} />
       <BoardColumnContent
-        tasks={data.tasks}
+        tasks={data?.tasks}
         isCreateMenuOpen={isCreateMenuOpen}
         setCreateMenuOpen={setCreateMenuOpen}
         ref={menuRef}
       />
       <BoardColumnFooter
-        id={data.id}
+        id={data?.id}
         setCreateMenuOpen={setCreateMenuOpenWithScroll}
         isCreateMenuOpen={isCreateMenuOpen}
       />
