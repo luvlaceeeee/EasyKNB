@@ -12,8 +12,8 @@ export const BoardContent = () => {
   return (
     <BoardColumnLayout>
       {data.columns.map((column) => (
-        <Suspense fallback={<BoardColumnLoader />}>
-          <BoardColumn key={column.id} column={column} />
+        <Suspense key={column.id} fallback={<BoardColumnLoader />}>
+          <BoardColumn column={column} />
         </Suspense>
       ))}
     </BoardColumnLayout>

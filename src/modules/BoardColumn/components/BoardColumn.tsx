@@ -8,7 +8,6 @@ import { ColumnService } from '../API';
 import { BoardColumnContent } from './BoardColumnContent';
 import { BoardColumnFooter } from './BoardColumnFooter';
 import { BoardColumnHeader } from './BoardColumnHeader';
-import { BoardColumnLoader } from './BoardColumnLoader';
 
 // export const columnIdAtomFetch = atom<number | null>(null);
 // export const [columnAtom] = atomsWithQuery<IColumn>((get) => {
@@ -36,13 +35,13 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
 
   const userId = useAtomValue(userIdAtom);
   const boardId = useAtomValue(boardIdAtom);
-  const { isLoading, data } = useQuery<IColumn>(
+  const { data } = useQuery<IColumn>(
     ['query-column', column.id],
     () => ColumnService.findColumnById(userId, boardId, column.id),
-    { retryOnMount: false }
+    { suspense: true }
   );
 
-  if (isLoading) return <BoardColumnLoader />;
+  // if (isLoading) return <BoardColumnLoader />;
 
   return (
     // <Suspense fallback={<h1 className="text-white">Loading profile...</h1>}>
