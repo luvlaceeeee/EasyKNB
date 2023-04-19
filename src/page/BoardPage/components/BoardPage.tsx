@@ -6,6 +6,7 @@ import { IBoard } from '@shared/types';
 import { atom } from 'jotai';
 import { atomsWithQuery } from 'jotai-tanstack-query';
 import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { BoardService } from '../API';
 import { BoardPageLoader } from './BoardPageLoader';
 
@@ -32,6 +33,7 @@ export const BoardPage = () => {
         </HeaderLayout>
         <BoardContent />
       </Suspense>
+      <Outlet />
     </ContentLayout>
   );
 };

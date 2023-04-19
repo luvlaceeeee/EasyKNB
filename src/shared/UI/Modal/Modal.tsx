@@ -16,12 +16,12 @@ export const Modal: FC<
       onClick={() => setOpen({ target: '', state: false })}
       className={`${
         !isOpen && 'pointer-events-none opacity-0'
-      } fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm transition-opacity`}
+      } fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm transition-opacity`}
     >
       <div
         className={` ${
           !isOpen && 'opacity-0'
-        } rounded-lg bg-white p-6 shadow-xl dark:bg-zinc-900`}
+        } z-20 rounded-lg bg-white p-6 shadow-xl dark:bg-zinc-900`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

@@ -37,7 +37,7 @@ export const BoardColumnHeader: FC<{ title?: string; id?: number }> = ({
 
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <div className="relative z-0 flex items-center justify-between dark:text-zinc-200">
+    <div className="relative z-10 flex items-center justify-between dark:text-zinc-200">
       <input
         type="text"
         onFocus={() => setColumnId(id!)} //TODO Check this type questionX

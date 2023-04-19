@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { FiEdit3, FiShuffle, FiTrash2 } from 'react-icons/fi'
+import { FC } from 'react';
+import { FiEdit3, FiShuffle, FiTrash2 } from 'react-icons/fi';
 
 export const BoardColumnDropDown: FC<{
   setOpen: (arg0: boolean) => void;

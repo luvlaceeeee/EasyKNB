@@ -25,9 +25,9 @@ export const SidebarButton: FC<PropsWithChildren<SidebarButtonProps>> = ({
       >
         {children}
         <span
-          className={`whitespace-pre font-bold duration-500 ${
+          className={`whitespace-pre font-bold duration-150 ${
             !isOpen &&
-            'hidden translate-x-28 overflow-hidden opacity-0 transition-all'
+            'hidden translate-x-16 overflow-hidden opacity-0 transition-all'
           }}`}
         >
           {title}
