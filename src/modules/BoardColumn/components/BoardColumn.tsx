@@ -1,13 +1,13 @@
-import { boardIdAtom } from '@page/BoardPage';
-import { userIdAtom } from '@shared/store';
-import { IColumn } from '@shared/types';
-import { useAtomValue } from 'jotai';
-import { FC, useRef, useState } from 'react';
-import { useQuery } from 'react-query';
-import { ColumnService } from '../API';
-import { BoardColumnContent } from './BoardColumnContent';
-import { BoardColumnFooter } from './BoardColumnFooter';
-import { BoardColumnHeader } from './BoardColumnHeader';
+import { boardIdAtom } from '@page/BoardPage'
+import { userIdAtom } from '@shared/store'
+import { IColumn } from '@shared/types'
+import { useAtomValue } from 'jotai'
+import { FC, useRef, useState } from 'react'
+import { useQuery } from 'react-query'
+import { ColumnService } from '../API'
+import { BoardColumnContent } from './BoardColumnContent'
+import { BoardColumnFooter } from './BoardColumnFooter'
+import { BoardColumnHeader } from './BoardColumnHeader'
 
 // export const columnIdAtomFetch = atom<number | null>(null);
 // export const [columnAtom] = atomsWithQuery<IColumn>((get) => {
@@ -44,7 +44,6 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   // if (isLoading) return <BoardColumnLoader />;
 
   return (
-    // <Suspense fallback={<h1 className="text-white">Loading profile...</h1>}>
     <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
       <BoardColumnHeader title={data?.title} id={data?.id} />
       <BoardColumnContent
@@ -59,6 +58,5 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
         isCreateMenuOpen={isCreateMenuOpen}
       />
     </div>
-    // </Suspense>
   );
 };
