@@ -40,7 +40,14 @@ export const CreateTaskMenu: FC<{
   }, [createTaskState]);
 
   return (
-    <div className="pr-1">
+    <div
+      className="pr-1"
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          setCreateMenuOpen(false);
+        }
+      }}
+    >
       <input
         value={title}
         placeholder="Write task title"
@@ -49,7 +56,6 @@ export const CreateTaskMenu: FC<{
         autoFocus={true}
         onKeyDown={(e) => {
           if (e.key === 'Enter' && title) {
-            e.preventDefault();
             mutate([title]);
             // setCreateInputOpen(false);
             // setTitle('');
