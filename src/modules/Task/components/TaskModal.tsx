@@ -22,8 +22,6 @@ export const TaskModal = () => {
   return (
     <URLModal>
       <p>{data?.text}</p>
-      <div>Header</div>
-      <div>Content</div>
     </URLModal>
   );
 };
