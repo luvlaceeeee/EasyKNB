@@ -19,7 +19,7 @@ export const RouterPage: FC = () => {
         <Route path="/" element={<Sidebar />}>
           <Route path="home" element={<HomePage />} />
           <Route path="board/:boardId" element={<BoardPage />}>
-            <Route path="c/:columnId/t/:taskId" element={<TaskModal />} />
+            <Route path="c/:columnId/:taskId" element={<TaskModal />} />
           </Route>
         </Route>
       </Route>
