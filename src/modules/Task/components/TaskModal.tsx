@@ -7,11 +7,12 @@ import { useAtomValue } from 'jotai';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { TaskService } from '../API';
+import { TaskModalHeader } from './TaskModalHeader';
 export const TaskModal = () => {
   const userId = useAtomValue(userIdAtom);
   const boardId = useAtomValue(boardIdAtom);
   const { columnId, taskId } = useParams();
-  const { data } = useQuery<ITask>(['task-column', taskId], () =>
+  const { data, isLoading } = useQuery<ITask>(['task-column', taskId], () =>
     TaskService.findTaskById(
       userId,
       boardId,
@@ -19,9 +20,14 @@ export const TaskModal = () => {
       stringToNumber(taskId)
     )
   );
+  //TODO Add loader for task
   return (
     <URLModal>
-      <p>{data?.text}</p>
+      <div className="p-6">
+        {!isLoading && (
+          <TaskModalHeader title={data?.text} id={stringToNumber(taskId)} />
+        )}
+      </div>
     </URLModal>
   );
 };

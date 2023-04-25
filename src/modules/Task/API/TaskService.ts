@@ -16,6 +16,27 @@ const findTaskById = async (
   return data;
 };
 
+const renameTaskById = async (
+  userId: number,
+  boardId: number | null,
+  taskId: number | null,
+  title: string
+) => {
+  await $api.put<ITask>(
+    `/tasks/${taskId}`,
+    {
+      text: title,
+    },
+    {
+      params: {
+        userId: userId,
+        boardId: boardId,
+      },
+    }
+  );
+};
+
 export const TaskService = {
   findTaskById,
+  renameTaskById,
 };

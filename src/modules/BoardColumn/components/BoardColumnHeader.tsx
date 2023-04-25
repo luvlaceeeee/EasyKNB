@@ -29,6 +29,7 @@ export const BoardColumnHeader: FC<{ title?: string; id?: number }> = ({
 }) => {
   const [isModalOpen, setModalOpen] = useState({ target: '', state: false });
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+
   const [columnTitle, setColumnTitle] = useState(title);
   const [columnTitleAfter, setColumnTitleAfter] = useState(title);
 

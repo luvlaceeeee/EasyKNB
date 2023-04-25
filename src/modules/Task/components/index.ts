@@ -4,3 +4,4 @@ export * from './TaskContent';
 export * from './TaskFooter';
 export * from './TaskHeader';
 export * from './TaskModal';
+export * from './TaskModalHeader';
