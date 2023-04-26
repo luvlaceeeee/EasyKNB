@@ -36,7 +36,7 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
   const userId = useAtomValue(userIdAtom);
   const boardId = useAtomValue(boardIdAtom);
   const { data } = useQuery<IColumn>(
-    ['query-column', column.id],
+    [`query-column-${column.id}`],
     () => ColumnService.findColumnById(userId, boardId, column.id),
     { suspense: true }
   );

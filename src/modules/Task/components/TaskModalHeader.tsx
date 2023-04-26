@@ -1,13 +1,13 @@
-import { boardIdAtom } from '@page/BoardPage';
-import { IconButton } from '@shared/UI';
-import { userIdAtom } from '@shared/store';
-import { atom, useAtom, useSetAtom } from 'jotai';
-import { atomsWithMutation } from 'jotai-tanstack-query';
-import { FC, useRef, useState } from 'react';
-import { FiEdit, FiX } from 'react-icons/fi';
-import { useQueryClient } from 'react-query';
-import { useNavigate, useParams } from 'react-router-dom';
-import { TaskService } from '../API';
+import { boardIdAtom } from '@page/BoardPage'
+import { IconButton } from '@shared/UI'
+import { userIdAtom } from '@shared/store'
+import { atom, useAtom, useSetAtom } from 'jotai'
+import { atomsWithMutation } from 'jotai-tanstack-query'
+import { FC, useEffect, useRef, useState } from 'react'
+import { FiEdit, FiX } from 'react-icons/fi'
+import { useQueryClient } from 'react-query'
+import { useNavigate, useParams } from 'react-router-dom'
+import { TaskService } from '../API'
 
 const taskIdAtom = atom<number | null>(null);
 const [, renameTaskAtom] = atomsWithMutation((get) => ({
@@ -33,6 +33,15 @@ export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
   const [taskTitleAfter, setTaskTitleAfter] = useState(title);
   const queryClient = useQueryClient();
   const { columnId } = useParams();
+
+  useEffect(() => {
+    if (renameTaskState.isSuccess) {
+      queryClient.invalidateQueries([`query-column-${columnId}`]);
+      //TODO fix this
+      queryClient.invalidateQueries([`task-column`]);
+      renameTaskState.reset();
+    }
+  }, [renameTaskState]);
   return (
     <>
       <IconButton
@@ -55,7 +64,6 @@ export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
             if (!(taskTitle === taskTitleAfter)) {
               mutate([taskTitle!.trim()]);
               setTaskTitleAfter(taskTitle);
-              queryClient.invalidateQueries(['query-column']);
             }
           }}
           ref={inputRef}
