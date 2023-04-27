@@ -1,13 +1,13 @@
-import { boardIdAtom } from '@page/BoardPage'
-import { IconButton } from '@shared/UI'
-import { userIdAtom } from '@shared/store'
-import { atom, useAtom, useSetAtom } from 'jotai'
-import { atomsWithMutation } from 'jotai-tanstack-query'
-import { FC, useEffect, useRef, useState } from 'react'
-import { FiEdit, FiX } from 'react-icons/fi'
-import { useQueryClient } from 'react-query'
-import { useNavigate, useParams } from 'react-router-dom'
-import { TaskService } from '../API'
+import { boardIdAtom } from '@page/BoardPage';
+import { IconButton } from '@shared/UI';
+import { userIdAtom } from '@shared/store';
+import { atom, useAtom, useSetAtom } from 'jotai';
+import { atomsWithMutation } from 'jotai-tanstack-query';
+import { FC, useEffect, useRef, useState } from 'react';
+import { FiEdit, FiX } from 'react-icons/fi';
+import { useQueryClient } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
+import { TaskService } from '../API';
 
 const taskIdAtom = atom<number | null>(null);
 const [, renameTaskAtom] = atomsWithMutation((get) => ({
@@ -51,7 +51,7 @@ export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
         }}
         className="absolute top-0 right-0 m-1 p-1"
       />
-      <div className="relative px-6">
+      <div className="relative px-6 pr-10">
         <FiEdit className="absolute top-2 -left-2" size={18} />
         <input
           type="text"

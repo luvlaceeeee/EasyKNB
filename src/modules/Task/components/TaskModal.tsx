@@ -27,7 +27,7 @@ export const TaskModal = () => {
   //TODO Add loader for task
   return (
     <URLModal>
-      <div className="p-6">
+      <div className="p-7 pr-5 pt-5">
         {!isLoading ? (
           <>
             <TaskModalHeader title={data?.text} id={stringToNumber(taskId)} />
