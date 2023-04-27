@@ -7,6 +7,7 @@ import { useAtomValue } from 'jotai';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { TaskService } from '../API';
+import { TaskModalContent } from './TaskModalContent';
 import { TaskModalHeader } from './TaskModalHeader';
 export const TaskModal = () => {
   const userId = useAtomValue(userIdAtom);
@@ -28,7 +29,10 @@ export const TaskModal = () => {
     <URLModal>
       <div className="p-6">
         {!isLoading ? (
-          <TaskModalHeader title={data?.text} id={stringToNumber(taskId)} />
+          <>
+            <TaskModalHeader title={data?.text} id={stringToNumber(taskId)} />
+            <TaskModalContent task={data!} />
+          </>
         ) : (
           <Spinner />
         )}

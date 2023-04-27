@@ -21,7 +21,7 @@ export const DefaultButton = React.forwardRef<
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`flex w-full items-center justify-center rounded-lg bg-gray-700 px-5 py-2.5 text-center text-lg font-medium text-white transition-all hover:bg-gray-800 disabled:opacity-75 disabled:hover:bg-gray-700 dark:bg-zinc-600 dark:hover:bg-zinc-700 disabled:dark:hover:bg-zinc-600 ${className}`}
+      className={`flex w-full items-center rounded-lg bg-gray-700 px-5 py-2.5 text-center text-lg font-medium text-white transition-all hover:bg-gray-800 disabled:opacity-75 disabled:hover:bg-gray-700 dark:bg-zinc-600 dark:hover:bg-zinc-700 disabled:dark:hover:bg-zinc-600 ${className}`}
       ref={ref}
       autoFocus={autoFocus}
     >

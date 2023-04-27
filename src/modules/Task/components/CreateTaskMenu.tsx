@@ -2,7 +2,7 @@ import { ColumnService, columnIdAtom } from '@modules/BoardColumn';
 import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
 import { DefaultButton, IconButton } from '@shared/UI';
 import { userIdAtom } from '@shared/store/AuthStore';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
@@ -25,13 +25,13 @@ export const CreateTaskMenu: FC<{
   const [title, setTitle] = useState('');
 
   const [createTaskState, mutate] = useAtom(createTaskAtom);
-  const setColumnId = useSetAtom(columnIdAtom);
+  const [columnId, setColumnId] = useAtom(columnIdAtom);
 
   const queryClient = useQueryClient();
 
   useEffect(() => {
     if (createTaskState.isSuccess) {
-      queryClient.invalidateQueries(['query-column']);
+      queryClient.invalidateQueries([`query-column-${columnId}`]);
       setCreateMenuOpen(false);
       setTitle('');
       //TODO fix this
