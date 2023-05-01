@@ -1,8 +1,8 @@
-import { FC, ReactNode } from 'react';
+import { FC, MouseEventHandler, ReactNode } from 'react';
 import { Spinner } from '../Spinner/Spinner';
 
 export interface TaskModalButtonProps {
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   text: string;
   className?: string;
   isLoading?: boolean;
@@ -18,7 +18,7 @@ export const TaskModalButton: FC<TaskModalButtonProps> = (props) => {
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`flex w-full rounded-sm bg-zinc-300 px-4 py-1.5 text-sm font-medium text-zinc-700 transition-all hover:bg-zinc-400 disabled:opacity-50 disabled:hover:bg-zinc-300 dark:bg-zinc-600 dark:bg-opacity-80 dark:text-white dark:hover:bg-zinc-700 disabled:dark:hover:bg-zinc-600 ${className}`}
+      className={`flex items-center rounded-sm bg-zinc-300 px-4 py-1.5 text-sm font-medium text-zinc-700 transition-all hover:bg-zinc-400 disabled:opacity-50 disabled:hover:bg-zinc-300 dark:bg-zinc-600 dark:bg-opacity-80 dark:text-white dark:hover:bg-zinc-700 disabled:dark:hover:bg-zinc-600 ${className}`}
       autoFocus={autoFocus}
     >
       {children}

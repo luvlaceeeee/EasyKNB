@@ -5,5 +5,6 @@ export * from './TaskFooter';
 export * from './TaskHeader';
 export * from './TaskModal';
 export * from './TaskModalContent';
+export * from './TaskModalContentDesc';
 export * from './TaskModalContentSidebar';
 export * from './TaskModalHeader';

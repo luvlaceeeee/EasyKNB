@@ -3,13 +3,14 @@ import { userAtom } from '@shared/store';
 import { ITask } from '@shared/types';
 import { useAtomValue } from 'jotai';
 import { FC } from 'react';
-import { FiAlignLeft, FiList } from 'react-icons/fi';
+import { FiList } from 'react-icons/fi';
+import { TaskModalContentDesc } from './TaskModalContentDesc';
 import { TaskModalContentSidebar } from './TaskModalContentSidebar';
 export const TaskModalContent: FC<{ task: ITask }> = ({ task }) => {
   const user = useAtomValue(userAtom);
   return (
     <div className="flex items-start pt-4">
-      <div className="flex-grow space-y-5 pr-4">
+      <div className="flex-grow space-y-5 pr-6">
         {/* user, tags block */}
         <div className="flex space-x-7 pl-7">
           <div>
@@ -28,11 +29,11 @@ export const TaskModalContent: FC<{ task: ITask }> = ({ task }) => {
           </div>
         </div>
         {/* desc block */}
-        <div className="relative pl-7">
-          <FiAlignLeft className="absolute top-1 -left-2" size={20} />
-          <p className="pb-4 text-lg">Description</p>
-          <textarea />
-        </div>
+        <TaskModalContentDesc
+          title={task.text}
+          desc={task.description}
+          taskId={task.id}
+        />
         {/* comments block */}
         <div className="relative pl-7">
           <FiList className="absolute top-1 -left-2" size={20} />

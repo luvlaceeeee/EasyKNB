@@ -29,7 +29,7 @@ export const BoardColumnContent = React.forwardRef<
         <Task
           columnId={columnId!}
           key={task.id}
-          id={task.id}
+          taskId={task.id}
           title={task.text}
           description={task.description}
           makers={task.makers}

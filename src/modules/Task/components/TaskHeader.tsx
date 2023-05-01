@@ -1,5 +1,5 @@
 import { FC } from 'react';
 
 export const TaskHeader: FC<{ title: string }> = ({ title }) => (
-  <div className="text-lg font-black">{title}</div>
+  <div className="w-2/3 text-lg font-black">{title}</div>
 );

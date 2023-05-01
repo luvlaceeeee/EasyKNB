@@ -36,7 +36,67 @@ const renameTaskById = async (
   );
 };
 
+const addDescToTaskById = async (
+  userId: number,
+  boardId: number | null,
+  taskId: number | null,
+  desc: string
+) => {
+  await $api.put<ITask>(
+    `/tasks/${taskId}`,
+    {
+      description: desc,
+    },
+    {
+      params: {
+        userId: userId,
+        boardId: boardId,
+      },
+    }
+  );
+};
+
+const updateToTaskById = async (
+  userId: number,
+  boardId: number | null,
+  taskId: number | null,
+  title: string,
+  desc: string
+) => {
+  await $api.put<ITask>(
+    `/tasks/${taskId}`,
+    {
+      text: title,
+      description: desc,
+    },
+    {
+      params: {
+        userId: userId,
+        boardId: boardId,
+      },
+    }
+  );
+};
+
+const deleteTaskById = async (
+  userId: number,
+  boardId: number | null,
+  taskId: number | null,
+  columnId: number | null
+) => {
+  await $api.delete<ITask>(`/tasks/${taskId}`, {
+    params: {
+      userId: userId,
+      boardId: boardId,
+      columnId: columnId,
+    },
+  });
+};
+
 export const TaskService = {
   findTaskById,
   renameTaskById,
+  addDescToTaskById,
+  updateToTaskById,
+  deleteTaskById,
 };

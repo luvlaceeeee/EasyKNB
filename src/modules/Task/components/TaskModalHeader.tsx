@@ -9,22 +9,24 @@ import { useQueryClient } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TaskService } from '../API';
 
-const taskIdAtom = atom<number | null>(null);
+export const taskIdAtom = atom<number | null>(null);
 const [, renameTaskAtom] = atomsWithMutation((get) => ({
   mutationKey: ['rename-task'],
-  mutationFn: (title: string) =>
-    TaskService.renameTaskById(
+  mutationFn: ([title, desc]: string[]) =>
+    TaskService.updateToTaskById(
       get(userIdAtom),
       get(boardIdAtom),
       get(taskIdAtom),
-      title
+      title,
+      desc
     ),
 }));
 
-export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
-  title,
-  id,
-}) => {
+export const TaskModalHeader: FC<{
+  title: string;
+  id: number;
+  desc: string;
+}> = ({ title, id, desc }) => {
   const setTaskId = useSetAtom(taskIdAtom);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -49,9 +51,9 @@ export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
         handlerFn={() => {
           navigate(-1);
         }}
-        className="absolute top-0 right-0 m-1 p-1"
+        className="absolute top-0 right-0 z-10 m-1 p-1"
       />
-      <div className="relative px-6 pr-10">
+      <div className="relative z-0 px-6 pr-10">
         <FiEdit className="absolute top-2 -left-2" size={18} />
         <input
           type="text"
@@ -62,7 +64,7 @@ export const TaskModalHeader: FC<{ title?: string; id: number | null }> = ({
           className="w-full cursor-default bg-transparent p-1 text-xl font-bold focus:bg-zinc-50 focus:dark:bg-zinc-800"
           onBlur={() => {
             if (!(taskTitle === taskTitleAfter)) {
-              mutate([taskTitle!.trim()]);
+              mutate([[taskTitle!.trim(), desc]]);
               setTaskTitleAfter(taskTitle);
             }
           }}

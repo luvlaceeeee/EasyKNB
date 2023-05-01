@@ -30,7 +30,12 @@ export const TaskModal = () => {
       <div className="p-7 pr-5 pt-5">
         {!isLoading ? (
           <>
-            <TaskModalHeader title={data?.text} id={stringToNumber(taskId)} />
+            {/* TODO Fix props(delete desc) */}
+            <TaskModalHeader
+              title={data!.text}
+              desc={data!.description}
+              id={data!.id}
+            />
             <TaskModalContent task={data!} />
           </>
         ) : (
