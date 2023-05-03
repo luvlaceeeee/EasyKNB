@@ -1,6 +1,6 @@
 import { boardIdAtom } from '@page/BoardPage';
-import { IconButton } from '@shared/UI';
 import { userIdAtom } from '@shared/store';
+import { Button } from '@shared/UI';
 import { atom, useAtom, useSetAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useRef, useState } from 'react';
@@ -46,13 +46,12 @@ export const TaskModalHeader: FC<{
   }, [renameTaskState]);
   return (
     <>
-      <IconButton
-        icon={<FiX />}
-        handlerFn={() => {
-          navigate(-1);
-        }}
+      <Button
+        onClick={() => navigate(-1)}
         className="absolute top-0 right-0 z-10 m-1 p-1"
-      />
+      >
+        <FiX />
+      </Button>
       <div className="relative z-0 px-6 pr-10">
         <FiEdit className="absolute top-2 -left-2" size={18} />
         <input
@@ -75,9 +74,7 @@ export const TaskModalHeader: FC<{
             }
           }}
         />
-        <p className="pl-1.5 font-light text-zinc-400">
-          In column <a></a>
-        </p>
+        <p className="pl-1.5 font-light text-zinc-400">In column</p>
       </div>
     </>
   );

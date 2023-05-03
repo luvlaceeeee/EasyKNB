@@ -17,9 +17,7 @@
     "jsx": "react-jsx",
     "types": ["node"],
     "paths": {
-      "@shared/*": ["./src/shared/*"],
-      "@page/*": ["./src/page/*"],
-      "@modules/*": ["./src/modules/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

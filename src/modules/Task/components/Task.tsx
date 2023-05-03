@@ -1,7 +1,7 @@
 import { boardIdAtom } from '@page/BoardPage';
-import { IconButton } from '@shared/UI';
 import { userIdAtom } from '@shared/store';
 import { IUser } from '@shared/types';
+import { Button } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect } from 'react';
@@ -46,13 +46,13 @@ export const Task: FC<{
         deleteTaskState.isLoading ? 'opacity-70' : ''
       }`}
     >
-      <IconButton
-        icon={<FiTrash />}
-        handlerFn={() => {
-          mutate([[taskId, columnId]]);
-        }}
+      <Button
+        variant="flat"
+        onClick={() => mutate([[taskId, columnId]])}
         className="invisible absolute top-0 right-0 opacity-0 hover:bg-transparent hover:text-red-500 group-hover:visible group-hover:opacity-100 dark:hover:bg-opacity-0 dark:hover:text-red-700"
-      />
+      >
+        <FiTrash />
+      </Button>
       <Link to={`c/${columnId}/${taskId}`} className="block">
         <div className="z-0 rounded-lg border-2 border-zinc-200 p-4 pt-3 transition-all duration-300 hover:bg-gray-100 dark:border-zinc-600 dark:text-white dark:hover:bg-zinc-800">
           <div className="space-y-2">

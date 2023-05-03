@@ -1,1 +1,2 @@
-export * from './AuthStore';
+export * from './auth.store';
+export * from './global.store';

@@ -1,9 +1,6 @@
-import { RouterPage } from '@page/Router';
-import { Provider } from 'jotai';
-import { queryClientAtom } from 'jotai-tanstack-query';
-import { useHydrateAtoms } from 'jotai/react/utils';
-import { FC, PropsWithChildren } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { FC } from 'react';
+import { RouterPage } from './modules/router/router-page';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,24 +9,15 @@ const queryClient = new QueryClient({
       refetchOnReconnect: false,
       retry: false,
       staleTime: 5 * 60 * 1000,
+      suspense: true,
     },
   },
 });
 
-const HydrateAtoms: FC<PropsWithChildren> = ({ children }) => {
-  useHydrateAtoms([[queryClientAtom, queryClient]]);
-
-  return <>{children}</>;
-};
-
-const App = () => {
+const App: FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider>
-        <HydrateAtoms>
-          <RouterPage />
-        </HydrateAtoms>
-      </Provider>
+      <RouterPage />
     </QueryClientProvider>
   );
 };

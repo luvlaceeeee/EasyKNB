@@ -1,7 +1,7 @@
 import { ColumnService, columnIdAtom } from '@modules/BoardColumn';
-import { boardIdAtom } from '@page/BoardPage/components/BoardPage';
-import { DefaultButton, IconButton } from '@shared/UI';
+import { boardIdAtom } from '@/modules/board/BoardPage';
 import { userIdAtom } from '@shared/store/AuthStore';
+import { Button } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useState } from 'react';
@@ -57,30 +57,27 @@ export const CreateTaskMenu: FC<{
         onKeyDown={(e) => {
           if (e.key === 'Enter' && title) {
             mutate([title]);
-            // setCreateInputOpen(false);
-            // setTitle('');
           }
         }}
       />
       <div className="flex items-center space-x-7" id="create-task">
-        <DefaultButton
-          text="Create task"
-          onClick={() => {
-            mutate([title]);
-            // setCreateInputOpen(false);
-            // setTitle('');
-          }}
+        <Button
+          onClick={() => mutate([title])}
           disabled={createTaskState.isLoading ? true : title ? false : true}
-          isLoading={createTaskState.isLoading}
-        />
-        <IconButton
-          icon={<FiX size={20} />}
-          handlerFn={() => {
+          loading={createTaskState.isLoading}
+        >
+          Create task
+        </Button>
+        <Button
+          variant="flat"
+          onClick={() => {
             setColumnId(null);
             setTitle('');
             setCreateMenuOpen(false);
           }}
-        />
+        >
+          <FiX size={20} />
+        </Button>
       </div>
     </div>
   );

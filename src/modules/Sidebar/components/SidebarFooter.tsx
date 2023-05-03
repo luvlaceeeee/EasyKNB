@@ -1,4 +1,4 @@
-import { IconButton } from '@shared/UI/Buttons/IconButton';
+import { Button } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { FiLogOut, FiMoon } from 'react-icons/fi';
 import { useDarkMode } from '../hooks/useDarkMode';
@@ -15,13 +15,15 @@ export const SidebarFooter = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="flex justify-center">
-        <IconButton
-          icon={<FiMoon size={20} />}
-          handlerFn={() => handleThemeSwitch()}
+        <Button
+          variant="flat"
+          onClick={() => handleThemeSwitch()}
           className="mb-2"
-        />
+        >
+          <FiMoon size={20} />
+        </Button>
       </div>
       <SidebarProfile />
       <SidebarButton
@@ -31,6 +33,6 @@ export const SidebarFooter = () => {
       >
         <FiLogOut size={20} className={`${isOpen ? 'mr-4' : ''}`} />
       </SidebarButton>
-    </div>
+    </>
   );
 };
