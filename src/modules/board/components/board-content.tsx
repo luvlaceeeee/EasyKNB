@@ -1,21 +1,20 @@
-import {
-  BoardColumn,
-  BoardColumnLayout,
-  BoardColumnLoader,
-} from '@modules/BoardColumn';
-import { useBoardData } from '@page/BoardPage/hooks';
 import { Suspense } from 'react';
+import { useBoardData } from '../hooks';
+import { BoardColumnLayout } from './board-column-layout';
+import { BoardColumn } from './board-column';
+import { BoardColumnLoader } from './board-column-loader';
 
 export const BoardContent = () => {
-  const [data] = useBoardData();
+  const { data } = useBoardData();
 
   return (
     <BoardColumnLayout>
-      {data.columns.map((column) => (
-        <Suspense key={column.id} fallback={<BoardColumnLoader />}>
-          <BoardColumn column={column} />
-        </Suspense>
-      ))}
+      {data &&
+        data.columns.map((column) => (
+          <Suspense key={column.id} fallback={<BoardColumnLoader />}>
+            <BoardColumn column={column} />
+          </Suspense>
+        ))}
     </BoardColumnLayout>
   );
 };

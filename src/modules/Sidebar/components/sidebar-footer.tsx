@@ -4,7 +4,7 @@ import { FiLogOut, FiMoon } from 'react-icons/fi';
 import { useDarkMode } from '../hooks/useDarkMode';
 import { isSidebarOpen } from '../store/sidebarStore';
 import { SidebarButton } from './SidebarButton';
-import { SidebarProfile } from './SidebarProfile';
+import { SidebarProfile } from './sidebar-profile';
 
 export const SidebarFooter = () => {
   const [theme, setTheme] = useDarkMode();

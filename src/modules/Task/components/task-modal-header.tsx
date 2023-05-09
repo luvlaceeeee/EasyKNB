@@ -7,7 +7,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { FiEdit, FiX } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import { TaskService } from '../API';
+import { TaskService } from '../api';
 
 export const taskIdAtom = atom<number | null>(null);
 const [, renameTaskAtom] = atomsWithMutation((get) => ({

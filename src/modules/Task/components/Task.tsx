@@ -8,10 +8,10 @@ import { FC, useEffect } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
-import { TaskService } from '../API';
-import { TaskContent } from './TaskContent';
-import { TaskFooter } from './TaskFooter';
-import { TaskHeader } from './TaskHeader';
+import { TaskService } from '../api';
+import { TaskContent } from './task-content';
+import { TaskFooter } from './task-footer';
+import { TaskHeader } from './task-header';
 const [, deleteTaskByIdAtom] = atomsWithMutation((get) => ({
   mutationKey: ['add-desc-task'],
   mutationFn: ([taskId, columnId]: number[]) =>

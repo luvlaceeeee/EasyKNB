@@ -7,8 +7,8 @@ import { FC, useEffect, useState } from 'react';
 import { FiAlignLeft } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { TaskService } from '../API';
-import { taskIdAtom } from './TaskModalHeader';
+import { TaskService } from '../api';
+import { taskIdAtom } from './task-modal-header';
 const [, addDescToTaskByIdAtom] = atomsWithMutation((get) => ({
   mutationKey: ['add-desc-task'],
   mutationFn: ([title, desc]: string[]) =>

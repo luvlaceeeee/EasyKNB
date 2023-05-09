@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { allBoards } from '../../../page/HomePage/components/HomePage';
-import { BoardCard } from './BoardCard';
+import { BoardCard } from './board-card';
 
 export const HomeContent = () => {
   const [data] = useAtom(allBoards);

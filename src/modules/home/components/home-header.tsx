@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { FC, useState } from 'react';
 import { allBoards } from '@page/HomePage/components/HomePage';
 import { Modal, Button } from '@shared/UI';
-import { CreateBoardModal } from './CreateBoardModal';
+import { CreateBoardModal } from './create-board-modal';
 
 export const HomeHeader: FC = () => {
   const [data] = useAtom(allBoards);

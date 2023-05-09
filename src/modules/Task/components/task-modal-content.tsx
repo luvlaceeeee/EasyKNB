@@ -4,8 +4,8 @@ import { ITask } from '@shared/types';
 import { useAtomValue } from 'jotai';
 import { FC } from 'react';
 import { FiList } from 'react-icons/fi';
-import { TaskModalContentDesc } from './TaskModalContentDesc';
-import { TaskModalContentSidebar } from './TaskModalContentSidebar';
+import { TaskModalContentDesc } from './task-modal-content-desc';
+import { TaskModalContentSidebar } from './task-modal-content-sidebar';
 export const TaskModalContent: FC<{ task: ITask }> = ({ task }) => {
   const user = useAtomValue(userAtom);
   return (

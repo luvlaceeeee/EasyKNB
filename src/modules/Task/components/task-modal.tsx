@@ -6,9 +6,9 @@ import { ITask } from '@shared/types';
 import { useAtomValue } from 'jotai';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { TaskService } from '../API';
-import { TaskModalContent } from './TaskModalContent';
-import { TaskModalHeader } from './TaskModalHeader';
+import { TaskService } from '../api';
+import { TaskModalContent } from './task-modal-content';
+import { TaskModalHeader } from './task-modal-header';
 export const TaskModal = () => {
   const userId = useAtomValue(userIdAtom);
   const boardId = useAtomValue(boardIdAtom);

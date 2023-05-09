@@ -5,7 +5,7 @@ import { isSidebarOpen } from '../store/sidebarStore';
 // import { SidebarButton } from './SidebarButton';
 // import { SidebarFooter } from './SidebarFooter';
 // import { SidebarHeader } from './SidebarHeader';
-import { SidebarButton, SidebarFooter, SidebarHeader } from '../components';
+import { SidebarButton, SidebarFooter, SidebarHeader } from '.';
 
 export const Sidebar = () => {
   const [isOpen] = useAtom(isSidebarOpen);
