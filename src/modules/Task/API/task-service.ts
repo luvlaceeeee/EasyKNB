@@ -1,5 +1,6 @@
-import { $api } from '@shared/API';
-import { ITask } from '@shared/types';
+import { $api } from '@/shared/api';
+import { ITask } from '@/shared/types';
+
 const findTaskById = async (
   userId: number,
   boardId: number | null,
@@ -13,6 +14,7 @@ const findTaskById = async (
       columnId: columnId,
     },
   });
+
   return data;
 };
 
@@ -36,13 +38,13 @@ const renameTaskById = async (
   );
 };
 
-const addDescToTaskById = async (
+const addDescToTaskById = (
   userId: number,
   boardId: number | null,
   taskId: number | null,
   desc: string
-) => {
-  await $api.put<ITask>(
+): Promise<void> =>
+  $api.put(
     `/tasks/${taskId}`,
     {
       description: desc,
@@ -54,16 +56,15 @@ const addDescToTaskById = async (
       },
     }
   );
-};
 
-const updateToTaskById = async (
+const updateToTaskById = (
   userId: number,
   boardId: number | null,
   taskId: number | null,
   title: string,
   desc: string
-) => {
-  await $api.put<ITask>(
+): Promise<void> =>
+  $api.put(
     `/tasks/${taskId}`,
     {
       text: title,
@@ -76,22 +77,20 @@ const updateToTaskById = async (
       },
     }
   );
-};
 
-const deleteTaskById = async (
+const deleteTaskById = (
   userId: number,
   boardId: number | null,
   taskId: number | null,
   columnId: number | null
-) => {
-  await $api.delete<ITask>(`/tasks/${taskId}`, {
+) =>
+  $api.delete<ITask>(`/tasks/${taskId}`, {
     params: {
       userId: userId,
       boardId: boardId,
       columnId: columnId,
     },
   });
-};
 
 export const TaskService = {
   findTaskById,

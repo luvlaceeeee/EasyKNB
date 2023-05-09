@@ -1,5 +1,5 @@
-import { $api } from '@shared/api';
-import { IColumn, ITask } from '@shared/types';
+import { $api } from "@/shared/api";
+import { IColumn, ITask } from "@/shared/types";
 
 const findColumnById = async (
   userId: number,
@@ -21,8 +21,8 @@ const renameColumnById = async (
   boardId: number | null,
   columnId: number | null,
   title: string
-) => {
-  await $api.put<IColumn>(
+): Promise<void> => 
+  $api.put(
     `/columns/${columnId}`,
     {
       title: title,
@@ -34,20 +34,19 @@ const renameColumnById = async (
       },
     }
   );
-};
 
-const deleteColumnById = async (
+const deleteColumnById = (
   userId: number,
   boardId: number | null,
   columnId: number | null
-) => {
-  await $api.delete<IColumn>(`/columns/${columnId}`, {
+) => 
+   $api.delete(`/columns/${columnId}`, {
     params: {
       userId: userId,
       boardId: boardId,
     },
   });
-};
+;
 
 const createTaskByColumnID = async (
   userId: number,
@@ -68,6 +67,7 @@ const createTaskByColumnID = async (
       },
     }
   );
+
   return data;
 };
 

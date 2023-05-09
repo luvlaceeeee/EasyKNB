@@ -1,43 +1,30 @@
-import { ColumnService, columnIdAtom } from '@modules/BoardColumn';
-import { boardIdAtom } from '@/modules/board/BoardPage';
-import { userIdAtom } from '@shared/store/AuthStore';
-import { Button } from '@shared/UI';
-import { useAtom } from 'jotai';
-import { atomsWithMutation } from 'jotai-tanstack-query';
-import { FC, useEffect, useState } from 'react';
-import { FiX } from 'react-icons/fi';
-import { useQueryClient } from 'react-query';
+import { ColumnService } from "@/modules/board/api/services";
+import { stringToNumber } from "@/shared/helpers";
+import { useAuthStore } from "@/shared/store";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-const [, createTaskAtom] = atomsWithMutation((get) => ({
-  mutationKey: ['create-task'],
-  mutationFn: (title: string) =>
-    ColumnService.createTaskByColumnID(
-      get(userIdAtom),
-      get(boardIdAtom),
-      get(columnIdAtom),
+const useCreateTask = (title: string, columnId: number) => {
+  const userId = useAuthStore((state) => state.user.id);
+  const boardId = stringToNumber(useParams().boardId);
+
+  return useMutation({
+    mutationKey: ['create-task', title],
+    mutationFn: () => ColumnService.createTaskByColumnID(
+      userId,
+      boardId,
+      columnId,
       title
     ),
-}));
+  });
+};
 
-export const CreateTaskMenu: FC<{
-  setCreateMenuOpen: (arg0: boolean) => void;
-}> = ({ setCreateMenuOpen }) => {
+export const CreateTaskMenu = () => {
   const [title, setTitle] = useState('');
 
-  const [createTaskState, mutate] = useAtom(createTaskAtom);
   const [columnId, setColumnId] = useAtom(columnIdAtom);
-
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (createTaskState.isSuccess) {
-      queryClient.invalidateQueries([`query-column-${columnId}`]);
-      setCreateMenuOpen(false);
-      setTitle('');
-      //TODO fix this
-      createTaskState.reset();
-    }
-  }, [createTaskState]);
+  const {isLoading,} = useCreateTask();
 
   return (
     <div
