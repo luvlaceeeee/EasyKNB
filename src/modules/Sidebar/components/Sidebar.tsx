@@ -1,14 +1,12 @@
-import { useAtom } from 'jotai';
 import { FiHome } from 'react-icons/fi';
-import { Outlet } from 'react-router-dom';
-import { isSidebarOpen } from '../store/sidebarStore';
-// import { SidebarButton } from './SidebarButton';
-// import { SidebarFooter } from './SidebarFooter';
-// import { SidebarHeader } from './SidebarHeader';
-import { SidebarButton, SidebarFooter, SidebarHeader } from '.';
+import { Link, Outlet } from 'react-router-dom';
+import { useGlobalStore } from '@/shared/store';
+import { SidebarHeader } from './sidebar-header';
+import { Button } from '@/shared/ui/button';
+import { SidebarFooter } from './sidebar-footer';
 
 export const Sidebar = () => {
-  const [isOpen] = useAtom(isSidebarOpen);
+  const isOpen = useGlobalStore((s) => s.sidebarOpen);
 
   return (
     <>
@@ -20,9 +18,12 @@ export const Sidebar = () => {
         <div className="flex h-full flex-col">
           <SidebarHeader className={'pb-5'} />
 
-          <SidebarButton title="Home" link="/home" className="mb-auto">
-            <FiHome size={23} className={`${isOpen ? 'mr-4' : ''}`} />
-          </SidebarButton>
+          <Button asChild>
+            <Link to="/home">
+              <FiHome size={23} className={`${isOpen ? 'mr-4' : ''}`} />
+              Home
+            </Link>
+          </Button>
 
           <SidebarFooter />
         </div>

@@ -1,7 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-export const BoardCard: FC<{ id: number; title: string }> = ({ id, title }) => {
+interface IBoardCardProps {
+  id: number;
+  title: string;
+}
+
+export const BoardCard: FC<IBoardCardProps> = ({ id, title }) => {
   return (
     <Link
       to={`/board/${id}`}

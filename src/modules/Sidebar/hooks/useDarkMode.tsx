@@ -21,5 +21,9 @@ export const useDarkMode = () => {
     }
   }, [theme]);
 
-  return [theme, setTheme] as const;
+  const handleThemeSwitch = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  return [theme, handleThemeSwitch] as const;
 };

@@ -1,20 +1,15 @@
-import { $api } from '@shared/API';
-import { IHomeBoard } from '../types/IHomeBoard';
+import { $api } from '@/shared/api';
+import { IHomeBoard } from '../interfaces';
 
-const findBoardsByUserId = async (userId: number): Promise<IHomeBoard[]> => {
-  const { data } = await $api.get<IHomeBoard[]>('/boards', {
-    params: {
-      userId: userId,
-    },
-  });
-  return data;
-};
+const findBoardsByUserId = (userId: number): Promise<IHomeBoard[]> =>
+    $api.get<IHomeBoard[]>('/boards', {
+      params: {
+        userId: userId,
+      },
+    }).then(({data}) => data);
 
-const createBoardByUserID = async (
-  userId: number,
-  title: string
-): Promise<void> => {
-  const { data } = await $api.post<IHomeBoard>(
+const createBoardByUserID = (userId: number, title: string): Promise<void> =>
+  $api.post(
     '/boards',
     {
       title: title,
@@ -25,7 +20,6 @@ const createBoardByUserID = async (
       },
     }
   );
-};
 
 export const HomeService = {
   findBoardsByUserId,
