@@ -1,5 +1,5 @@
 export interface ICreateColumnRequest {
   userId: number;
-  boardId: number | null;
+  boardId: number;
   title: string;
 }

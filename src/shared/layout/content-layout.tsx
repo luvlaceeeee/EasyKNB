@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
-import { useGlobalStore } from '../store';
 import { cn } from '../helpers';
+import { useGlobalStore } from '../store/global.store';
 
 export const ContentLayout: FC<PropsWithChildren> = ({ children }) => {
   const isSidebarOpen = useGlobalStore((state) => state.sidebarOpen);

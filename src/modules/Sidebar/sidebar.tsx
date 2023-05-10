@@ -1,9 +1,9 @@
+import { useGlobalStore } from '@/shared/store';
+import { Button } from '@/shared/ui/button';
 import { FiHome } from 'react-icons/fi';
 import { Link, Outlet } from 'react-router-dom';
-import { useGlobalStore } from '@/shared/store';
-import { SidebarHeader } from './sidebar-header';
-import { Button } from '@/shared/ui/button';
-import { SidebarFooter } from './sidebar-footer';
+import { SidebarFooter } from './components/sidebar-footer';
+import { SidebarHeader } from './components/sidebar-header';
 
 export const Sidebar = () => {
   const isOpen = useGlobalStore((s) => s.sidebarOpen);

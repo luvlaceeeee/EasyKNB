@@ -1,20 +1,17 @@
-import { FC, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { BoardService } from '../api/services/board.service';
-import { IRenameBoardRequest } from '../api/interfaces';
+import { stringToNumber } from '@/shared/helpers';
+import { useAuthStore } from '@/shared/store';
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/shared/ui/dialog';
-import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
-import { useAuthStore } from '@/shared/store';
-import { stringToNumber } from '@/shared/helpers';
+import { useMutation } from '@tanstack/react-query';
+import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 interface IRenameBoardProps {
@@ -28,7 +25,7 @@ export const RenameBoardModal: FC<IRenameBoardProps> = ({ boardTitle }) => {
   const [title, setTitle] = useState(boardTitle);
   const { isLoading, mutate } = useMutation({
     mutationKey: ['rename-board'],
-    mutationFn: () => BoardService.renameBoard({ userId, boardId, title }),
+    // mutationFn: () => BoardService.renameBoard({ userId, boardId, title }),
   });
 
   return (

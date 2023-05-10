@@ -2,36 +2,24 @@ import { $api } from '@/shared/api';
 import { IBoard } from '@/shared/types';
 import { ICreateColumnRequest, IRenameBoardRequest } from '../interfaces';
 
-const findBoardByUserId = async (
-  userId: number | null,
-  boardId: number | null
-): Promise<IBoard> => {
-  if (userId && boardId) {
-    const { data } = await $api.get<IBoard>(`/boards/${boardId}`, {
+const findBoardByUserId = (userId: number, boardId: number): Promise<IBoard> =>
+  $api
+    .get<IBoard>(`/boards/${boardId}`, {
       params: {
         userId: userId,
       },
-    });
+    })
+    .then(({ data }) => data);
 
-    return data;
-  }
-
-  return Promise.reject('Board id is null');
-};
-
-const deleteBoardById = async (
-  userId: number,
-  boardId: number | null
-): Promise<void> => {
-  await $api.delete(`/boards/${boardId}`, {
+const deleteBoardById = (userId: number, boardId: number): Promise<void> =>
+  $api.delete(`/boards/${boardId}`, {
     params: {
       userId: userId,
     },
   });
-};
 
-const renameBoard = async (request: IRenameBoardRequest): Promise<void> => {
-  await $api.put(
+const renameBoard = (request: IRenameBoardRequest): Promise<void> =>
+  $api.put(
     `/boards/${request.boardId}`,
     {
       title: request.title,
@@ -42,10 +30,9 @@ const renameBoard = async (request: IRenameBoardRequest): Promise<void> => {
       },
     }
   );
-};
 
-const createColumn = async (request: ICreateColumnRequest): Promise<void> => {
-  await $api.post(
+const createColumn = (request: ICreateColumnRequest): Promise<void> =>
+  $api.post(
     `/columns`,
     {
       title: request.title,
@@ -57,7 +44,6 @@ const createColumn = async (request: ICreateColumnRequest): Promise<void> => {
       },
     }
   );
-};
 
 export const BoardService = {
   findBoardByUserId,

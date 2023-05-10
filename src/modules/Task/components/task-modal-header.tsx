@@ -1,11 +1,7 @@
-import { boardIdAtom } from '@page/BoardPage';
-import { userIdAtom } from '@shared/store';
-import { Button } from '@shared/UI';
 import { atom, useAtom, useSetAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect, useRef, useState } from 'react';
 import { FiEdit, FiX } from 'react-icons/fi';
-import { useQueryClient } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TaskService } from '../api';
 

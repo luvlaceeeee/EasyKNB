@@ -1,17 +1,17 @@
 import { boardIdAtom } from '@page/BoardPage';
+import { Button } from '@shared/UI';
 import { userIdAtom } from '@shared/store';
 import { IUser } from '@shared/types';
-import { Button } from '@shared/UI';
 import { useAtom } from 'jotai';
 import { atomsWithMutation } from 'jotai-tanstack-query';
 import { FC, useEffect } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
-import { TaskService } from '../api';
-import { TaskContent } from './task-content';
-import { TaskFooter } from './task-footer';
-import { TaskHeader } from './task-header';
+import { TaskService } from './api';
+import { TaskContent } from './components/task-content';
+import { TaskFooter } from './components/task-footer';
+import { TaskHeader } from './components/task-header';
 const [, deleteTaskByIdAtom] = atomsWithMutation((get) => ({
   mutationKey: ['add-desc-task'],
   mutationFn: ([taskId, columnId]: number[]) =>

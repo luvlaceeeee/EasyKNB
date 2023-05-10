@@ -1,5 +1,5 @@
-import { CreateTaskMenu, Task } from '@modules/Task';
-import { ITask } from '@shared/types';
+import { Task } from '@/modules/task/task';
+import { ITask } from '@/shared/types';
 import React from 'react';
 
 interface BoardColumnContentProps {
@@ -19,7 +19,7 @@ export const BoardColumnContent = React.forwardRef<
       className={`scrollbar space-y-4 overflow-auto scroll-smooth pr-1`}
       ref={ref}
     >
-      {tasks?.length == 0 && (
+      {tasks?.length === 0 && (
         <p className="text-center font-bold text-zinc-300 dark:text-zinc-700">
           The column is empty
         </p>
@@ -36,9 +36,9 @@ export const BoardColumnContent = React.forwardRef<
         />
       ))}
 
-      {isCreateMenuOpen && (
+      {/* {isCreateMenuOpen && (
         <CreateTaskMenu setCreateMenuOpen={setCreateMenuOpen} />
-      )}
+      )} */}
     </div>
   );
 });

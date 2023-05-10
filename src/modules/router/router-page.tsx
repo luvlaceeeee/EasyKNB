@@ -1,12 +1,12 @@
+import { Sidebar } from 'lucide-react';
 import { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Sidebar } from 'lucide-react';
-import { NotFoundPage } from '../not-found/not-found-page';
-import { PrivateRoutes } from './private-routes';
-import { HomePage } from '../home/home-page';
 import { BoardPage } from '../board/board-page';
-import { TaskModal } from '../task';
+import { HomePage } from '../home/home-page';
+import { NotFoundPage } from '../not-found/not-found-page';
+import { TaskModal } from '../task/task-modal';
 import { WelcomePage } from '../welcome/welcome-page';
+import { PrivateRoutes } from './private-routes';
 
 // TODO: Add error page for board(when no available id)
 export const RouterPage: FC = () => {

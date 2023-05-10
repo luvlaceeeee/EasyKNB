@@ -1,5 +1,5 @@
 export interface IRenameBoardRequest {
   userId: number;
-  boardId: number | null;
+  boardId: number;
   title: string;
 }

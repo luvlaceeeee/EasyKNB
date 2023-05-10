@@ -1,9 +1,6 @@
-import { FC, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
-import { BoardService } from '../api/services';
-import { useAuthStore } from '@/shared/store';
 import { stringToNumber } from '@/shared/helpers';
+import { useAuthStore } from '@/shared/store';
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -12,8 +9,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/shared/ui/dialog';
-import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
+import { useMutation } from '@tanstack/react-query';
+import { FC, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const CreateColumnModal: FC = () => {
   const userId = useAuthStore((state) => state.user.id);
@@ -22,7 +21,7 @@ export const CreateColumnModal: FC = () => {
   const [title, setTitle] = useState('');
   const { isLoading, mutate } = useMutation({
     mutationKey: ['create-column'],
-    mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
+    // mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
   });
 
   return (

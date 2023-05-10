@@ -1,7 +1,8 @@
+import { ContentLayout } from '@/shared/layout/content-layout';
+import { HeaderLayout } from '@/shared/layout/header-layout';
+import { Suspense } from 'react';
 import { HomeContent } from './components/home-content';
 import { HomeHeader } from './components/home-header';
-import { ContentLayout, HeaderLayout } from '@/shared/layout';
-import { Suspense } from 'react';
 
 export const HomePage = () => {
   return (
