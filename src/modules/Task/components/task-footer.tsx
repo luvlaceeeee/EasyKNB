@@ -1,4 +1,4 @@
-import { IUser } from '@shared/types';
+import { IUser } from '@/shared/types';
 import { FC } from 'react';
 
 export const TaskFooter: FC<{ makers?: IUser[] }> = ({ makers }) => {

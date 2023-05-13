@@ -1,6 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
-import { useAuthStore } from '@/shared/store';
+import { useAuthStore } from '@/shared/store/auth.store';
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -9,8 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/shared/ui/dialog';
-import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
+import { useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
 import { HomeService } from '../services';
 
 export const CreateBoardModal = () => {

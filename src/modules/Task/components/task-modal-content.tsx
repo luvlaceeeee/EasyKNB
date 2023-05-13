@@ -1,13 +1,10 @@
-import { TaskModalButton } from '@shared/UI';
-import { userAtom } from '@shared/store';
-import { ITask } from '@shared/types';
-import { useAtomValue } from 'jotai';
+import { ITask } from '@/shared/types';
 import { FC } from 'react';
 import { FiList } from 'react-icons/fi';
 import { TaskModalContentDesc } from './task-modal-content-desc';
 import { TaskModalContentSidebar } from './task-modal-content-sidebar';
+
 export const TaskModalContent: FC<{ task: ITask }> = ({ task }) => {
-  const user = useAtomValue(userAtom);
   return (
     <div className="flex items-start pt-4">
       <div className="flex-grow space-y-5 pr-6">
@@ -40,19 +37,16 @@ export const TaskModalContent: FC<{ task: ITask }> = ({ task }) => {
           <div className="flex justify-between  pb-4">
             <p className="text-lg">Actions</p>
             <div>
-              <TaskModalButton
+              {/* <TaskModalButton
                 text="Show details"
                 onClick={() => {
                   console.log('first');
                 }}
-              />
+              /> */}
             </div>
           </div>
           <div className="relative flex items-center">
-            <img
-              className="absolute -left-10 h-8 w-8 rounded-full"
-              src={user.avatar}
-            />
+            <img className="absolute -left-10 h-8 w-8 rounded-full" src={'w'} />
             <input className="w-full" />
           </div>
         </div>

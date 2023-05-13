@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/shared/store';
+import { useAuthStore } from '@/shared/store/auth.store';
 import { useQuery } from '@tanstack/react-query';
 import { HomeService } from '../services/home.service';
 

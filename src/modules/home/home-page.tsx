@@ -1,6 +1,6 @@
-import { ContentLayout } from '@/shared/layout/content-layout';
-import { HeaderLayout } from '@/shared/layout/header-layout';
 import { Suspense } from 'react';
+import { ContentLayout } from '../../shared/layout/content-layout';
+import { HeaderLayout } from '../../shared/layout/header-layout';
 import { HomeContent } from './components/home-content';
 import { HomeHeader } from './components/home-header';
 

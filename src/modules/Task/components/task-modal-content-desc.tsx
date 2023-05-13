@@ -1,25 +1,17 @@
-import { boardIdAtom } from '@page/BoardPage';
-import { TaskModalButton } from '@shared/UI';
-import { userIdAtom } from '@shared/store';
-import { useAtom, useSetAtom } from 'jotai';
-import { atomsWithMutation } from 'jotai-tanstack-query';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { FiAlignLeft } from 'react-icons/fi';
-import { useQueryClient } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { TaskService } from '../api';
-import { taskIdAtom } from './task-modal-header';
-const [, addDescToTaskByIdAtom] = atomsWithMutation((get) => ({
-  mutationKey: ['add-desc-task'],
-  mutationFn: ([title, desc]: string[]) =>
-    TaskService.updateToTaskById(
-      get(userIdAtom),
-      get(boardIdAtom),
-      get(taskIdAtom),
-      title,
-      desc
-    ),
-}));
+// const [, addDescToTaskByIdAtom] = atomsWithMutation((get) => ({
+//   mutationKey: ['add-desc-task'],
+//   mutationFn: ([title, desc]: string[]) =>
+//     TaskService.updateToTaskById(
+//       get(userIdAtom),
+//       get(boardIdAtom),
+//       get(taskIdAtom),
+//       title,
+//       desc
+//     ),
+// }));
 
 export const TaskModalContentDesc: FC<{
   title: string;
@@ -27,18 +19,18 @@ export const TaskModalContentDesc: FC<{
   taskId: number;
 }> = ({ title, desc, taskId }) => {
   const [descValue, setDescValue] = useState(desc);
-  const setTaskId = useSetAtom(taskIdAtom);
-  const [addDescState, mutate] = useAtom(addDescToTaskByIdAtom);
-  const queryClient = useQueryClient();
+  // const setTaskId = useSetAtom(taskIdAtom);
+  // const [addDescState, mutate] = useAtom(addDescToTaskByIdAtom);
+  // const queryClient = useQueryClient();
   const { columnId } = useParams();
 
-  useEffect(() => {
-    if (addDescState.isSuccess) {
-      queryClient.invalidateQueries([`query-column-${columnId}`]);
-      queryClient.invalidateQueries([`task-column`]);
-      addDescState.reset();
-    }
-  }, [addDescState]);
+  // useEffect(() => {
+  //   if (addDescState.isSuccess) {
+  //     queryClient.invalidateQueries([`query-column-${columnId}`]);
+  //     queryClient.invalidateQueries([`task-column`]);
+  //     addDescState.reset();
+  //   }
+  // }, [addDescState]);
   return (
     <div className="relative pl-7">
       <FiAlignLeft className="absolute top-1 -left-2" size={20} />
@@ -47,7 +39,7 @@ export const TaskModalContentDesc: FC<{
         <textarea
           rows={4}
           onFocus={() => {
-            setTaskId(taskId);
+            // setTaskId(taskId);
             console.log(taskId);
           }}
           value={descValue}
@@ -64,7 +56,7 @@ export const TaskModalContentDesc: FC<{
               : 'invisible opacity-0'
           } flex space-x-3 pt-3 transition-all`}
         >
-          <TaskModalButton
+          {/* <TaskModalButton
             text="Submit"
             onClick={(e) => {
               e.preventDefault();
@@ -78,7 +70,7 @@ export const TaskModalContentDesc: FC<{
               setDescValue(desc);
             }}
             className="w-fit opacity-70"
-          />
+          /> */}
         </div>
       </form>
     </div>

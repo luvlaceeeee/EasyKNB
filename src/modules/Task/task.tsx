@@ -1,27 +1,21 @@
-import { boardIdAtom } from '@page/BoardPage';
-import { Button } from '@shared/UI';
-import { userIdAtom } from '@shared/store';
-import { IUser } from '@shared/types';
-import { useAtom } from 'jotai';
-import { atomsWithMutation } from 'jotai-tanstack-query';
-import { FC, useEffect } from 'react';
+import { IUser } from '@/shared/types';
+import { Button } from '@/shared/ui/button';
+import { FC } from 'react';
 import { FiTrash } from 'react-icons/fi';
-import { useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
-import { TaskService } from './api';
 import { TaskContent } from './components/task-content';
 import { TaskFooter } from './components/task-footer';
 import { TaskHeader } from './components/task-header';
-const [, deleteTaskByIdAtom] = atomsWithMutation((get) => ({
-  mutationKey: ['add-desc-task'],
-  mutationFn: ([taskId, columnId]: number[]) =>
-    TaskService.deleteTaskById(
-      get(userIdAtom),
-      get(boardIdAtom),
-      taskId,
-      columnId
-    ),
-}));
+// const [, deleteTaskByIdAtom] = atomsWithMutation((get) => ({
+//   mutationKey: ['add-desc-task'],
+//   mutationFn: ([taskId, columnId]: number[]) =>
+//     TaskService.deleteTaskById(
+//       get(userIdAtom),
+//       get(boardIdAtom),
+//       taskId,
+//       columnId
+//     ),
+// }));
 
 export const Task: FC<{
   title: string;
@@ -30,25 +24,18 @@ export const Task: FC<{
   description?: string;
   makers?: IUser[];
 }> = ({ title, columnId, description, makers, taskId }) => {
-  const queryClient = useQueryClient();
-  const [deleteTaskState, mutate] = useAtom(deleteTaskByIdAtom);
-
-  useEffect(() => {
-    if (deleteTaskState.isSuccess) {
-      queryClient.invalidateQueries([`query-column-${columnId}`]);
-      deleteTaskState.reset();
-    }
-  }, [deleteTaskState]);
+  // useEffect(() => {
+  //   if (deleteTaskState.isSuccess) {
+  //     queryClient.invalidateQueries([`query-column-${columnId}`]);
+  //     deleteTaskState.reset();
+  //   }
+  // }, [deleteTaskState]);
 
   return (
-    <div
-      className={`group relative ${
-        deleteTaskState.isLoading ? 'opacity-70' : ''
-      }`}
-    >
+    <div className={`group relative ${'opacity-70'}`}>
       <Button
-        variant="flat"
-        onClick={() => mutate([[taskId, columnId]])}
+        variant="ghost"
+        // onClick={() => mutate([[taskId, columnId]])}
         className="invisible absolute top-0 right-0 opacity-0 hover:bg-transparent hover:text-red-500 group-hover:visible group-hover:opacity-100 dark:hover:bg-opacity-0 dark:hover:text-red-700"
       >
         <FiTrash />

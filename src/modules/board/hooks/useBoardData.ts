@@ -1,7 +1,7 @@
-import { useAuthStore } from '@/shared/store';
-import { stringToNumber } from '@/shared/helpers';
-import { useParams } from 'react-router-dom';
+import { useAuthStore } from '@/shared/store/auth.store';
 import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { stringToNumber } from '../../../shared/helpers/stringToNumber.helper';
 import { BoardService } from '../api/services/board.service';
 
 export const useBoardData = () => {
@@ -10,6 +10,6 @@ export const useBoardData = () => {
 
   return useQuery({
     queryKey: ['query-board', userId, boardId],
-    queryFn: () => BoardService.findBoardByUserId(userId, boardId),
+    queryFn: () => BoardService.findBoardByUserId(userId, boardId!),
   });
 };

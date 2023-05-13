@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { ContentLayout, HeaderLayout } from '@/shared/layout';
-import { BoardHeader } from './components/board-header';
+import { ContentLayout } from '../../shared/layout/content-layout';
+import { HeaderLayout } from '../../shared/layout/header-layout';
 import { BoardContent } from './components/board-content';
+import { BoardHeader } from './components/board-header';
 
 export function BoardPage() {
   return (
