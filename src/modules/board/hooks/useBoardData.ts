@@ -1,4 +1,5 @@
-import { useAuthStore } from '@/shared/store/auth.store';
+// import { useAuthStore } from '@/shared/store';
+import { useAuthStore } from '@/shared/store';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { stringToNumber } from '../../../shared/helpers/stringToNumber.helper';

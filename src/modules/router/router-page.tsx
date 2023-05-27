@@ -1,9 +1,9 @@
-import { Sidebar } from 'lucide-react';
 import { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { BoardPage } from '../board/board-page';
 import { HomePage } from '../home/home-page';
 import { NotFoundPage } from '../not-found/not-found-page';
+import { Sidebar } from '../sidebar/sidebar';
 import { TaskModal } from '../task/task-modal';
 import { WelcomePage } from '../welcome/welcome-page';
 import { PrivateRoutes } from './private-routes';

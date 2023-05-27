@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { CreateBoardModal } from './create-board-modal';
 import { useAllBoardData } from '../hooks';
+import { CreateBoardModal } from './create-board-modal';
 
 export const HomeHeader: FC = () => {
   const { data } = useAllBoardData();

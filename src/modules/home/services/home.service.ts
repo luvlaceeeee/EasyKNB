@@ -2,11 +2,13 @@ import { $api } from '@/shared/api';
 import { IHomeBoard } from '../interfaces';
 
 const findBoardsByUserId = (userId: number): Promise<IHomeBoard[]> =>
-    $api.get<IHomeBoard[]>('/boards', {
+  $api
+    .get<IHomeBoard[]>('/boards', {
       params: {
         userId: userId,
       },
-    }).then(({data}) => data);
+    })
+    .then(({ data }) => data);
 
 const createBoardByUserID = (userId: number, title: string): Promise<void> =>
   $api.post(
