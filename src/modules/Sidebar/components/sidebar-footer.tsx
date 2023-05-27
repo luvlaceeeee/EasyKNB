@@ -1,30 +1,79 @@
-import { FiLogOut, FiMoon } from 'react-icons/fi';
-import { useDarkMode } from '../hooks/useDarkMode';
-import { SidebarProfile } from './sidebar-profile';
-import { useGlobalStore } from '@/shared/store';
-import { cn } from '@/shared/helpers';
+import { useAuthStore } from '@/shared/store';
 import { Button } from '@/shared/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/shared/ui/tooltip';
+import { LogOut, Moon, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 export const SidebarFooter = () => {
-  const [_, toggleTheme] = useDarkMode();
-  const isSidebarOpen = useGlobalStore((s) => s.sidebarOpen);
+  const [theme, toggleTheme] = useDarkMode();
 
+  const user = useAuthStore((s) => s.user);
   return (
-    <>
-      <div className="flex justify-center">
-        <Button onClick={() => toggleTheme()} className="mb-2">
-          <FiMoon size={20} />
-        </Button>
-      </div>
-      <SidebarProfile />
+    <div>
+      <TooltipProvider delayDuration={400}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              className="mb-2 w-10 p-0"
+              onClick={toggleTheme}
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Switch to {`${theme === 'dark' ? 'light' : 'dark'}`} mode</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
-      <Button asChild>
-        <Link to="/">
-          <FiLogOut size={20} className={cn(isSidebarOpen && 'mr-4')} />
-          Log out
-        </Link>
-      </Button>
-    </>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant={'ghost'}
+              className="mb-2 w-10 rounded-full p-0"
+              asChild
+            >
+              <Link to="/profile">
+                <img
+                  className="h-8 w-8 rounded-full"
+                  src={user.avatar}
+                  alt="avatar"
+                />
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>{user.fullName}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant={'outline'} className="mb-2 w-10 p-0" asChild>
+              <Link to="/">
+                <LogOut className="h-5 w-5" />
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Log out</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
   );
 };
