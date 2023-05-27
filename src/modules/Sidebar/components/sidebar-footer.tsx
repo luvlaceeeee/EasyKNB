@@ -63,7 +63,11 @@ export const SidebarFooter = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant={'outline'} className="mb-2 w-10 p-0" asChild>
+            <Button
+              variant={'outline'}
+              className="mb-2 w-10 border-red-900/30 p-0 hover:bg-red-900/30"
+              asChild
+            >
               <Link to="/">
                 <LogOut className="h-5 w-5" />
               </Link>

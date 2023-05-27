@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from '@/shared/ui/tooltip';
 import { Home } from 'lucide-react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { SidebarFooter } from './components/sidebar-footer';
 
 export const Sidebar = () => {
@@ -22,7 +22,9 @@ export const Sidebar = () => {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="outline" className="w-10 p-0">
-                    <Home className="h-5 w-5" />
+                    <Link to="/home">
+                      <Home className="h-5 w-5" />
+                    </Link>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">
