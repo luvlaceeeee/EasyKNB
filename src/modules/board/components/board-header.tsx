@@ -10,10 +10,10 @@ export const BoardHeader = () => {
       {/* Left part of header */}
       <div className="inline-flex flex-col">
         <span className="text-2xl font-black dark:text-zinc-200">
-          {data?.title}
+          {data && data.title}
         </span>
         <span className=" text-gray-400">
-          Total column: {data?.columns.length}
+          Total column: {data && data.columns.length}
         </span>
       </div>
 
