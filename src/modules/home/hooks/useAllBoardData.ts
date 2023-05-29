@@ -8,5 +8,6 @@ export const useAllBoardData = () => {
   return useQuery({
     queryKey: ['query-boards', userId],
     queryFn: () => HomeService.findBoardsByUserId(userId),
+    refetchOnMount: 'always',
   });
 };

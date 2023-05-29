@@ -1,4 +1,4 @@
-import { stringToNumber } from '@/shared/helpers';
+import { stringToNumber, throwError } from '@/shared/helpers';
 import { useAuthStore } from '@/shared/store';
 import { Button } from '@/shared/ui/button';
 import {
@@ -10,9 +10,10 @@ import {
   DialogTrigger,
 } from '@/shared/ui/dialog';
 import { Input } from '@/shared/ui/input';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { BoardService } from '../services';
 
 interface IRenameBoardProps {
   boardTitle: string;
@@ -20,16 +21,25 @@ interface IRenameBoardProps {
 
 export const RenameBoardModal: FC<IRenameBoardProps> = ({ boardTitle }) => {
   const userId = useAuthStore((state) => state.user.id);
-  const boardId = stringToNumber(useParams().boardId);
+  const boardId =
+    stringToNumber(useParams().boardId) ??
+    throwError(new Error('board id is null'));
 
-  const [title, setTitle] = useState(boardTitle);
+  const [title, setTitle] = useState<string>(boardTitle);
+  const [open, setOpen] = useState(false);
+
+  const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation({
     mutationKey: ['rename-board'],
-    // mutationFn: () => BoardService.renameBoard({ userId, boardId, title }),
+    mutationFn: () => BoardService.renameBoard({ userId, boardId, title }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['query-board', boardId]);
+      setOpen(false);
+    },
   });
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Rename board</Button>
       </DialogTrigger>

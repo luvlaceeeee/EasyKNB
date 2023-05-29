@@ -1,4 +1,4 @@
-import { stringToNumber } from '@/shared/helpers';
+import { stringToNumber, throwError } from '@/shared/helpers';
 import { useAuthStore } from '@/shared/store';
 import { Button } from '@/shared/ui/button';
 import {
@@ -10,22 +10,37 @@ import {
   DialogTrigger,
 } from '@/shared/ui/dialog';
 import { Input } from '@/shared/ui/input';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { BoardService } from '../services';
 
 export const CreateColumnModal: FC = () => {
   const userId = useAuthStore((state) => state.user.id);
-  const boardId = stringToNumber(useParams().boardId);
+  const boardId =
+    stringToNumber(useParams().boardId) ??
+    throwError(new Error('board id is null'));
 
   const [title, setTitle] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation({
     mutationKey: ['create-column'],
-    // mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
+    mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['query-board', boardId]);
+      setOpen(false);
+    },
   });
 
+  const dialogHandler = () => {
+    setOpen(!open);
+    setTitle('');
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={dialogHandler}>
       <DialogTrigger asChild>
         <Button variant="outline">Create column</Button>
       </DialogTrigger>
