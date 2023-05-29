@@ -28,7 +28,7 @@ export const BoardColumnDropDown: FC<{
               renameBoard.current?.focus();
               setOpen(false);
             }}
-            className="flex w-full items-center rounded-t-lg border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
+            className="flex w-full items-center rounded-t-lg border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
           >
             <FiEdit3 className="mr-2" />
             Rename column
@@ -40,7 +40,7 @@ export const BoardColumnDropDown: FC<{
               setModalOpen({ target: 'delete', state: true });
               setOpen(false);
             }}
-            className="flex w-full items-center border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
+            className="flex w-full items-center border-b border-zinc-500 bg-zinc-100 px-3 py-1.5 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
           >
             <FiTrash2 className="mr-2" />
             Delete column
@@ -51,7 +51,7 @@ export const BoardColumnDropDown: FC<{
             onClick={() => {
               setOpen(false);
             }}
-            className="flex w-full items-center rounded-b-lg bg-zinc-100 px-3 py-1.5 transition-all hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
+            className="flex w-full items-center rounded-b-lg bg-zinc-100 px-3 py-1.5 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-900"
           >
             <FiShuffle className="mr-2" />
             Move column

@@ -1,7 +1,7 @@
+import { ContentLayout } from '@/shared/layout/content-layout';
+import { HeaderLayout } from '@/shared/layout/header-layout';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { ContentLayout } from '../../shared/layout/content-layout';
-import { HeaderLayout } from '../../shared/layout/header-layout';
 import { BoardContent } from './components/board-content';
 import { BoardHeader } from './components/board-header';
 

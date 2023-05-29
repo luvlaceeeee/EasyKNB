@@ -11,7 +11,7 @@ const findBoardByUserId = (userId: number, boardId: number): Promise<IBoard> =>
     })
     .then(({ data }) => data);
 
-const deleteBoardById = (userId: number, boardId: number): Promise<void> =>
+const deleteBoard = (userId: number, boardId: number): Promise<void> =>
   $api.delete(`/boards/${boardId}`, {
     params: {
       userId: userId,
@@ -48,6 +48,6 @@ const createColumn = (request: ICreateColumnRequest): Promise<void> =>
 export const BoardService = {
   findBoardByUserId,
   renameBoard,
-  deleteBoardById,
+  deleteBoard,
   createColumn,
 };

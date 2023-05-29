@@ -54,7 +54,7 @@ export const TaskModalContentDesc: FC<{
             descValue?.trim() !== desc && descValue?.trim()
               ? 'visible opacity-100'
               : 'invisible opacity-0'
-          } flex space-x-3 pt-3 transition-all`}
+          } flex space-x-3 pt-3`}
         >
           {/* <TaskModalButton
             text="Submit"

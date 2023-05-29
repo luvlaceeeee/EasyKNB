@@ -1,5 +1,5 @@
 import { $api } from '@/shared/api';
-import { IColumn, ITask } from '@/shared/types';
+import { IColumn } from '@/shared/types';
 import { IRenameColumnRequest } from '../interfaces';
 import { ICreateTaskRequest } from '../interfaces/ICreateTaskRequest';
 import { IDeleteColumnRequest } from '../interfaces/IDeleteColumnRequest';
@@ -37,22 +37,21 @@ const deleteColumnById = (request: IDeleteColumnRequest): Promise<void> =>
     },
   });
 
-const createTaskByColumnID = (request: ICreateTaskRequest): Promise<ITask> =>
-  $api
-    .post<ITask>(
-      `/tasks/`,
-      {
-        text: request.title,
+const createTaskByColumnID = (request: ICreateTaskRequest): Promise<void> =>
+  $api.post(
+    `/tasks/`,
+    {
+      text: request.title,
+    },
+    {
+      params: {
+        userId: request.userId,
+        boardId: request.boardId,
+        columnId: request.columnId,
       },
-      {
-        params: {
-          userId: request.userId,
-          boardId: request.boardId,
-          columnId: request.columnId,
-        },
-      }
-    )
-    .then(({ data }) => data);
+    }
+  );
+// .then(({ data }) => data);
 
 export const ColumnService = {
   findColumnById,

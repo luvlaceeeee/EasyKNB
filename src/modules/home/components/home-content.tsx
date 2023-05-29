@@ -1,5 +1,5 @@
-import { BoardCard } from './board-card';
 import { useAllBoardData } from '../hooks';
+import { BoardCard } from './board-card';
 
 export const HomeContent = () => {
   const { data } = useAllBoardData();
