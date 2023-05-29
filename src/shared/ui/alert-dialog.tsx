@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import * as React from 'react';
 
 import { cn } from '@/shared/helpers';
 import { buttonVariants } from './button';
@@ -7,6 +7,9 @@ import { buttonVariants } from './button';
 const AlertDialog = AlertDialogPrimitive.Root;
 
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+
+//[ ] Change AlertDialogAction to default radix action because asChild props do not work
+const AlertDialogAction = AlertDialogPrimitive.Action;
 
 const AlertDialogPortal = ({
   className,
@@ -107,17 +110,17 @@ const AlertDialogDescription = React.forwardRef<
 AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName;
 
-const AlertDialogAction = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Action>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Action
-    ref={ref}
-    className={cn(buttonVariants(), className)}
-    {...props}
-  />
-));
-AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
+// const AlertDialogAction = React.forwardRef<
+//   React.ElementRef<typeof AlertDialogPrimitive.Action>,
+//   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
+// >(({ className, ...props }, ref) => (
+//   <AlertDialogPrimitive.Action
+//     ref={ref}
+//     className={cn(buttonVariants(), className)}
+//     {...props}
+//   />
+// ));
+// AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
 
 const AlertDialogCancel = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
@@ -138,12 +141,12 @@ AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
 
 export {
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 };

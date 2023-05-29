@@ -15,21 +15,26 @@ import {
   Settings2,
   Trash2,
 } from 'lucide-react';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { DeleteColumnModal } from './delete-column-modal';
 
 interface BoardColumnDropDownProps {
   inputRef: React.RefObject<HTMLInputElement>;
   title: string;
+  columnId: number;
 }
 
 export const BoardColumnDropDown: FC<BoardColumnDropDownProps> = ({
   inputRef,
   title,
+  columnId,
 }) => {
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="ghost" className="border">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -42,11 +47,11 @@ export const BoardColumnDropDown: FC<BoardColumnDropDownProps> = ({
             <PlusCircle className="mr-2 h-4 w-4" />
             <span>Create task</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => inputRef.current?.focus()}>
+          <DropdownMenuItem onSelect={() => inputRef.current?.focus()}>
             <Edit2 className="mr-2 h-4 w-4" />
             <span>Rename column</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => setOpenDeleteModal(true)}>
             <Trash2 className="mr-2 h-4 w-4" />
             <span>Delete column</span>
           </DropdownMenuItem>
@@ -56,6 +61,12 @@ export const BoardColumnDropDown: FC<BoardColumnDropDownProps> = ({
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
+      <DeleteColumnModal
+        title={title}
+        columnId={columnId}
+        open={openDeleteModal}
+        onOpenChange={setOpenDeleteModal}
+      />
     </DropdownMenu>
   );
 };

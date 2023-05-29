@@ -24,7 +24,7 @@ export const BoardColumn: FC<{ column: IColumn }> = ({ column }) => {
     <div className="flex h-full w-72 shrink-0 flex-col space-y-4">
       <BoardColumnHeader
         title={data ? data.title : ''}
-        id={data ? data.id : 0}
+        columnId={data ? data.id : 0}
       />
       {/* <BoardColumnContent
         columnId={data?.id}
