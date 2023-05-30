@@ -1,9 +1,7 @@
-import { stringToNumber, throwError } from '@/shared/helpers';
-import { useAuthStore } from '@/shared/store';
+import { useQueryParams } from '@/shared/hooks';
 import { Input } from '@/shared/ui/input';
 import { useMutation } from '@tanstack/react-query';
 import { FC, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { ColumnService } from '../../services';
 import { BoardColumnDropDown } from './board-column-dropdown';
 
@@ -21,10 +19,8 @@ export const BoardColumnHeader: FC<BoardColumnHeaderProps> = ({
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const userId = useAuthStore((state) => state.user.id);
-  const boardId =
-    stringToNumber(useParams().boardId) ??
-    throwError(new Error('boardId is null'));
+  const [userId, boardId] = useQueryParams();
+
   const { mutate } = useMutation({
     mutationKey: ['rename-column', columnId],
     mutationFn: () =>

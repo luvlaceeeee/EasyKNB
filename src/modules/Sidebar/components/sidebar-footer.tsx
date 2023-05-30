@@ -1,4 +1,5 @@
 import { useAuthStore } from '@/shared/store';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import { Button } from '@/shared/ui/button';
 import {
   Tooltip,
@@ -46,11 +47,15 @@ export const SidebarFooter = () => {
               asChild
             >
               <Link to="/profile">
-                <img
-                  className="h-8 w-8 rounded-full"
-                  src={user.avatar}
-                  alt="avatar"
-                />
+                <Avatar className="h-8 w-8">
+                  <AvatarImage
+                    src={user.avatar}
+                    // alt="@shadcn"
+                  />
+                  <AvatarFallback>
+                    {user.name.charAt(0) + user.surname.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
               </Link>
             </Button>
           </TooltipTrigger>

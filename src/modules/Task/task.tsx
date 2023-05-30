@@ -1,51 +1,59 @@
+import { trimLine } from '@/shared/helpers';
 import { IUser } from '@/shared/types';
-import { Button } from '@/shared/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
 import { FC } from 'react';
-import { FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { TaskContent } from './components/task-content';
-import { TaskFooter } from './components/task-footer';
-import { TaskHeader } from './components/task-header';
-// const [, deleteTaskByIdAtom] = atomsWithMutation((get) => ({
-//   mutationKey: ['add-desc-task'],
-//   mutationFn: ([taskId, columnId]: number[]) =>
-//     TaskService.deleteTaskById(
-//       get(userIdAtom),
-//       get(boardIdAtom),
-//       taskId,
-//       columnId
-//     ),
-// }));
 
-export const Task: FC<{
+interface TaskProps {
   title: string;
   taskId: number;
   columnId: number;
   description?: string;
   makers?: IUser[];
-}> = ({ title, columnId, description, makers, taskId }) => {
-  // useEffect(() => {
-  //   if (deleteTaskState.isSuccess) {
-  //     queryClient.invalidateQueries([`query-column-${columnId}`]);
-  //     deleteTaskState.reset();
-  //   }
-  // }, [deleteTaskState]);
+}
 
+export const Task: FC<TaskProps> = ({
+  title,
+  columnId,
+  description,
+  makers,
+  taskId,
+}) => {
   return (
     <div className={`group relative`}>
-      <Button
+      {/* <Button
         variant="ghost"
         // onClick={() => mutate([[taskId, columnId]])}
         className="invisible absolute top-0 right-0 opacity-0 hover:bg-transparent hover:text-red-500 group-hover:visible group-hover:opacity-100 dark:hover:bg-opacity-0 dark:hover:text-red-700"
       >
         <FiTrash />
-      </Button>
-      <Link to={`c/${columnId}/${taskId}`} className="block">
+      </Button> */}
+      <Link to={`c/${columnId}/${taskId}`}>
         <div className="z-0 rounded-lg border p-4 pt-3 hover:bg-gray-100 dark:border-zinc-600 dark:text-white dark:hover:bg-zinc-800">
           <div className="space-y-2">
-            <TaskHeader title={title} />
-            {description && <TaskContent desc={description} />}
-            {makers && <TaskFooter makers={makers} />}
+            {/* task header */}
+            <p className="break-all text-lg font-black">{title}</p>
+            {/* task content */}
+            {description && (
+              <p className="text-sm text-zinc-500">
+                {trimLine(description, 60)}
+              </p>
+            )}
+            {/* task footer */}
+            {makers &&
+              makers.map((maker) => {
+                return (
+                  <Avatar className="h-7 w-7">
+                    <AvatarImage
+                      src={maker.avatar}
+                      // alt="@shadcn"
+                    />
+                    <AvatarFallback>
+                      {maker.name.charAt(0) + maker.surname.charAt(0)}
+                    </AvatarFallback>
+                  </Avatar>
+                );
+              })}
           </div>
         </div>
       </Link>

@@ -24,6 +24,7 @@ export const CreateBoardModal = () => {
 
   const userId = useAuthStore((state) => state.user.id);
   const queryClient = useQueryClient();
+
   const { isLoading, mutate } = useMutation({
     mutationKey: ['create-board'],
     mutationFn: () => HomeService.createBoardByUserID(userId, title),

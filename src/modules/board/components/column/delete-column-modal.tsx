@@ -1,5 +1,4 @@
-import { stringToNumber, throwError } from '@/shared/helpers';
-import { useAuthStore } from '@/shared/store';
+import { useQueryParams } from '@/shared/hooks';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,9 +10,8 @@ import {
   AlertDialogTitle,
 } from '@/shared/ui/alert-dialog';
 import { Button } from '@/shared/ui/button';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { FC } from 'react';
-import { useParams } from 'react-router-dom';
 import { ColumnService } from '../../services';
 
 interface DeleteColumnModalProps {
@@ -29,11 +27,7 @@ export const DeleteColumnModal: FC<DeleteColumnModalProps> = ({
   open,
   onOpenChange,
 }) => {
-  const userId = useAuthStore((state) => state.user.id);
-  const boardId =
-    stringToNumber(useParams().boardId) ??
-    throwError(new Error('boardId is null'));
-  const queryClient = useQueryClient();
+  const [userId, boardId, queryClient] = useQueryParams();
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ['delete-column', columnId],

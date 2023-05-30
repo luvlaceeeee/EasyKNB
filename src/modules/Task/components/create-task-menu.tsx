@@ -1,35 +1,30 @@
 import { ColumnService } from '@/modules/board/services';
-import { stringToNumber, throwError } from '@/shared/helpers';
-import { useAuthStore } from '@/shared/store';
+import { useQueryParams } from '@/shared/hooks';
 import { Button } from '@/shared/ui/button';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { X } from 'lucide-react';
 import { FC, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 interface CreateTaskMenuProps {
   columnId: number;
   setCreateMenuOpen: React.Dispatch<boolean>;
+  // dispatch: React.Dispatch<Action>;
 }
 
 export const CreateTaskMenu: FC<CreateTaskMenuProps> = ({
   setCreateMenuOpen,
   columnId,
+  // dispatch,
 }) => {
   const [title, setTitle] = useState('');
 
   const closeHandler = () => {
-    setTitle('');
     setCreateMenuOpen(false);
+    setTitle('');
   };
 
-  //TODO Create custom hook for this data
   //TODO Check how close menu after invalidate query is done
-  const userId = useAuthStore((state) => state.user.id);
-  const boardId =
-    stringToNumber(useParams().boardId) ??
-    throwError(new Error('boardId is null'));
-  const queryClient = useQueryClient();
+  const [userId, boardId, queryClient] = useQueryParams();
 
   const { isLoading, mutate } = useMutation({
     mutationKey: ['create-task', columnId],
@@ -58,6 +53,7 @@ export const CreateTaskMenu: FC<CreateTaskMenuProps> = ({
         onChange={(e) => setTitle(e.target.value)}
         className="mb-4 w-full rounded-lg border bg-transparent p-4 pt-3 pb-5 text-lg font-black outline-none placeholder:text-sm placeholder:font-medium placeholder:opacity-40 dark:border-zinc-600 dark:text-white"
         autoFocus={true}
+        maxLength={40}
         onKeyDown={(e) => {
           if (e.key === 'Enter' && title.trim()) {
             mutate();
@@ -69,7 +65,19 @@ export const CreateTaskMenu: FC<CreateTaskMenuProps> = ({
         id="create-task"
       >
         <Button
-          onClick={() => mutate()}
+          onClick={() => {
+            // dispatch({
+            //   type: ActionKind.createTask,
+            //   task: {
+            //     id: 0,
+            //     description: '',
+            //     makers: [],
+            //     position: 10,
+            //     text: title.trim(),
+            //   },
+            // });
+            mutate();
+          }}
           disabled={isLoading ? true : title.trim() ? false : true}
           loading={isLoading}
         >

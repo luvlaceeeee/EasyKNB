@@ -1,5 +1,4 @@
-import { stringToNumber, throwError } from '@/shared/helpers';
-import { useAuthStore } from '@/shared/store';
+import { useQueryParams } from '@/shared/hooks';
 import { Button } from '@/shared/ui/button';
 import {
   Dialog,
@@ -10,21 +9,16 @@ import {
   DialogTrigger,
 } from '@/shared/ui/dialog';
 import { Input } from '@/shared/ui/input';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { FC, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { BoardService } from '../services';
 
 export const CreateColumnModal: FC = () => {
-  const userId = useAuthStore((state) => state.user.id);
-  const boardId =
-    stringToNumber(useParams().boardId) ??
-    throwError(new Error('board id is null'));
-
   const [title, setTitle] = useState('');
   const [open, setOpen] = useState(false);
 
-  const queryClient = useQueryClient();
+  const [userId, boardId, queryClient] = useQueryParams();
+
   const { isLoading, mutate } = useMutation({
     mutationKey: ['create-column'],
     mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
