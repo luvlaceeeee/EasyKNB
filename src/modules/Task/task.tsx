@@ -32,7 +32,7 @@ export const Task: FC<{
   // }, [deleteTaskState]);
 
   return (
-    <div className={`group relative ${'opacity-70'}`}>
+    <div className={`group relative`}>
       <Button
         variant="ghost"
         // onClick={() => mutate([[taskId, columnId]])}
@@ -41,7 +41,7 @@ export const Task: FC<{
         <FiTrash />
       </Button>
       <Link to={`c/${columnId}/${taskId}`} className="block">
-        <div className="z-0 rounded-lg border-2 border-zinc-200 p-4 pt-3 hover:bg-gray-100 dark:border-zinc-600 dark:text-white dark:hover:bg-zinc-800">
+        <div className="z-0 rounded-lg border p-4 pt-3 hover:bg-gray-100 dark:border-zinc-600 dark:text-white dark:hover:bg-zinc-800">
           <div className="space-y-2">
             <TaskHeader title={title} />
             {description && <TaskContent desc={description} />}

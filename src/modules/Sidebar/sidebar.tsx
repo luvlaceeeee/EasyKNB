@@ -13,12 +13,12 @@ export const Sidebar = () => {
   return (
     <>
       <div
-        className={`absolute top-0 left-0 bottom-0 w-24 border-r border-zinc-600/20 bg-white p-6  dark:border-zinc-500/20 dark:bg-zinc-900`}
+        className={`absolute top-0 left-0 bottom-0 w-24 border-r border-zinc-600/20 p-6 dark:border-zinc-500/20 `}
       >
         <div className="flex h-full flex-col justify-between">
           <div>
             {/* <SidebarHeader className={'pb-5'} /> */}
-            <TooltipProvider>
+            <TooltipProvider delayDuration={200}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="outline" className="w-10 p-0">

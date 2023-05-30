@@ -16,7 +16,7 @@ export const SidebarFooter = () => {
   const user = useAuthStore((s) => s.user);
   return (
     <div>
-      <TooltipProvider delayDuration={400}>
+      <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -37,7 +37,7 @@ export const SidebarFooter = () => {
         </Tooltip>
       </TooltipProvider>
 
-      <TooltipProvider>
+      <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -60,7 +60,7 @@ export const SidebarFooter = () => {
         </Tooltip>
       </TooltipProvider>
 
-      <TooltipProvider>
+      <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
