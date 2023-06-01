@@ -13,7 +13,7 @@ export const Sidebar = () => {
   return (
     <>
       <div
-        className={`absolute top-0 left-0 bottom-0 w-24 border-r border-zinc-600/20 p-6 dark:border-zinc-500/20 `}
+        className={`absolute top-0 left-0 bottom-0 w-24 border-r border-secondary p-6 `}
       >
         <div className="flex h-full flex-col justify-between">
           <div>
@@ -21,11 +21,11 @@ export const Sidebar = () => {
             <TooltipProvider delayDuration={200}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="outline" className="w-10 p-0">
-                    <Link to="/home">
+                  <Link to="/home">
+                    <Button variant="outline" className="w-10 p-0">
                       <Home className="h-5 w-5" />
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </TooltipTrigger>
                 <TooltipContent side="right">
                   <p>Go to home page</p>

@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 export const useDarkMode = () => {
   const [theme, setTheme] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //     setTheme('dark');
+  //   } else {
+  //     setTheme('light');
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (

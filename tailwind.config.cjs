@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+
+// const defaultTheme = require('tailwindcss/defaultTheme')
+
+
 module.exports = {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -51,9 +55,9 @@ module.exports = {
         md: `calc(var(--radius) - 2px)`,
         sm: 'calc(var(--radius) - 4px)',
       },
-      fontFamily: {
-        lato: ['Lato', 'sans-serif'],
-      },
+      // fontFamily: {
+      //   sans: ['var(--font-sans)', ...DefaultTheme.fontFamily.sans],
+      // },
       keyframes: {
         'accordion-down': {
           from: { height: 0 },

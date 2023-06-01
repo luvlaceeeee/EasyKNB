@@ -25,7 +25,7 @@ export const SidebarFooter = () => {
               className="mb-2 w-10 p-0"
               onClick={toggleTheme}
             >
-              {theme === 'dark' ? (
+              {localStorage.theme === 'dark' ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />

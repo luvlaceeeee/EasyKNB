@@ -51,7 +51,7 @@ export const CreateTaskMenu: FC<CreateTaskMenuProps> = ({
         value={title}
         placeholder="Write task title"
         onChange={(e) => setTitle(e.target.value)}
-        className="mb-4 w-full rounded-lg border bg-transparent p-4 pt-3 pb-5 text-lg font-black outline-none placeholder:text-sm placeholder:font-medium placeholder:opacity-40 dark:border-zinc-600 dark:text-white"
+        className="mb-4 w-full rounded-md border border-secondary bg-transparent p-4 pt-3 font-semibold outline-none placeholder:text-sm placeholder:font-normal placeholder:opacity-60"
         autoFocus={true}
         maxLength={40}
         onKeyDown={(e) => {

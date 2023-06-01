@@ -11,7 +11,7 @@ export const BoardCard: FC<IBoardCardProps> = ({ id, title }) => {
     <Link
       to={`/board/${id}`}
       className={
-        'flex h-32 w-72 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white p-6 shadow  hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800'
+        'border-sec flex h-32 w-72 shrink-0 items-center justify-center rounded-lg border border-secondary bg-secondary/50 p-6 shadow hover:bg-secondary/70'
       }
     >
       <h5 className="break-all text-2xl text-gray-900 dark:text-zinc-200">

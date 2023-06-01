@@ -37,21 +37,22 @@ const deleteColumnById = (request: IDeleteColumnRequest): Promise<void> =>
     },
   });
 
-const createTaskByColumnID = (request: ICreateTaskRequest): Promise<void> =>
-  $api.post(
-    `/tasks/`,
-    {
-      text: request.title,
-    },
-    {
-      params: {
-        userId: request.userId,
-        boardId: request.boardId,
-        columnId: request.columnId,
+const createTaskByColumnID = (request: ICreateTaskRequest): Promise<number> =>
+  $api
+    .post(
+      `/tasks/`,
+      {
+        text: request.title,
       },
-    }
-  );
-// .then(({ data }) => data);
+      {
+        params: {
+          userId: request.userId,
+          boardId: request.boardId,
+          columnId: request.columnId,
+        },
+      }
+    )
+    .then(({ status }) => status);
 
 export const ColumnService = {
   findColumnById,

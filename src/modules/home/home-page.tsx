@@ -1,5 +1,6 @@
 import { ContentLayout } from '@/shared/layout/content-layout';
 import { HeaderLayout } from '@/shared/layout/header-layout';
+import { Skeleton } from '@/shared/ui/skeleton';
 import { Suspense } from 'react';
 import { HomeContent } from './components/home-content';
 import { HomeHeader } from './components/home-header';
@@ -22,7 +23,7 @@ HomePage.Skeleton = () => (
     <HeaderLayout>
       <div className="flex shrink-0 animate-pulse items-center justify-between">
         <div className="max-w-sm">
-          <div className="mt-3 h-7 w-44 rounded-xl bg-gray-200 dark:bg-zinc-700"></div>
+          <Skeleton className="mt-3 h-7 w-44 rounded-xl" />
           <div className="mt-1 h-4 w-24 rounded-xl bg-gray-200 dark:bg-zinc-700"></div>
         </div>
         <div className="flex items-center space-x-3">
