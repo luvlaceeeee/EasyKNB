@@ -37,7 +37,7 @@ export const BoardColumnHeader: FC<BoardColumnHeaderProps> = ({
     <div>
       <div
         {...props}
-        className="p-0.5 opacity-0 transition-all before:mx-auto before:mb-0.5 before:block before:w-2/4 before:rounded-full before:bg-primary/30 before:p-[1px] after:mx-auto after:block after:w-1/3 after:rounded-full after:bg-primary/30 after:p-[1px] hover:opacity-100"
+        className="p-0.5 opacity-0 transition-all before:mx-auto before:mb-0.5 before:block before:w-2/4 before:rounded-full before:bg-primary/30 before:p-[1px] after:mx-auto after:mb-1 after:block after:w-1/3 after:rounded-full after:bg-primary/30 after:p-[1px] hover:opacity-100"
       ></div>
       <div className="flex items-center justify-between space-x-3 dark:text-zinc-200">
         <Input
