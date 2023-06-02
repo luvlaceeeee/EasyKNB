@@ -1,5 +1,6 @@
 import { useBoardData } from '../hooks';
 import { CreateColumnModal } from './create-column-modal';
+import { DeleteBoardModal } from './delete-board-modal';
 import { RenameBoardModal } from './rename-board-modal';
 
 export const BoardHeader = () => {
@@ -19,6 +20,7 @@ export const BoardHeader = () => {
 
       {/* Right part of header */}
       <div className="flex items-center space-x-3">
+        <DeleteBoardModal boardTitle={data ? data.title : ''} />
         <RenameBoardModal boardTitle={data ? data.title : ''} />
         <CreateColumnModal />
       </div>
