@@ -29,7 +29,7 @@ export const Task: FC<TaskProps> = ({
         <FiTrash />
       </Button> */}
       <Link to={`c/${columnId}/${taskId}`}>
-        <div className="rounded-md border border-secondary p-4 pt-3 hover:bg-accent hover:text-accent-foreground">
+        <div className="rounded-md border border-secondary bg-primary-foreground/80 p-4 pt-3 hover:bg-accent hover:text-accent-foreground">
           <div className="space-y-2">
             {/* task header */}
             <p className="break-all font-semibold">{title}</p>

@@ -49,7 +49,7 @@ export const BoardColumnContent = React.forwardRef<
 
   return (
     <>
-      <Droppable droppableId={`c-${columnId}`}>
+      <Droppable droppableId={`c-${columnId}`} direction="vertical" type="task">
         {(provided) => (
           <div
             className="scrollbar overflow-auto"
@@ -94,6 +94,7 @@ export const BoardColumnContent = React.forwardRef<
                 />
               )}
             </div>
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
