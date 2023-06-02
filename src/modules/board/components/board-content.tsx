@@ -1,20 +1,23 @@
-import { Suspense } from 'react';
-import { useBoardData } from '../hooks';
-import { BoardColumn } from './board-column';
-import { BoardColumnLayout } from './board-column-layout';
+import { Suspense } from 'react'
+import { DragDropContext } from 'react-beautiful-dnd'
+import { useBoardData } from '../hooks'
+import { BoardColumn } from './board-column'
+import { BoardColumnLayout } from './board-column-layout'
 
 export const BoardContent = () => {
   const { data } = useBoardData();
 
   return (
-    <BoardColumnLayout>
-      {data &&
-        data.columns.map((column) => (
-          <Suspense key={column.id} fallback={<BoardContent.Skeleton />}>
-            <BoardColumn column={column} />
-          </Suspense>
-        ))}
-    </BoardColumnLayout>
+    <DragDropContext onDragEnd={() => console.log('first')}>
+      <BoardColumnLayout>
+        {data &&
+          data.columns.map((column, index) => (
+            <Suspense key={column.id} fallback={<BoardContent.Skeleton />}>
+              <BoardColumn column={column} index={index} />
+            </Suspense>
+          ))}
+      </BoardColumnLayout>
+    </DragDropContext>
   );
 };
 

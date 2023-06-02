@@ -27,6 +27,7 @@
     "jotai-tanstack-query": "0.6.0",
     "lucide-react": "0.192.0",
     "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
     "react-router-dom": "6.9.0",

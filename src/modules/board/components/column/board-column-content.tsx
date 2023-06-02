@@ -4,6 +4,7 @@ import { ITask } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
 import { PlusCircle } from 'lucide-react';
 import React, { useRef, useState } from 'react';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 // type State = {
 //   tasks: ITask[];
@@ -48,28 +49,55 @@ export const BoardColumnContent = React.forwardRef<
 
   return (
     <>
-      <div
-        className={`scrollbar space-y-4 overflow-auto scroll-smooth pr-1`}
-        ref={menuRef}
-      >
-        {tasks.map((task) => (
-          <Task
-            columnId={columnId}
-            key={task.id}
-            taskId={task.id}
-            title={task.text}
-            description={task.description}
-            makers={task.makers}
-          />
-        ))}
-        {isCreateMenuOpen && (
-          <CreateTaskMenu
-            setCreateMenuOpen={setIsCreateMenuOpen}
-            columnId={columnId}
-            // dispatch={dispatch}
-          />
+      <Droppable droppableId={`c-${columnId}`} direction="vertical" type="task">
+        {(provided) => (
+          <div
+            className="scrollbar overflow-auto"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            <div
+              className={`space-y-4 pr-1`}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {tasks.map((task, index) => (
+                <Draggable
+                  key={task.id}
+                  draggableId={`${task.id}`}
+                  index={index}
+                >
+                  {(provided) => (
+                    <span
+                      className="block"
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Task
+                        columnId={columnId}
+                        key={task.id}
+                        taskId={task.id}
+                        title={task.text}
+                        description={task.description}
+                        makers={task.makers}
+                      />
+                    </span>
+                  )}
+                </Draggable>
+              ))}
+              {isCreateMenuOpen && (
+                <CreateTaskMenu
+                  setCreateMenuOpen={setIsCreateMenuOpen}
+                  columnId={columnId}
+                  // dispatch={dispatch}
+                />
+              )}
+            </div>
+            {provided.placeholder}
+          </div>
         )}
-      </div>
+      </Droppable>
       {!isCreateMenuOpen && (
         <Button
           variant={'secondary'}
