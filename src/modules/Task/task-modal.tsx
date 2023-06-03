@@ -1,5 +1,4 @@
 import { useQueryParams } from '@/shared/hooks';
-import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,8 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/shared/ui/dialog';
-import { BookmarkPlus, Edit2, Settings2, Trash2, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { TaskModalButtons } from './components/task-modal-buttons';
 import { TaskModalComments } from './components/task-modal-comments';
 import { TaskModalDescription } from './components/task-modal-description';
 import { TaskModalHeader } from './components/task-modal-header';
@@ -25,7 +24,7 @@ export const TaskModal = () => {
   return (
     <Dialog open={true} onOpenChange={() => navigate(`/board/${boardId}`)}>
       <DialogContent
-        className="max-w-7xl"
+        className="max-w-none"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         {isLoading ? (
@@ -41,51 +40,7 @@ export const TaskModal = () => {
                 <TaskModalComments comments={data ? data.comments : []} />
               </div>
 
-              <div className="flex flex-col space-y-2">
-                <p className="text-right text-xs text-muted-foreground">
-                  Task actions
-                </p>
-                <Button
-                  variant={'secondary'}
-                  size={'xs'}
-                  className="justify-start font-normal"
-                >
-                  <Edit2 className="mr-2 h-3.5 w-3.5" />
-                  Rename task
-                </Button>
-                <Button
-                  variant={'secondary'}
-                  size={'xs'}
-                  className="justify-start font-normal"
-                >
-                  <UserPlus className="mr-2 h-3.5 w-3.5" />
-                  Add member
-                </Button>
-                <Button
-                  variant={'secondary'}
-                  size={'xs'}
-                  className="justify-start font-normal"
-                >
-                  <BookmarkPlus className="mr-2 h-3.5 w-3.5" />
-                  Add tag
-                </Button>
-                <Button
-                  variant={'secondary'}
-                  size={'xs'}
-                  className="justify-start font-normal"
-                >
-                  <Trash2 className="mr-2 h-3.5 w-3.5" />
-                  Delete task
-                </Button>
-                <Button
-                  variant={'secondary'}
-                  size={'xs'}
-                  className="justify-start font-normal"
-                >
-                  <Settings2 className="mr-2 h-3.5 w-3.5" />
-                  Change position
-                </Button>
-              </div>
+              <TaskModalButtons />
             </div>
           </>
         )}
