@@ -53,7 +53,7 @@ export const CreateTaskMenu: FC<CreateTaskMenuProps> = ({
         onChange={(e) => setTitle(e.target.value)}
         className="mb-4 w-full rounded-md border border-secondary bg-transparent p-4 pt-3 font-semibold outline-none placeholder:text-sm placeholder:font-normal placeholder:opacity-60"
         autoFocus={true}
-        maxLength={40}
+        maxLength={30}
         onKeyDown={(e) => {
           if (e.key === 'Enter' && title.trim()) {
             mutate();

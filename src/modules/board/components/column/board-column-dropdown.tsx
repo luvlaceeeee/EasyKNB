@@ -51,13 +51,13 @@ export const BoardColumnDropDown: FC<BoardColumnDropDownProps> = ({
             <Edit2 className="mr-2 h-4 w-4" />
             <span>Rename column</span>
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => setOpenDeleteModal(true)}>
-            <Trash2 className="mr-2 h-4 w-4" />
-            <span>Delete column</span>
-          </DropdownMenuItem>
           <DropdownMenuItem>
             <Settings2 className="mr-2 h-4 w-4" />
             <span>Change position</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => setOpenDeleteModal(true)}>
+            <Trash2 className="mr-2 h-4 w-4" />
+            <span>Delete column</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
