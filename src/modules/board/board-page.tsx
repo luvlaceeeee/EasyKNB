@@ -14,7 +14,9 @@ export function BoardPage() {
         </HeaderLayout>
         <BoardContent />
       </Suspense>
+      {/* <Suspense fallback={<TaskModal.Skeleton />}> */}
       <Outlet />
+      {/* </Suspense> */}
     </ContentLayout>
   );
 }

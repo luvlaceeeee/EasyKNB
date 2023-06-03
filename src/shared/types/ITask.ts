@@ -1,3 +1,4 @@
+import { IComment } from './IComment';
 import { IUser } from './IUser';
 
 export interface ITask {
@@ -6,4 +7,5 @@ export interface ITask {
   description: string;
   position: number;
   makers: IUser[];
+  comments: IComment[];
 }
