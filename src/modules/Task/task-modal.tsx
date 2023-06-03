@@ -23,15 +23,13 @@ export const TaskModal = () => {
 
   return (
     <Dialog open={true} onOpenChange={() => navigate(`/board/${boardId}`)}>
-      <DialogContent
-        className="max-w-none"
-        onOpenAutoFocus={(e) => e.preventDefault()}
-      >
+      <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
         {isLoading ? (
           <TaskModal.Skeleton />
         ) : (
           <>
             <TaskModalHeader title={data ? data.text : ''} />
+
             <div className="flex items-start justify-between">
               <div className="mr-5 flex-1 space-y-3">
                 <TaskModalMakers makers={data ? data.makers : []} />

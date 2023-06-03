@@ -24,7 +24,7 @@ export const TaskModalMakers: FC<TaskModalMakersProps> = ({ makers }) => {
         <Button variant={'outline'} className="w-10 rounded-full p-0" asChild>
           <Avatar className="h-7 w-7">
             <AvatarFallback className="bg-transparent">
-              <Plus className="h-5 w-5" />
+              <Plus className="h-4 w-4" />
             </AvatarFallback>
           </Avatar>
         </Button>
