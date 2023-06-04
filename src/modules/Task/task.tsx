@@ -17,7 +17,6 @@ export const Task: FC<TaskProps> = ({ columnId, task }) => {
     task.description ||
     !!task.comments.filter((comment) => comment.type !== 'System').length;
   return (
-    // <div className={`group relative`}>
     <Link to={`c/${columnId}/${task.id}`}>
       <div
         className={`rounded-md border border-secondary bg-primary-foreground/80 p-4 pb-2 pt-3 hover:bg-accent hover:text-accent-foreground ${
@@ -25,11 +24,8 @@ export const Task: FC<TaskProps> = ({ columnId, task }) => {
         }`}
       >
         <div className="space-y-2">
-          {/* task header */}
           <p className="break-all font-semibold">{task.text}</p>
-          {/* task content */}
           <TaskContent makers={task.makers} />
-          {/* task footer */}
           {isFooterOpen && (
             <TaskFooter
               description={task.description}
@@ -39,6 +35,5 @@ export const Task: FC<TaskProps> = ({ columnId, task }) => {
         </div>
       </div>
     </Link>
-    // </div>
   );
 };

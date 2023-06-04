@@ -1,5 +1,5 @@
 {
-  "name": "jirello",
+  "name": "easyknb",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -58,7 +58,7 @@
     "vite": "4.2.0"
   },
   "main": "index.js",
-  "repository": "https://github.com/luvlaceeeee/jirello",
+  "repository": "https://github.com/luvlaceeeee/EasyKNB",
   "author": "luvlaceeeee <nikitan2002@gmail.com>",
   "license": "MIT"
 }
