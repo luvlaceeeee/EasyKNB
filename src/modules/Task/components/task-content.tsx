@@ -18,7 +18,7 @@ export const TaskContent: FC<TaskContentProps> = ({ makers }) => {
       {makers &&
         makers.map((maker) => {
           return (
-            <HoverCard openDelay={300} closeDelay={100}>
+            <HoverCard key={maker.id} openDelay={300} closeDelay={100}>
               <HoverCardTrigger>
                 <Avatar className="h-7 w-7">
                   <AvatarImage src={maker.avatar} alt={maker.fullName} />

@@ -20,7 +20,7 @@ export const TaskModalMakers: FC<TaskModalMakersProps> = ({ makers }) => {
       <p className="mb-1 text-sm text-muted-foreground">Members</p>
       <div className="flex space-x-2">
         {makers.map((maker) => (
-          <HoverCard openDelay={300} closeDelay={100}>
+          <HoverCard key={maker.id} openDelay={300} closeDelay={100}>
             <HoverCardTrigger>
               <Avatar className="h-7 w-7">
                 <AvatarImage src={maker.avatar} alt={maker.fullName} />

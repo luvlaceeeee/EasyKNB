@@ -11,7 +11,7 @@ export const TaskFooter: FC<TaskFooterProps> = ({ description, comments }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-3">
-        {!description && (
+        {description && (
           <Button
             size={'sm'}
             variant={'ghost'}
@@ -21,7 +21,7 @@ export const TaskFooter: FC<TaskFooterProps> = ({ description, comments }) => {
           </Button>
         )}
 
-        {comments.filter((comment) => comment.type !== 'System').length ===
+        {comments.filter((comment) => comment.type !== 'System').length !==
           0 && (
           <div className="flex items-center space-x-1">
             <Button
@@ -38,18 +38,20 @@ export const TaskFooter: FC<TaskFooterProps> = ({ description, comments }) => {
         )}
       </div>
 
-      <div className="flex items-center space-x-1">
-        <p className="text-sm text-muted-foreground">
-          {new Date().toUTCString().split(' ').slice(1, 3).join(' ')}
-        </p>
-        <Button
-          size={'sm'}
-          variant={'ghost'}
-          className="h-auto p-0 text-xs font-normal text-muted-foreground"
-        >
-          <Timer className="h-4 w-4" />
-        </Button>
-      </div>
+      {false && (
+        <div className="flex items-center space-x-1">
+          <p className="text-sm text-muted-foreground">
+            {new Date().toUTCString().split(' ').slice(1, 3).join(' ')}
+          </p>
+          <Button
+            size={'sm'}
+            variant={'ghost'}
+            className="h-auto p-0 text-xs font-normal text-muted-foreground"
+          >
+            <Timer className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

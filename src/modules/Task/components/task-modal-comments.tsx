@@ -10,7 +10,7 @@ interface TaskModalCommentsProps {
 }
 
 export const TaskModalComments: FC<TaskModalCommentsProps> = ({ comments }) => {
-  const [systemComments, setSystemComments] = useState(false);
+  const [systemComments, setSystemComments] = useState(true);
   const user = useAuthStore((s) => s.user);
   return (
     <div>

@@ -12,6 +12,7 @@ export const TaskModalDescription: FC<TaskModalDescriptionProps> = ({
   const [openMDEditor, setOpenMDEditor] = useState(false);
   const [description, setDescription] = useState<string | undefined>(desc);
 
+  //TODO Change MD editor on Rich editor
   return (
     <div>
       <div className="mb-2 flex items-center justify-between">

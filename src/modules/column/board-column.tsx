@@ -23,7 +23,7 @@ export const BoardColumn: FC<{ column: IColumn; index: number }> = ({
             {...provided.dragHandleProps}
             title={data ? data.title : ''}
             columnId={data ? data.id : 0}
-            countTasks={column.tasks.length}
+            countTasks={data ? data.tasks.length : 0}
           />
           <BoardColumnContent
             columnId={data ? data.id : 0}

@@ -2,6 +2,7 @@ import { ContentLayout } from '@/shared/layout/content-layout';
 import { HeaderLayout } from '@/shared/layout/header-layout';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { TaskModal } from '../task/task-modal';
 import { BoardContent } from './components/board-content';
 import { BoardHeader } from './components/board-header';
 
@@ -14,9 +15,11 @@ export function BoardPage() {
         </HeaderLayout>
         <BoardContent />
       </Suspense>
-      {/* <Suspense fallback={<TaskModal.Skeleton />}> */}
-      <Outlet />
-      {/* </Suspense> */}
+      {/* TODO Check why not work with isLoading in Task-modal and check startTransition and lazy for open, when
+data-fetch ended  */}
+      <Suspense fallback={<TaskModal.Skeleton />}>
+        <Outlet />
+      </Suspense>
     </ContentLayout>
   );
 }
