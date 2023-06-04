@@ -29,7 +29,7 @@ export const TaskModal = () => {
         ) : (
           <>
             <TaskModalHeader title={data ? data.text : ''} />
-
+            {}
             <div className="flex items-start justify-between">
               <div className="mr-5 flex-1 space-y-3">
                 <TaskModalMakers makers={data ? data.makers : []} />

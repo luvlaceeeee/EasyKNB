@@ -8,11 +8,13 @@ import { BoardColumnDropDown } from './board-column-dropdown';
 interface BoardColumnHeaderProps {
   title: string;
   columnId: number;
+  countTasks: number;
 }
 
 export const BoardColumnHeader: FC<BoardColumnHeaderProps> = ({
   title,
   columnId,
+  countTasks,
   ...props
 }) => {
   const [columnTitle, setColumnTitle] = useState(title);
@@ -60,6 +62,8 @@ export const BoardColumnHeader: FC<BoardColumnHeaderProps> = ({
           }}
           ref={inputRef}
         />
+        <p className="text-sm text-muted-foreground">{countTasks}</p>
+
         <BoardColumnDropDown
           inputRef={inputRef}
           title={title}

@@ -74,14 +74,7 @@ export const BoardColumnContent = React.forwardRef<
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <Task
-                        columnId={columnId}
-                        key={task.id}
-                        taskId={task.id}
-                        title={task.text}
-                        description={task.description}
-                        makers={task.makers}
-                      />
+                      <Task task={task} columnId={columnId} />
                     </span>
                   )}
                 </Draggable>

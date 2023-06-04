@@ -14,9 +14,21 @@ export const TaskModalDescription: FC<TaskModalDescriptionProps> = ({
 
   return (
     <div>
-      <h4 className="mb-2 scroll-m-20 text-lg font-semibold tracking-tight">
-        Description
-      </h4>
+      <div className="mb-2 flex items-center justify-between">
+        <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
+          Description
+        </h4>
+        {description && !openMDEditor ? (
+          <Button
+            size={'sm'}
+            variant={'ghost'}
+            className="h-auto p-0.5 px-1 text-xs font-normal text-muted-foreground"
+            onClick={() => setOpenMDEditor(true)}
+          >
+            Change description
+          </Button>
+        ) : null}
+      </div>
 
       {openMDEditor ? (
         <>
@@ -48,16 +60,10 @@ export const TaskModalDescription: FC<TaskModalDescriptionProps> = ({
           </div>
         </>
       ) : description ? (
-        <span
-          onClick={() => {
-            setOpenMDEditor(!openMDEditor);
-          }}
-        >
-          <MDEditor.Markdown
-            source={description}
-            className="bg-transparent py-2"
-          />
-        </span>
+        <MDEditor.Markdown
+          source={description}
+          className="bg-transparent py-2"
+        />
       ) : (
         <Button
           variant={'secondary'}
