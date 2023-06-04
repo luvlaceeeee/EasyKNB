@@ -9,7 +9,7 @@ interface TaskFooterProps {
 }
 export const TaskFooter: FC<TaskFooterProps> = ({ description, comments }) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between pt-2">
       <div className="flex items-center space-x-3">
         {description && (
           <Button

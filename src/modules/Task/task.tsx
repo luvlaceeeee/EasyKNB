@@ -13,6 +13,9 @@ interface TaskProps {
 export const Task: FC<TaskProps> = ({ columnId, task }) => {
   const user = useAuthStore((s) => s.user);
   const userInTask = task.makers.filter((maker) => maker.id === user.id);
+  const isFooterOpen =
+    task.description ||
+    !!task.comments.filter((comment) => comment.type !== 'System').length;
   return (
     // <div className={`group relative`}>
     <Link to={`c/${columnId}/${task.id}`}>
@@ -27,7 +30,12 @@ export const Task: FC<TaskProps> = ({ columnId, task }) => {
           {/* task content */}
           <TaskContent makers={task.makers} />
           {/* task footer */}
-          <TaskFooter description={task.description} comments={task.comments} />
+          {isFooterOpen && (
+            <TaskFooter
+              description={task.description}
+              comments={task.comments}
+            />
+          )}
         </div>
       </div>
     </Link>
