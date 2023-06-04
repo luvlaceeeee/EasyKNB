@@ -10,7 +10,7 @@ import { Input } from '@/shared/ui/input';
 import { useMutation } from '@tanstack/react-query';
 import { FC, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { TaskService } from '../api';
+import { TaskService } from '../services';
 
 interface TaskModalHeaderProps {
   title: string;

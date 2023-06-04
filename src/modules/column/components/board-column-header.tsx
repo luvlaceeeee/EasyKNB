@@ -2,7 +2,7 @@ import { useQueryParams } from '@/shared/hooks';
 import { Input } from '@/shared/ui/input';
 import { useMutation } from '@tanstack/react-query';
 import { FC, useRef, useState } from 'react';
-import { ColumnService } from '../../services';
+import { ColumnService } from '../services/column.service';
 import { BoardColumnDropDown } from './board-column-dropdown';
 
 interface BoardColumnHeaderProps {

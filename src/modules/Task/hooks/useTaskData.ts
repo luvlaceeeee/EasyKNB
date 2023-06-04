@@ -2,7 +2,7 @@ import { stringToNumber, throwError } from '@/shared/helpers';
 import { useQueryParams } from '@/shared/hooks';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { TaskService } from '../api';
+import { TaskService } from '../services';
 
 export const useTaskData = () => {
   const taskId =

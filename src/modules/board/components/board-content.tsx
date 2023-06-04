@@ -1,8 +1,8 @@
-import { Suspense } from 'react'
-import { DragDropContext } from 'react-beautiful-dnd'
-import { useBoardData } from '../hooks'
-import { BoardColumn } from './board-column'
-import { BoardColumnLayout } from './board-column-layout'
+import { Suspense } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { BoardColumn } from '../../column/board-column';
+import { useBoardData } from '../hooks';
+import { BoardColumnLayout } from './board-column-layout';
 
 export const BoardContent = () => {
   const { data } = useBoardData();

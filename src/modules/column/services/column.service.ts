@@ -1,9 +1,9 @@
 import { $api } from '@/shared/api';
 import { IColumn } from '@/shared/types';
-import { IRenameColumnRequest } from '../interfaces';
-import { ICreateTaskRequest } from '../interfaces/ICreateTaskRequest';
-import { IDeleteColumnRequest } from '../interfaces/IDeleteColumnRequest';
-import { IFindColumnRequest } from '../interfaces/IFindColumnRequest';
+import { IRenameColumnRequest } from '../../board/interfaces';
+import { ICreateTaskRequest } from '../../board/interfaces/ICreateTaskRequest';
+import { IDeleteColumnRequest } from '../../board/interfaces/IDeleteColumnRequest';
+import { IFindColumnRequest } from '../../board/interfaces/IFindColumnRequest';
 
 const findColumnById = async (request: IFindColumnRequest): Promise<IColumn> =>
   $api

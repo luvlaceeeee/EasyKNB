@@ -6,7 +6,7 @@ import { NotFoundPage } from '../not-found/not-found-page';
 import { Sidebar } from '../sidebar/sidebar';
 import { TaskModal } from '../task/task-modal';
 import { WelcomePage } from '../welcome/welcome-page';
-import { PrivateRoutes } from './private-routes';
+import { PrivateRoutes } from './components/private-routes';
 
 // TODO: Add error page for board(when no available id)
 export const RouterPage: FC = () => {

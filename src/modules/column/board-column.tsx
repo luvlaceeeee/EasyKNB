@@ -1,9 +1,9 @@
 import { IColumn } from '@/shared/types';
 import { FC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { useColumnData } from '../hooks';
-import { BoardColumnContent } from './column/board-column-content';
-import { BoardColumnHeader } from './column/board-column-header';
+import { useColumnData } from '../board/hooks';
+import { BoardColumnContent } from './components/board-column-content';
+import { BoardColumnHeader } from './components/board-column-header';
 
 export const BoardColumn: FC<{ column: IColumn; index: number }> = ({
   column,

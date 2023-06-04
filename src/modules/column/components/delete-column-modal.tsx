@@ -12,7 +12,7 @@ import {
 import { Button } from '@/shared/ui/button';
 import { useMutation } from '@tanstack/react-query';
 import { FC } from 'react';
-import { ColumnService } from '../../services';
+import { ColumnService } from '../services/column.service';
 
 interface DeleteColumnModalProps {
   title: string;

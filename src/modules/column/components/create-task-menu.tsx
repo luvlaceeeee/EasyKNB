@@ -1,9 +1,9 @@
-import { ColumnService } from '@/modules/board/services';
 import { useQueryParams } from '@/shared/hooks';
 import { Button } from '@/shared/ui/button';
 import { useMutation } from '@tanstack/react-query';
 import { X } from 'lucide-react';
 import { FC, useState } from 'react';
+import { ColumnService } from '../services/column.service';
 
 interface CreateTaskMenuProps {
   columnId: number;

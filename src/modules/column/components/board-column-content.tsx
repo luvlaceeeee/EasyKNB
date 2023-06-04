@@ -1,4 +1,4 @@
-import { CreateTaskMenu } from '@/modules/task/components/create-task-menu';
+import { CreateTaskMenu } from '@/modules/column/components/create-task-menu';
 import { Task } from '@/modules/task/task';
 import { ITask } from '@/shared/types';
 import { Button } from '@/shared/ui/button';
