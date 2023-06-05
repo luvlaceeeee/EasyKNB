@@ -68,14 +68,13 @@ export const BoardColumnContent = React.forwardRef<
                   index={index}
                 >
                   {(provided) => (
-                    <span
-                      className="block"
+                    <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
                       <Task task={task} columnId={columnId} />
-                    </span>
+                    </div>
                   )}
                 </Draggable>
               ))}

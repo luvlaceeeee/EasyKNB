@@ -15,7 +15,7 @@ import { BoardService } from '../services';
 
 export const CreateColumnModal: FC = () => {
   const [title, setTitle] = useState('');
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [userId, boardId, queryClient] = useQueryParams();
 
@@ -24,17 +24,17 @@ export const CreateColumnModal: FC = () => {
     mutationFn: () => BoardService.createColumn({ userId, boardId, title }),
     onSuccess: () => {
       queryClient.invalidateQueries(['query-board', boardId]);
-      setOpen(false);
+      setIsOpen(false);
     },
   });
 
   const dialogHandler = () => {
-    setOpen(!open);
+    setIsOpen(!isOpen);
     setTitle('');
   };
 
   return (
-    <Dialog open={open} onOpenChange={dialogHandler}>
+    <Dialog open={isOpen} onOpenChange={dialogHandler}>
       <DialogTrigger asChild>
         <Button variant="outline">Create column</Button>
       </DialogTrigger>

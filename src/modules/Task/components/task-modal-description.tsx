@@ -12,6 +12,8 @@ export const TaskModalDescription: FC<TaskModalDescriptionProps> = ({
   const [openMDEditor, setOpenMDEditor] = useState(false);
   const [description, setDescription] = useState<string | undefined>(desc);
 
+  console.log(description);
+
   //TODO Change MD editor on Rich editor
   return (
     <div>

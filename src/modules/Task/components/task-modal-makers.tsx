@@ -27,7 +27,7 @@ export const TaskModalMakers: FC<TaskModalMakersProps> = ({ makers }) => {
                 <AvatarFallback>
                   {maker.name.charAt(0) + maker.surname.charAt(0)}
                 </AvatarFallback>
-              </Avatar>{' '}
+              </Avatar>
             </HoverCardTrigger>
             <HoverCardContent
               className="w-52"

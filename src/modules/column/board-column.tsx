@@ -15,7 +15,7 @@ export const BoardColumn: FC<{ column: IColumn; index: number }> = ({
     <Draggable draggableId={column.title} index={index}>
       {(provided) => (
         <div
-          className="flex h-full w-72 shrink-0 flex-col space-y-4"
+          className="ml-7 flex h-full w-72 shrink-0 flex-col space-y-4"
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
