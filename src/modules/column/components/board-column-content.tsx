@@ -52,7 +52,7 @@ export const BoardColumnContent = React.forwardRef<
       <Droppable droppableId={`c-${columnId}`} direction="vertical" type="task">
         {(provided) => (
           <div
-            className="scrollbar overflow-auto"
+            className="scrollbar overflow-y-auto"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

@@ -40,6 +40,7 @@ export const TaskModalDescription: FC<TaskModalDescriptionProps> = ({
             value={description}
             onChange={(description, e) => setDescription(e?.target.value)}
           />
+          {/* <Tiptap /> */}
           <div className="mt-2">
             <Button
               variant={'secondary'}

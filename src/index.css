@@ -56,6 +56,46 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
+    --greenTag: 155 54% 28%;
+    --greenTag-dark: 155 55% 19%;
+    --greenTag-light: 155 57% 55%;
+
+    --yellowTag: 45 98% 25%;
+    --yellowTag-dark: 45 91% 17%;
+    --yellowTag-light: 47 97% 45%;
+
+    --orangeTag: 30 70% 22%;
+    --orangeTag-dark: 29 85% 32%;
+    --orangeTag-light: 33 95% 61%;
+
+    --redTag: 7 75% 39%;
+    --redTag-dark: 6 63% 23%;
+    --redTag-light: 7 91% 68%;
+
+    --violetTag: 250 38% 28%;
+    --violetTag-dark: 6 63% 23%;
+    --violetTag-light: 250 75% 75%;
+
+    --blueTag: 215 100% 40%;
+    --blueTag-dark: 215 85% 23%;
+    --blueTag-light: 215 100% 67%;
+
+    --oceanicTag: 186 57% 29%;
+    --oceanicTag-dark: 186 45% 23%;
+    --oceanicTag-light: 186 56% 60%;
+
+    --limeTag: 84 55% 27%;
+    --limeTag-dark: 84 39% 20%;
+    --limeTag-light: 84 53% 53%;
+
+    --pinkTag: 323 42% 41%;
+    --pinkTag-dark: 324 37% 23%;
+    --pinkTag-light: 323 71% 68%;
+
+    --grayTag: 208 13% 40%;
+    --grayTag-dark: 210 13% 31%;
+    --grayTag-light: 211 16% 61%;
   }
 
   .dark {

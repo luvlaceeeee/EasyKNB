@@ -18,5 +18,6 @@ export const useTaskData = () => {
     queryFn: () =>
       TaskService.findTaskById({ userId, boardId, columnId, taskId }),
     // suspense: false,
+    refetchOnMount: 'always',
   });
 };
