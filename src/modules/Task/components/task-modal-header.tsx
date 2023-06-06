@@ -1,4 +1,4 @@
-import { useColumnData } from '@/modules/board/hooks';
+import { useColumnData } from '@/modules/column/hooks/useColumnData';
 import { stringToNumber, throwError } from '@/shared/helpers';
 import { useQueryParams } from '@/shared/hooks';
 import {

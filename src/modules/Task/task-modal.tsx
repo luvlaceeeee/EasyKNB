@@ -1,11 +1,11 @@
 import { useQueryParams } from '@/shared/hooks';
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/shared/ui/dialog';
+import { DialogContentLarge } from '@/shared/ui/dialog-large';
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TaskModalButtons } from './components/task-modal-buttons';
@@ -20,20 +20,19 @@ export const TaskModal = () => {
   const navigate = useNavigate();
   const [, boardId] = useQueryParams();
 
-  //TODO Create dialog ui component for task (overflow fixed)
-
   return (
     <Dialog open={true} onOpenChange={() => navigate(`/board/${boardId}`)}>
-      <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
+      <DialogContentLarge onOpenAutoFocus={(e) => e.preventDefault()}>
         <Suspense fallback={<TaskModal.Skeleton />}>
           <TaskModal.Content />
         </Suspense>
-      </DialogContent>
+      </DialogContentLarge>
     </Dialog>
   );
 };
 
-TaskModal.Content = function TaskModalContent() {
+TaskModal.Content = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data } = useTaskData();
 
   return (

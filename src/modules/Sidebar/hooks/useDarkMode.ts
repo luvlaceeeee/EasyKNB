@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-//TODO: Saved theme to localStorage
-
 export const useDarkMode = () => {
   const [theme, setTheme] = useState<string | null>(null);
 
